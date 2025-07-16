@@ -6,6 +6,7 @@
    
 ## Environment Setup
 
+The time estimated for setting up is 10-20mins depending on most network's speed
 
 
 Create a new conda environment first:
