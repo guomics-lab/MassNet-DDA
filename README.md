@@ -32,8 +32,7 @@ pip install -r ./requirements.txt
 installing gcc and g++:
 
 ```bash
-conda install -c conda-forge gcc
-conda install -c conda-forge cxx-compiler
+conda install -c conda-forge gcc cxx-compiler ninja
 ```
 
 then install ctcdecode, which is the package for ctc-beamsearch decoding
