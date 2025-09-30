@@ -141,6 +141,7 @@ def main(
     else:
         output = os.path.splitext(os.path.abspath(output))[0]
 
+    os.makedirs(output, exist_ok=True)
     # Configure logging.
     logging.captureWarnings(True)
     root = logging.getLogger()
@@ -275,6 +276,10 @@ def main(
     import random
     if(config["random_seed"]==-1):
         config["random_seed"]=random.randint(1, 9999)
+
+    if not 'result_output_dir' in config:
+        config["result_output_dir"] = output
+
     LightningLite.seed_everything(seed=config["random_seed"], workers=True)
 
     # Log the active configuration.

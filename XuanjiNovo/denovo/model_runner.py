@@ -136,6 +136,7 @@ def _execute_existing(
             "epoch_decay": 0.01,
             "min_peek": 0.00
         }),
+        result_output_dir=config.get('result_output_dir')
     )
 
     if annotated:
@@ -396,7 +397,8 @@ def train(
             "initial_peek": 0.93,
             "epoch_decay": 0.01,
             "min_peek": 0.00
-        })
+        }),
+        result_output_dir=config.get('result_output_dir')
     )
     
     if config["train_from_scratch"]:

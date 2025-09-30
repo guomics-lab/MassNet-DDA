@@ -216,6 +216,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             "epoch_decay": 0.01,
             "min_peek": 0.00
         },
+        result_output_dir: str = None,
         **kwargs: Dict,
     ):
         super().__init__()
@@ -303,6 +304,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
 
         # Output writer during predicting.
         self.out_writer = out_writer
+        self.result_output_dir = result_output_dir
     
 
     def forward(
@@ -710,7 +712,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-        file_path = "./denovo.tsv"
+        file_path = os.path.join(self.result_output_dir, "denovo.tsv")
         headers = "label\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers
