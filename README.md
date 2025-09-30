@@ -7,7 +7,7 @@
 
 ## Environment Setup
 
-### Platform Support
+### Platform Support with docker
 
 - **Linux**: Fully supported and tested
 - **Windows**: Supported with WSL2 (Windows Subsystem for Linux) or native installation
@@ -15,80 +15,44 @@
 
 The time estimated for setting up is 10-20 minutes depending on network speed and platform.
 
+## Usage
 
-Create a new conda environment first:
+### Option 1: Use a Pre-built Docker Image (Recommended)
 
-```
-conda create --name XuanjiNovo python=3.11
-```
-
-This will create an anaconda environment
-
-Activate this environment by running:
-
-```
-conda activate XuanjiNovo
-```
-
-then install dependencies:
-
-```
-pip install -r ./requirements.txt
-```
-
-installing gcc and g++:
-
-For Linux and WSL2:
-```bash
-conda install -c conda-forge gcc cxx-compiler ninja
-```
-
-For Windows (native installation):
-```bash
-conda install -c conda-forge m2w64-gcc m2w64-gcc-fortran ninja
-```
-
-then install ctcdecode, which is the package for ctc-beamsearch decoding
+You can directly pull the pre-built image from Docker Hub:
 
 ```bash
-git clone --recursive https://github.com/WayenVan/ctcdecode.git
-cd ctcdecode
-pip install .
-cd ..  #this is needed as ctcdecode can not be imported under the current directory
-rm -rf ctcdecode
+# Pull the CUDA 11 version
+docker pull guomics2017/massnet-dda:cuda11_v1.0
+
+# Pull the CUDA 12 version
+docker pull guomics2017/massnet-dda:cuda12_v1.0
+
 ```
 
-(if there are no errors, ignore the next line and proceed to CuPy install)
-
-if you encountered issues with C++ (gxx and gcc) version errors in this step, install gcc with version specified as :  
+### Option 2: Build the Docker Image Locally
 
 ```bash
-conda install -c conda-forge gcc_linux-64=9.3.0
+# CUDA 11 version
+docker build -t massnet-dda:cuda11_v1.0 . -f Dockerfile_cuda11
+
+# CUDA 12 version
+docker build -t massnet-dda:cuda12_v1.0 . -f Dockerfile_cuda12
 ```
 
-then install pytorch imputer for CTC-curriculum sampling
+### Example Run Command
+
+Below is an example command to run the container (using the CUDA 11 version):
 
 ```bash
-cd imputer-pytorch
-pip install -e .
-cd ..
+docker run --gpus all --rm \
+  -v /local/data:/data \
+  massnet-dda:cuda11_v1.0 \
+  --mode=eval \
+  --peak_path=/data/bacillus.10k.mgf \
+  --model=/data/XuanjiNovo_100M_massnet.ckpt \
+  --output /data/output_cuda11_v1.0
 ```
-
-lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
-
-**_Please install the following Cupy package in a GPU available env, If you are using a slurm server, this means you have to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking by nvidia-smi), then there's no problem_**
-
-**Check your CUDA version using command nvidia-smi, the CUDA version will be on the top-right corner**
-
-| cuda version | command |
-|-------|-------|
-|v10.2 (x86_64 / aarch64)| pip install cupy-cuda102 |
-|v11.0 (x86_64)| pip install cupy-cuda110 |
-|v11.1 (x86_64)| pip install cupy-cuda111 |
-|v11.2 ~ 11.8 (x86_64 / aarch64)| pip install cupy-cuda11x |
-|v12.x (x86_64 / aarch64)| pip install cupy-cuda12x |
-
-
 
 
 ## Model Settings
