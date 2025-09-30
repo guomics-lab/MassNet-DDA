@@ -15,7 +15,6 @@ mass_control_tol: 0.1  #unit: Da, eveything decoded will be within 0.1 Da of MS/
 #--------
 load_file_name: "./NON351/epoch=5-step=65000.ckpt"
 # random_seed: -1 # Random
-custom_ctc: False
 # Spectrum processing options.
 n_peaks: 800
 min_mz: 1
@@ -32,6 +31,13 @@ n_head: 8 #8
 dim_feedforward: 1024
 n_layers: 9
 dropout: 0.18
+
+# Refinement and masking options
+refine_iters: 3  # Number of refinement iterations in forward()
+mask_schedule:
+  initial_peek: 0.93  # Initial peek factor
+  epoch_decay: 0.01   # How much to reduce peek factor per epoch
+  min_peek: 0.00     # Minimum peek factor
 dim_intensity:
 custom_encoder:
 max_length: 40 #70 #NON73: 32
@@ -68,6 +74,9 @@ residues:
 n_log: 1
 tb_summarywriter:
 
+# Logging configuration
+log_level: "CRITICAL"  # One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
+
 # Neptune logger
 enable_neptune: True
 neptune_project: 
@@ -102,7 +111,7 @@ train_from_scratch: False
 n_nodes: 1
 save_model: False
 train_from_resume: False
-model_save_folder_path: "./NON355"
+model_save_folder_path: "./saved_models"
 save_weights_only: False
 every_n_train_steps: 2500
 temp_dir_auto: True

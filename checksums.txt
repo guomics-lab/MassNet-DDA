@@ -1,0 +1,4 @@
+# SHA-256 checksums for model checkpoints and datasets
+XuanjiNovo_100M_massnet.ckpt=59469325807a2d1b666daad6b3b5c05a5d3b66a489d43b0486485a55a3bde3e6
+XuanjiNovo_130M_massnet_massivekb.ckpt=d909f907aeaa9b215d343b95c6694d85809265ccaabc9f90b1e1b58942cbdcec
+Bacillus.10k.mgf=47eba8c23197214ca7f40200c53ca2abe96a7824b613377738526353a67264df
