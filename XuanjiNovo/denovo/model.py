@@ -880,21 +880,41 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             The individual amino acid scores for each prediction.
         """
   
-        peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
+       peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-            
-        with open("./denovo_LAUD.txt",'a') as f:
+        file_path = "./denovo.tsv"
+        headers = "label\tprediction\tcharge\tscore\n"
+
+        # Check if the file exists and whether it contains headers
+        if not os.path.exists(file_path) or open(file_path, 'r').readline().strip() != headers.strip():
+            with open(file_path, 'a') as f:
+                f.write(headers)
+
+        # Append data
+        with open(file_path,'a') as f:
             for i in range(len(peptides)):
+                sequence = ""
+                for el in peptides[i]:
+                    if len(el) > 1:
+                        if el[0] in ('+', '-'):
+                            sequence += '[' + el + ']'
+                        elif el[0].isdigit():
+                            sequence += '[' + el + ']'
+                        else:
+                            sequence += el[0] + '[' + el[1:] + ']'
+                    else:
+                        sequence += el
+
                 # print("label:",batch[2][i], ":" , peptides[i] , "\n")
                 if batch[2][i].replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I") == "".join(peptides[i]).replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I"):
                     answer_is_correct = "correct"
                 else:
                     answer_is_correct = "incorrect"
-                    
-                f.write("label: " + batch[2][i] + " prediction: " + "".join(peptides[i]) + " charge: " + str(int(batch[1][i][1])) + " score: " + str(float(inferscores[i]))+"\n")
+                #each line output this: label (title if label is none), predictions, charge, and confidence score
+                f.write(batch[2][i].replace("\t", " ") + "\t" + sequence + "\t" + str(int(batch[1][i][1])) + "\t" + str(float(inferscores[i])) + "\n")
                 
-                #f.write("label: " + batch[2][i] + " prediction : " + "".join(peptides[i]) + "  " + answer_is_correct + "\n")
+                
         
         return batch[2], batch[1], peptides  #batch[2]: identifier
 
