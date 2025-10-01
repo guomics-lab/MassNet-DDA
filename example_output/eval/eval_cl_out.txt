@@ -1,0 +1,483 @@
+Using MASTER_PORT=22186
+2025-10-01 10:29:00 [WARNING] XuanjiNovo - Pydantic not available, falling back to basic config validation
+2025-10-01 10:29:00 [WARNING] XuanjiNovo - Pydantic not available, falling back to basic config validation
+2025-10-01 10:29:00 [WARNING] XuanjiNovo - Pydantic not available, falling back to basic config validation
+2025-10-01 10:29:00 [WARNING] XuanjiNovo - Pydantic not available, falling back to basic config validation
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 10:29:00 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mode = eval
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_val = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_test = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - random_seed = 8499
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 10:29:00 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - log_level = INFO
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - enable_neptune = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mode = eval
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 10:29:00 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_val = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_batch_size = 700
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_test = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - random_seed = 945
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_scratch = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mode = eval
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_val = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_test = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Evaluate a trained XuanjiNovo model.
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - random_seed = 8633
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 10:29:00 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - log_level = INFO
+2025-10-01 10:29:00 [WARNING] natNovo - Pydantic not available, skipping additional config validation
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - enable_neptune = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mode = eval
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_val = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - peak_path_test = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - random_seed = 3450
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - log_level = INFO
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_batch_size = 700
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - enable_neptune = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 10:29:00 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_scratch = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Evaluate a trained XuanjiNovo model.
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_batch_size = 700
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_scratch = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - log_level = INFO
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - enable_neptune = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 10:29:00 [WARNING] natNovo - Pydantic not available, skipping additional config validation
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Evaluate a trained XuanjiNovo model.
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_batch_size = 700
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_scratch = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 10:29:00 [WARNING] natNovo - Pydantic not available, skipping additional config validation
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 10:29:00 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 10:29:00 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102900
+2025-10-01 10:29:00 [INFO] XuanjiNovo - Evaluate a trained XuanjiNovo model.
+2025-10-01 10:29:00 [WARNING] natNovo - Pydantic not available, skipping additional config validation
+2025-10-01 10:29:00 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:00 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:00 [DEBUG] fsspec.local - open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] fsspec.local - open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] fsspec.local - open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:00 [DEBUG] fsspec.local - open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:29:01 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:01 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:01 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:01 [INFO] xuanjinovo - PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:29:01 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 10:29:01 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 10:29:01 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 10:29:01 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 10:29:06 [INFO] natNovo - Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:29:06 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:29:06 [ERROR] xuanjinovo - Failed to record metadata: HEAD is a detached symbolic reference as it points to '24fe5d80ab6174e2558139faa35bf99e0318d82b'
+2025-10-01 10:29:06 [INFO] natNovo - Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:29:06 [INFO] natNovo - Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:29:06 [INFO] natNovo - Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:29:06 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:29:06 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:29:06 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:29:06 [ERROR] xuanjinovo - Failed to record metadata: HEAD is a detached symbolic reference as it points to '24fe5d80ab6174e2558139faa35bf99e0318d82b'
+2025-10-01 10:29:06 [ERROR] xuanjinovo - Failed to record metadata: HEAD is a detached symbolic reference as it points to '24fe5d80ab6174e2558139faa35bf99e0318d82b'
+2025-10-01 10:29:06 [ERROR] xuanjinovo - Failed to record metadata: HEAD is a detached symbolic reference as it points to '24fe5d80ab6174e2558139faa35bf99e0318d82b'
+2025-10-01 10:29:17 [WARNING] py.warnings - /home/weijiaqi/miniconda3/envs/XuanjiNovo/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:315: PossibleUserWarning: Using `DistributedSampler` with the dataloaders. During `trainer.validate()`, it is recommended to use `Trainer(devices=1, num_nodes=1)` to ensure each sample/batch gets evaluated exactly once. Otherwise, multi-device settings use `DistributedSampler` that replicates some samples to make sure all devices have same batch size in case of uneven inputs.
+  rank_zero_warn(
+
+Validation: 0it [00:00, ?it/s]Validation:   0%|          | 0/39 [00:00<?, ?it/s]Validation DataLoader 0:   0%|          | 0/39 [00:00<?, ?it/s]2025-10-01 10:29:49 [INFO] xuanjinovo - Average predicted peptide length: 10.97
+2025-10-01 10:29:50 [WARNING] py.warnings - /home/weijiaqi/miniconda3/envs/XuanjiNovo/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 64. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+
+2025-10-01 10:29:51 [INFO] xuanjinovo - Average predicted peptide length: 10.64
+2025-10-01 10:29:51 [INFO] xuanjinovo - Average predicted peptide length: 11.48
+2025-10-01 10:29:51 [INFO] xuanjinovo - Average predicted peptide length: 10.70
+Validation DataLoader 0:   3%|▎         | 1/39 [00:02<01:27,  2.30s/it]2025-10-01 10:29:52 [INFO] xuanjinovo - Average predicted peptide length: 12.55
+2025-10-01 10:29:52 [INFO] xuanjinovo - Average predicted peptide length: 12.42
+2025-10-01 10:29:52 [INFO] xuanjinovo - Average predicted peptide length: 13.67
+2025-10-01 10:29:52 [INFO] xuanjinovo - Average predicted peptide length: 12.72
+Validation DataLoader 0:   5%|▌         | 2/39 [00:02<00:55,  1.49s/it]2025-10-01 10:29:53 [INFO] xuanjinovo - Average predicted peptide length: 16.06
+2025-10-01 10:29:53 [INFO] xuanjinovo - Average predicted peptide length: 16.34
+2025-10-01 10:29:53 [INFO] xuanjinovo - Average predicted peptide length: 16.58
+2025-10-01 10:29:53 [INFO] xuanjinovo - Average predicted peptide length: 15.53
+Validation DataLoader 0:   8%|▊         | 3/39 [00:03<00:46,  1.30s/it]2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 18.39
+2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 18.95
+2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 18.19
+2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 18.89
+Validation DataLoader 0:  10%|█         | 4/39 [00:04<00:43,  1.24s/it]2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 10.88
+2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 10.92
+2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 11.50
+2025-10-01 10:29:54 [INFO] xuanjinovo - Average predicted peptide length: 11.16
+Validation DataLoader 0:  13%|█▎        | 5/39 [00:05<00:38,  1.12s/it]2025-10-01 10:29:55 [INFO] xuanjinovo - Average predicted peptide length: 14.78
+2025-10-01 10:29:55 [INFO] xuanjinovo - Average predicted peptide length: 14.44
+2025-10-01 10:29:55 [INFO] xuanjinovo - Average predicted peptide length: 14.31
+2025-10-01 10:29:55 [INFO] xuanjinovo - Average predicted peptide length: 13.75
+Validation DataLoader 0:  15%|█▌        | 6/39 [00:06<00:34,  1.06s/it]2025-10-01 10:29:56 [INFO] xuanjinovo - Average predicted peptide length: 17.58
+2025-10-01 10:29:56 [INFO] xuanjinovo - Average predicted peptide length: 19.08
+2025-10-01 10:29:56 [INFO] xuanjinovo - Average predicted peptide length: 19.53
+2025-10-01 10:29:56 [INFO] xuanjinovo - Average predicted peptide length: 18.41
+Validation DataLoader 0:  18%|█▊        | 7/39 [00:07<00:33,  1.06s/it]2025-10-01 10:29:57 [INFO] xuanjinovo - Average predicted peptide length: 12.92
+2025-10-01 10:29:57 [INFO] xuanjinovo - Average predicted peptide length: 13.14
+2025-10-01 10:29:57 [INFO] xuanjinovo - Average predicted peptide length: 13.45
+2025-10-01 10:29:57 [INFO] xuanjinovo - Average predicted peptide length: 12.30
+Validation DataLoader 0:  21%|██        | 8/39 [00:08<00:31,  1.03s/it]2025-10-01 10:29:58 [INFO] xuanjinovo - Average predicted peptide length: 12.66
+2025-10-01 10:29:58 [INFO] xuanjinovo - Average predicted peptide length: 12.81
+2025-10-01 10:29:58 [INFO] xuanjinovo - Average predicted peptide length: 13.25
+2025-10-01 10:29:58 [INFO] xuanjinovo - Average predicted peptide length: 12.62
+Validation DataLoader 0:  23%|██▎       | 9/39 [00:08<00:29,  1.01it/s]2025-10-01 10:29:59 [INFO] xuanjinovo - Average predicted peptide length: 17.42
+2025-10-01 10:29:59 [INFO] xuanjinovo - Average predicted peptide length: 17.64
+2025-10-01 10:29:59 [INFO] xuanjinovo - Average predicted peptide length: 17.73
+2025-10-01 10:29:59 [INFO] xuanjinovo - Average predicted peptide length: 17.00
+Validation DataLoader 0:  26%|██▌       | 10/39 [00:09<00:28,  1.00it/s]2025-10-01 10:29:59 [INFO] xuanjinovo - Average predicted peptide length: 14.36
+2025-10-01 10:29:59 [INFO] xuanjinovo - Average predicted peptide length: 14.31
+2025-10-01 10:30:00 [INFO] xuanjinovo - Average predicted peptide length: 14.98
+2025-10-01 10:30:00 [INFO] xuanjinovo - Average predicted peptide length: 14.89
+Validation DataLoader 0:  28%|██▊       | 11/39 [00:10<00:27,  1.02it/s]2025-10-01 10:30:00 [INFO] xuanjinovo - Average predicted peptide length: 11.62
+2025-10-01 10:30:00 [INFO] xuanjinovo - Average predicted peptide length: 12.44
+2025-10-01 10:30:00 [INFO] xuanjinovo - Average predicted peptide length: 12.52
+2025-10-01 10:30:00 [INFO] xuanjinovo - Average predicted peptide length: 12.41
+Validation DataLoader 0:  31%|███       | 12/39 [00:11<00:25,  1.05it/s]2025-10-01 10:30:01 [INFO] xuanjinovo - Average predicted peptide length: 15.58
+2025-10-01 10:30:01 [INFO] xuanjinovo - Average predicted peptide length: 16.50
+2025-10-01 10:30:01 [INFO] xuanjinovo - Average predicted peptide length: 16.19
+2025-10-01 10:30:01 [INFO] xuanjinovo - Average predicted peptide length: 15.70
+Validation DataLoader 0:  33%|███▎      | 13/39 [00:12<00:24,  1.05it/s]2025-10-01 10:30:02 [INFO] xuanjinovo - Average predicted peptide length: 16.00
+2025-10-01 10:30:02 [INFO] xuanjinovo - Average predicted peptide length: 16.59
+2025-10-01 10:30:02 [INFO] xuanjinovo - Average predicted peptide length: 17.58
+2025-10-01 10:30:02 [INFO] xuanjinovo - Average predicted peptide length: 19.36
+Validation DataLoader 0:  36%|███▌      | 14/39 [00:13<00:24,  1.04it/s]2025-10-01 10:30:03 [INFO] xuanjinovo - Average predicted peptide length: 10.98
+2025-10-01 10:30:03 [INFO] xuanjinovo - Average predicted peptide length: 10.94
+2025-10-01 10:30:03 [INFO] xuanjinovo - Average predicted peptide length: 10.69
+2025-10-01 10:30:03 [INFO] xuanjinovo - Average predicted peptide length: 11.22
+Validation DataLoader 0:  38%|███▊      | 15/39 [00:14<00:22,  1.07it/s]2025-10-01 10:30:04 [INFO] xuanjinovo - Average predicted peptide length: 14.84
+2025-10-01 10:30:04 [INFO] xuanjinovo - Average predicted peptide length: 14.25
+2025-10-01 10:30:04 [INFO] xuanjinovo - Average predicted peptide length: 14.84
+2025-10-01 10:30:04 [INFO] xuanjinovo - Average predicted peptide length: 14.58
+Validation DataLoader 0:  41%|████      | 16/39 [00:14<00:21,  1.08it/s]2025-10-01 10:30:04 [INFO] xuanjinovo - Average predicted peptide length: 18.22
+2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 17.55
+2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 18.08
+2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 18.31
+Validation DataLoader 0:  44%|████▎     | 17/39 [00:15<00:20,  1.07it/s]2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 11.25
+2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 10.34
+2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 11.17
+2025-10-01 10:30:05 [INFO] xuanjinovo - Average predicted peptide length: 11.11
+Validation DataLoader 0:  46%|████▌     | 18/39 [00:16<00:19,  1.09it/s]2025-10-01 10:30:06 [INFO] xuanjinovo - Average predicted peptide length: 14.17
+2025-10-01 10:30:06 [INFO] xuanjinovo - Average predicted peptide length: 13.77
+2025-10-01 10:30:06 [INFO] xuanjinovo - Average predicted peptide length: 14.27
+2025-10-01 10:30:06 [INFO] xuanjinovo - Average predicted peptide length: 13.72
+Validation DataLoader 0:  49%|████▊     | 19/39 [00:17<00:18,  1.10it/s]2025-10-01 10:30:07 [INFO] xuanjinovo - Average predicted peptide length: 17.69
+2025-10-01 10:30:07 [INFO] xuanjinovo - Average predicted peptide length: 18.78
+2025-10-01 10:30:07 [INFO] xuanjinovo - Average predicted peptide length: 18.62
+2025-10-01 10:30:07 [INFO] xuanjinovo - Average predicted peptide length: 17.94
+Validation DataLoader 0:  51%|█████▏    | 20/39 [00:18<00:17,  1.10it/s]2025-10-01 10:30:07 [INFO] xuanjinovo - Average predicted peptide length: 10.83
+2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 10.39
+2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 10.33
+2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 10.44
+Validation DataLoader 0:  54%|█████▍    | 21/39 [00:18<00:16,  1.12it/s]2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 13.53
+2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 13.92
+2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 13.48
+2025-10-01 10:30:08 [INFO] xuanjinovo - Average predicted peptide length: 12.67
+Validation DataLoader 0:  56%|█████▋    | 22/39 [00:19<00:15,  1.13it/s]2025-10-01 10:30:09 [INFO] xuanjinovo - Average predicted peptide length: 18.14
+2025-10-01 10:30:09 [INFO] xuanjinovo - Average predicted peptide length: 18.30
+2025-10-01 10:30:09 [INFO] xuanjinovo - Average predicted peptide length: 18.23
+2025-10-01 10:30:09 [INFO] xuanjinovo - Average predicted peptide length: 17.11
+Validation DataLoader 0:  59%|█████▉    | 23/39 [00:20<00:14,  1.12it/s]2025-10-01 10:30:10 [INFO] xuanjinovo - Average predicted peptide length: 12.66
+2025-10-01 10:30:10 [INFO] xuanjinovo - Average predicted peptide length: 13.12
+2025-10-01 10:30:10 [INFO] xuanjinovo - Average predicted peptide length: 12.70
+2025-10-01 10:30:10 [INFO] xuanjinovo - Average predicted peptide length: 12.53
+Validation DataLoader 0:  62%|██████▏   | 24/39 [00:21<00:13,  1.13it/s]2025-10-01 10:30:11 [INFO] xuanjinovo - Average predicted peptide length: 13.44
+2025-10-01 10:30:11 [INFO] xuanjinovo - Average predicted peptide length: 12.69
+2025-10-01 10:30:11 [INFO] xuanjinovo - Average predicted peptide length: 12.69
+2025-10-01 10:30:11 [INFO] xuanjinovo - Average predicted peptide length: 12.06
+Validation DataLoader 0:  64%|██████▍   | 25/39 [00:21<00:12,  1.14it/s]2025-10-01 10:30:12 [INFO] xuanjinovo - Average predicted peptide length: 17.58
+2025-10-01 10:30:12 [INFO] xuanjinovo - Average predicted peptide length: 17.03
+2025-10-01 10:30:12 [INFO] xuanjinovo - Average predicted peptide length: 16.58
+2025-10-01 10:30:12 [INFO] xuanjinovo - Average predicted peptide length: 17.02
+Validation DataLoader 0:  67%|██████▋   | 26/39 [00:22<00:11,  1.14it/s]2025-10-01 10:30:12 [INFO] xuanjinovo - Average predicted peptide length: 13.89
+2025-10-01 10:30:12 [INFO] xuanjinovo - Average predicted peptide length: 14.78
+2025-10-01 10:30:13 [INFO] xuanjinovo - Average predicted peptide length: 15.94
+2025-10-01 10:30:13 [INFO] xuanjinovo - Average predicted peptide length: 14.27
+Validation DataLoader 0:  69%|██████▉   | 27/39 [00:23<00:10,  1.13it/s]2025-10-01 10:30:13 [INFO] xuanjinovo - Average predicted peptide length: 11.06
+2025-10-01 10:30:13 [INFO] xuanjinovo - Average predicted peptide length: 10.86
+2025-10-01 10:30:13 [INFO] xuanjinovo - Average predicted peptide length: 11.75
+2025-10-01 10:30:13 [INFO] xuanjinovo - Average predicted peptide length: 11.92
+Validation DataLoader 0:  72%|███████▏  | 28/39 [00:24<00:09,  1.14it/s]2025-10-01 10:30:14 [INFO] xuanjinovo - Average predicted peptide length: 15.14
+2025-10-01 10:30:14 [INFO] xuanjinovo - Average predicted peptide length: 15.30
+2025-10-01 10:30:14 [INFO] xuanjinovo - Average predicted peptide length: 15.44
+2025-10-01 10:30:14 [INFO] xuanjinovo - Average predicted peptide length: 14.47
+Validation DataLoader 0:  74%|███████▍  | 29/39 [00:25<00:08,  1.15it/s]2025-10-01 10:30:15 [INFO] xuanjinovo - Average predicted peptide length: 18.97
+2025-10-01 10:30:15 [INFO] xuanjinovo - Average predicted peptide length: 18.92
+2025-10-01 10:30:15 [INFO] xuanjinovo - Average predicted peptide length: 19.16
+2025-10-01 10:30:15 [INFO] xuanjinovo - Average predicted peptide length: 18.42
+Validation DataLoader 0:  77%|███████▋  | 30/39 [00:26<00:07,  1.14it/s]2025-10-01 10:30:16 [INFO] xuanjinovo - Average predicted peptide length: 12.80
+2025-10-01 10:30:16 [INFO] xuanjinovo - Average predicted peptide length: 12.58
+2025-10-01 10:30:16 [INFO] xuanjinovo - Average predicted peptide length: 12.73
+2025-10-01 10:30:16 [INFO] xuanjinovo - Average predicted peptide length: 13.56
+Validation DataLoader 0:  79%|███████▉  | 31/39 [00:27<00:07,  1.14it/s]2025-10-01 10:30:17 [INFO] xuanjinovo - Average predicted peptide length: 17.25
+2025-10-01 10:30:17 [INFO] xuanjinovo - Average predicted peptide length: 18.12
+2025-10-01 10:30:17 [INFO] xuanjinovo - Average predicted peptide length: 17.97
+2025-10-01 10:30:17 [INFO] xuanjinovo - Average predicted peptide length: 17.58
+Validation DataLoader 0:  82%|████████▏ | 32/39 [00:28<00:06,  1.13it/s]2025-10-01 10:30:18 [INFO] xuanjinovo - Average predicted peptide length: 12.44
+2025-10-01 10:30:18 [INFO] xuanjinovo - Average predicted peptide length: 12.31
+2025-10-01 10:30:18 [INFO] xuanjinovo - Average predicted peptide length: 13.39
+2025-10-01 10:30:18 [INFO] xuanjinovo - Average predicted peptide length: 12.88
+Validation DataLoader 0:  85%|████████▍ | 33/39 [00:28<00:05,  1.14it/s]2025-10-01 10:30:18 [INFO] xuanjinovo - Average predicted peptide length: 14.94
+2025-10-01 10:30:19 [INFO] xuanjinovo - Average predicted peptide length: 15.17
+2025-10-01 10:30:19 [INFO] xuanjinovo - Average predicted peptide length: 15.91
+2025-10-01 10:30:19 [INFO] xuanjinovo - Average predicted peptide length: 15.28
+Validation DataLoader 0:  87%|████████▋ | 34/39 [00:29<00:04,  1.14it/s]2025-10-01 10:30:19 [INFO] xuanjinovo - Average predicted peptide length: 15.53
+2025-10-01 10:30:19 [INFO] xuanjinovo - Average predicted peptide length: 16.66
+2025-10-01 10:30:20 [INFO] xuanjinovo - Average predicted peptide length: 16.16
+2025-10-01 10:30:20 [INFO] xuanjinovo - Average predicted peptide length: 15.45
+Validation DataLoader 0:  90%|████████▉ | 35/39 [00:30<00:03,  1.14it/s]2025-10-01 10:30:20 [INFO] xuanjinovo - Average predicted peptide length: 12.72
+2025-10-01 10:30:20 [INFO] xuanjinovo - Average predicted peptide length: 14.36
+2025-10-01 10:30:20 [INFO] xuanjinovo - Average predicted peptide length: 14.66
+2025-10-01 10:30:20 [INFO] xuanjinovo - Average predicted peptide length: 12.81
+Validation DataLoader 0:  92%|█████████▏| 36/39 [00:31<00:02,  1.14it/s]2025-10-01 10:30:21 [INFO] xuanjinovo - Average predicted peptide length: 18.11
+2025-10-01 10:30:21 [INFO] xuanjinovo - Average predicted peptide length: 19.66
+2025-10-01 10:30:22 [INFO] xuanjinovo - Average predicted peptide length: 18.70
+2025-10-01 10:30:22 [INFO] xuanjinovo - Average predicted peptide length: 18.75
+Validation DataLoader 0:  95%|█████████▍| 37/39 [00:32<00:01,  1.13it/s]2025-10-01 10:30:22 [INFO] xuanjinovo - Average predicted peptide length: 14.72
+2025-10-01 10:30:22 [INFO] xuanjinovo - Average predicted peptide length: 13.73
+2025-10-01 10:30:22 [INFO] xuanjinovo - Average predicted peptide length: 14.28
+2025-10-01 10:30:22 [INFO] xuanjinovo - Average predicted peptide length: 14.39
+Validation DataLoader 0:  97%|█████████▋| 38/39 [00:33<00:00,  1.13it/s]2025-10-01 10:30:22 [WARNING] py.warnings - /home/weijiaqi/miniconda3/envs/XuanjiNovo/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 19. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+
+2025-10-01 10:30:23 [INFO] xuanjinovo - Average predicted peptide length: 22.42
+2025-10-01 10:30:23 [INFO] xuanjinovo - Average predicted peptide length: 22.53
+2025-10-01 10:30:23 [INFO] xuanjinovo - Average predicted peptide length: 22.42
+2025-10-01 10:30:23 [INFO] xuanjinovo - Average predicted peptide length: 20.95
+Validation DataLoader 0: 100%|██████████| 39/39 [00:34<00:00,  1.14it/s]Validation DataLoader 0: 100%|██████████| 39/39 [00:34<00:00,  1.14it/s]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Runningstage.validating metric      DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+      valid/CELoss          3.0937483310699463
+    valid/F_precision       0.5210264921188354
+    valid/K_precision       0.5518080592155457
+valid/M+15.995_precision    0.25647616386413574
+    valid/Q_precision       0.4912319481372833
+valid/aa_precision_epoch    0.4919102321196275
+  valid/aa_recall_epoch     0.5018285033681774
+ valid/pep_recall_epoch     0.4302325580718581
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
