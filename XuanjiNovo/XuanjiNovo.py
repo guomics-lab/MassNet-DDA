@@ -189,12 +189,12 @@ def main(
         logger.info(f"  Summary: {config_paths['summary']}")
         logger.info(f"  Device config: {config_paths['device']}")
         
-        # Convert validated config back to dict for backward compatibility
-        config = config_obj.dict()
+        # Convert validated config back to flat dict for backward compatibility
+        config2 = config_obj.to_flat_dict()
         
-    except ImportError:
-        # Fallback to old config loading if pydantic is not available
-        logger.warning("Pydantic not available, falling back to basic config validation")
+    except:
+        print("skipping pydantic validation")
+    if config2:
         with open(config_fn) as f_in:
             config = yaml.safe_load(f_in)
         # Old type validation code remains as fallback

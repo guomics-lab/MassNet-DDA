@@ -36,6 +36,6 @@ MASTER_PORT=${MASTER_PORT:-$(( ( RANDOM % 10000 ) + 20000 ))}
 echo "Using MASTER_PORT=$MASTER_PORT"
 
 torchrun --nproc_per_node=4 --master_port=${MASTER_PORT} -m XuanjiNovo.XuanjiNovo  \
-        --mode=denovo \
+        --mode=eval \
         --model=$XuanjiNovo_100M \
         --peak_path=$bacillus --gpu=0,1,2,3

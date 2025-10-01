@@ -28,7 +28,7 @@
     "mass_control_tol": 0.1,
     "max_charge": 10,
     "max_epochs": 150,
-    "max_iters": null,
+    "max_iters": 375000,
     "max_length": 40,
     "max_mz": 6500.0,
     "min_intensity": 0.0,
@@ -46,7 +46,7 @@
     "num_sanity_val_steps": 0,
     "precursor_mass_tol": 50.0,
     "predict_batch_size": 64,
-    "random_seed": 7044,
+    "random_seed": 5112,
     "refine_iters": 3,
     "remove_precursor_tol": 1.0,
     "residues": {
@@ -78,7 +78,7 @@
       "W": 186.079313,
       "Y": 163.063329
     },
-    "result_output_dir": "/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001131152",
+    "result_output_dir": "/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748",
     "save_model": false,
     "save_weights_only": false,
     "sync_batchnorm": false,
@@ -90,7 +90,7 @@
     "train_from_scratch": true,
     "val_interval": 1,
     "warm_up_epochs": 1,
-    "warmup_iters": null,
+    "warmup_iters": 2500,
     "weight_decay": 8e-05
   },
   "git_info": {
@@ -141,11 +141,11 @@
       }
     ],
     "memory": {
-      "available": "92.55 GB",
+      "available": "94.53 GB",
       "total": "97.66 GB"
     }
   },
-  "model_name": "epoch=695-step=324000.ckpt",
+  "model_name": "XuanjiNovo",
   "software_info": {
     "cuda_version": "12.1",
     "cudnn_version": 8902,
@@ -342,5 +342,5 @@
     },
     "pytorch_version": "2.1.0+cu121"
   },
-  "timestamp": "2025-10-01T13:11:59.945003"
+  "timestamp": "2025-10-01T13:08:03.935958"
 }

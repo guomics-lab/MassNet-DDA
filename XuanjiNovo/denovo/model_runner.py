@@ -81,7 +81,7 @@ def _execute_existing(
     try:
         from ..config import XuanjiNovoConfig
         if isinstance(config, dict):
-            config = XuanjiNovoConfig.from_dict(config)
+            config2 = XuanjiNovoConfig.from_dict(config)
             logger.info("Configuration validated via pydantic")
     except ImportError:
         logger.warning("Pydantic not available, skipping additional config validation")
@@ -109,7 +109,8 @@ def _execute_existing(
             model_filename,
         )
         raise FileNotFoundError("Could not find the trained model weights")
-    
+    if config2:
+        print("config validated via pydantic")
     model = Spec2Pep().load_from_checkpoint(
         model_filename,
         PMC_enable=config["PMC_enable"],
@@ -249,7 +250,7 @@ def train(
     try:
         from ..config import XuanjiNovoConfig
         if isinstance(config, dict):
-            config = XuanjiNovoConfig.from_dict(config)
+            config2 = XuanjiNovoConfig.from_dict(config)
             logger.info("Training configuration validated via pydantic")
     except ImportError:
         logger.warning("Pydantic not available, skipping additional config validation")
@@ -281,7 +282,8 @@ def train(
     train_is_not_index = any([
         os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml") for fn in train_filenames
     ])
-    
+    if config2:
+        print("config validated via pydantic")
     if (peak_path_val is None
             or len(val_filenames := _get_peak_filenames(peak_path_val, ext))
             == 0):
