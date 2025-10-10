@@ -992,4 +992,3 @@ def _calc_mass_error(calc_mz: float,
     """
     return (calc_mz - (obs_mz - isotope * 1.00335 / charge)) / obs_mz * 10**6
 
-
