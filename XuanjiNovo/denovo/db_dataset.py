@@ -116,7 +116,6 @@ class DbDataset(Dataset):
         """The total number of spectra."""
         total = 0
         for each in self.indexs:
-            print("each data size: ", each.n_spectra)
             total += each.n_spectra
         return total
     @property

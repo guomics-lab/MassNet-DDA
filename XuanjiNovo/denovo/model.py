@@ -1,31 +1,82 @@
-"""A de novo peptide sequencing model."""
-#model for XuanjiNovo
-from captum.attr import IntegratedGradients
-import heapq
+"""A de novo peptide sequencing model with configurable logging."""
+
 import threading
 import logging
 import re
 import sys
-from torch_imputer.imputer import best_alignment
-from .ctc_customized_mass_control import CTCMassControl
-from lion_pytorch import Lion
 import operator
+import os
+from datetime import datetime
 import torch.nn.functional as F
 import random
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
-from .customized_ctc import ctc_loss as custom_ctc_loss
 import depthcharge.masses
-import einops
 import numpy as np
 import pytorch_lightning as pl
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from . import mass_con
-from .ctc_mass_control import CTCScopeSearchCharLengthControlDecoder
-from depthcharge.components import ModelMixin, PeptideDecoder, SpectrumEncoder
+#from torch_imputer.imputer import best_alignment
+from . import pmc  # Precise Mass Control module
+from ..components import ModelMixin, PeptideDecoder, SpectrumEncoder
 from .ctc_beam_search import CTCBeamSearchDecoder
 from . import evaluate
-from ..data import ms_io
+
+# Configure logging
+def setup_logger(verbosity: str = "INFO") -> logging.Logger:
+    """
+    Set up the logger with the specified verbosity level.
+    
+    Parameters
+    ----------
+    verbosity : str
+        The logging level to use. One of: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+        Default is "INFO".
+    
+    Returns
+    -------
+    logging.Logger
+        Configured logger instance
+    """
+    # Create logs directory if it doesn't exist
+    log_dir = "logs"
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # Create a unique log file name with timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = os.path.join(log_dir, f"xuanjinovo_{timestamp}.log")
+    
+    # Set up logging format
+    log_format = "%(asctime)s [%(levelname)s] %(name)s - %(message)s"
+    date_format = "%Y-%m-%d %H:%M:%S"
+    
+    # Map string level to logging constant
+    level_map = {
+        "DEBUG": logging.DEBUG,
+        "INFO": logging.INFO,
+        "WARNING": logging.WARNING,
+        "ERROR": logging.ERROR,
+        "CRITICAL": logging.CRITICAL
+    }
+    level = level_map.get(verbosity.upper(), logging.INFO)
+    
+    # Configure logging
+    logging.basicConfig(
+        level=level,
+        format=log_format,
+        datefmt=date_format,
+        handlers=[
+            logging.FileHandler(log_file),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
+    
+    logger = logging.getLogger("xuanjinovo")
+    logger.setLevel(level)
+    
+    return logger
+
+# Initialize default logger
+logger = setup_logger()
 aa2mas = { 'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': 100000, '+43.006-17.027': 25.980265, "_":0}
 
 logger = logging.getLogger("casanovo")
@@ -68,9 +119,7 @@ def ctc_post_processing( sentence_index: List[int]) -> List[int]:
         for each in sentence_index:
             if each != 27:
                 temp.append(each)
-        # print("temp.", temp)
         return temp
-     #sentence_index = list(filter((self.attn_decoder.get_pad_idx()).__ne__, sentence_index))
 
 class Spec2Pep(pl.LightningModule, ModelMixin):
     """
@@ -138,7 +187,8 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
 
     def __init__(
         self,
-        custom_ctc_loss = True,
+        mass_control_tol = 0.1,
+        PMC_enable = True,
         dim_model: int = 512,
         n_head: int = 8,
         dim_feedforward: int = 1024,
@@ -157,13 +207,29 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             torch.utils.tensorboard.SummaryWriter] = None,
         warmup_iters: int = 100_000,
         max_iters: int = 600_000,
-        out_writer: Optional[ms_io.MztabWriter] = None,
+        out_writer : str = None,
         ctc_dic: dict = {},
+        refine_iters: int = 3,
+        log_level: str = "INFO",
+        mask_schedule: Dict[str, float] = {
+            "initial_peek": 0.93,
+            "epoch_decay": 0.01,
+            "min_peek": 0.00
+        },
+        result_output_dir: str = None,
         **kwargs: Dict,
     ):
         super().__init__()
         self.save_hyperparameters()
+        
+        # Configure logger
+        self.model_logger = setup_logger(log_level)  # Renamed to avoid conflict with pl.LightningModule's logger
+        self.model_logger.debug("Initializing Spec2Pep model")
+        
         self.ctc_dic = ctc_dic
+        self.PMC_enable = PMC_enable
+        self.model_logger.info(f"PMC enabled: {PMC_enable}, Mass control tolerance: {mass_control_tol}")
+        self.mass_control_tol = mass_control_tol
         self.ctc_dic["beam"] = n_beams
         
         
@@ -191,7 +257,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
 
         )
         self.n_layers = n_layers
-        self.ctc_customized_mass_control = CTCMassControl(self.decoder )
+        
         self.ctc_decoder = CTCBeamSearchDecoder(self.decoder, self.ctc_dic)
         self.calctime = 0.0
         #print("ctc_decoder:", self.ctc_decoder)
@@ -209,7 +275,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                 "scaling_factor": getattr(args, 'bucket_size'),
             }
         '''
-        self.ctc_length_control_decoder = CTCScopeSearchCharLengthControlDecoder(self.decoder, {} )
+        #self.ctc_length_control_decoder = CTCScopeSearchCharLengthControlDecoder(self.decoder, {} )
         self.softmax = torch.nn.Softmax(2)
         self.celoss = torch.nn.CrossEntropyLoss(ignore_index=0)
         self.ctcloss = torch.nn.CTCLoss(blank = self.decoder.get_blank_idx(), zero_infinity=True) #to do
@@ -217,7 +283,6 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         self.warmup_iters = warmup_iters
         self.max_iters = max_iters
         self.opt_kwargs = kwargs
-        self.custom_ctc_loss = custom_ctc_loss
 
         # Data properties.
         self.max_length = max_length
@@ -239,6 +304,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
 
         # Output writer during predicting.
         self.out_writer = out_writer
+        self.result_output_dir = result_output_dir
     
 
     def forward(
@@ -266,193 +332,67 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         aa_scores : torch.Tensor of shape (n_spectra, length, n_amino_acids)
             The individual amino acid scores for each prediction.
         """
-        output_decoded_saved = []
+        self.model_logger.debug(f"Forward pass started with batch size: {spectra.shape[0]}")
+        start_time = datetime.now()
         prev = None 
-        for i in range(3):
+        for i in range(self.hparams.refine_iters):
             output_logits, _, output_list = self.decoder(None, precursors, *self.encoder(spectra, precursors), prev)
-            
             prev = output_logits.argmax(-1)
         
-        
-        
-        
-        #explainitybility 
-        
-        # for each in output_list:
-        #     top_tokensss, _ = self.ctc_decoder.decode(F.softmax(each, -1))
-            
-        #     output_decoded_saved.append(torch.flip(top_tokensss, dims= [-1]))
-        # layer_pep_true = [[] for i in range( len(output_decoded_saved))]
-        # layer_pep_pred = [[] for i in range( len(output_decoded_saved))]
-        # for i in range( output_logits.shape[0]): # for each batch data
-            
-        #     for j in range( len(output_decoded_saved)) : #for each layer
-        #         #print(output_decoded_saved[j][i])
-                
-        #         #print(i,"th data", j + 1, " th layer : ", "".join([self.decoder._idx2aa[each.item()] for each in output_decoded_saved[j][i] if each != -1 ]))
-        #         #print("mass of above is: ", mass_cal("".join([self.decoder._idx2aa[each.item()] for each in output_decoded_saved[j][i] if each != -1 ]))[0])
-        #         #print("jj", j )
-        #         #print("len", len(layer_pep_pred))
-        #         layer_pep_pred[j].append("".join([self.decoder._idx2aa[each.item()] for each in output_decoded_saved[j][i] if each != -1 ]))
-        #         layer_pep_true[j].append(true_peps[i])
-        # for i in range(len(output_decoded_saved)):
-        #     aa_precision, aa_recall, pep_recall = evaluate.aa_match_metrics(
-        #     *evaluate.aa_match_batch(layer_pep_pred[i], layer_pep_true[i],
-        #                              self.decoder._peptide_mass.masses))
-        #     log_args = dict(on_step=True, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
-        #     self.log("{} layer/aa_precision".format(i), aa_precision, **log_args)
-        #     self.log("{} layer/aa_recall".format(i), aa_recall, **log_args)
-        #     self.log("{} layer/pep_recall".format(i), pep_recall, **log_args)
-            
-        #     with open("./layer_samples.txt",'a') as f:
-        #         f.write(str(int(i+1)) + ","+ str(float(aa_precision))+"\n")
-            
-            
-        #----------explain_--------
-        
-        #output_logits, _, _ = self.decoder(None, precursors, *self.encoder(spectra))
         top_tokens, beamscores = self.ctc_decoder.decode(F.softmax(output_logits, -1))
         batchscores = beamscores.tolist()
         batchscores = 1 / torch.exp(beamscores)
         top_tokens_beam = top_tokens.tolist()
-        #input_lengths = torch.full(size=(output_logits.size()[0],), fill_value=output_logits.size()[1])
-        #top_tokens = self.ctc_customized_mass_control.decode(F.log_softmax(output_logits, -1),  precursors[:, 0])
-        ''''''
-        # --- here is multithreading-----
+        
         batch_size = output_logits.shape[0]
-
-        
-        
         self.mass_offset_total = 0
         self.mass_offset_count = 0
         top_tokens = [[] for i in range(batch_size)]
 
-        def worker (logits, mass, i , output_logits):
-            #print("worker ", i , "started")
+        def worker(logits, mass, i, output_logits):
             mass = mass.clone().detach()
-            if mass[0].item() > 1000000:
-                '''
-                sequence = list(filter((self.decoder.get_pad_idx()).__ne__, top_tokens_beam[i]))
-                token_true = [self.decoder._idx2aa[each] for each in sequence]
-                mass_true = mass[0].item() - 18.01
-                mass_true_cal, seq = mass_cal("".join(token_true))
-                if abs(mass_true_cal-mass_true) > 0.1:
-                    print("not consistent here!!!!!!!,   " , abs(mass_true_cal-mass_true))
-                    self.mass_offset_total+=abs(mass_true_cal-mass_true)
-                    self.mass_offset_count+=1
-                ''' 
+            if not self.PMC_enable:
                 top_tokens[i] = top_tokens_beam[i]
-                #print("skip ctc since mass greater than threshold")
-                #sequence = list(filter((self.decoder.get_pad_idx()).__ne__, top_tokens_beam[i]))
-                #token_true = [self.decoder._idx2aa[each] for each in sequence]
-                #print("".join(reversed(token_true)))
+                return
+                
+            mass_true = mass[0].item() - 18.01
+            sequence = list(filter((self.decoder.get_pad_idx()).__ne__, top_tokens_beam[i]))
+            token_true = [self.decoder._idx2aa[each] for each in sequence]
+            
+           
+            
+            pred_mass, seq = mass_cal("".join(token_true))
+            if abs(mass_true - pred_mass) < 0.1:
+                top_tokens[i] = top_tokens_beam[i]
             else:
-                mass_true = mass[0].item() - 18.01
-                #print(top_tokens_beam)
-                sequence = list(filter((self.decoder.get_pad_idx()).__ne__, top_tokens_beam[i]))
-                token_true = [self.decoder._idx2aa[each] for each in sequence]
-                #if "+43.006" in "".join(token_true) or "+42.011" in "".join(token_true) or "-17.027" in "".join(token_true):
-                if "hello" in "".join(token_true):
-                    #ctc_customized_mass_control = CTCMassControl(self.decoder )
-                    #top_tokens[i] = ctc_customized_mass_control.decode(logits, mass)[0]
-                    temp = mass_con.knapDecode(logits, mass)
-                    temp =  ctc_post_processing(temp)
-                    if temp:
-                        top_tokens[i] = temp
-                        token_temp = [self.decoder._idx2aa[each] for each in temp]
-                        token_temp = list(reversed(token_temp))
-                        print("truth: ", token_true)
-                        #print("truth: ", true_peps[i])
-                        print("inf: " , token_temp)
-                        # sys.stdout.flush()
-                    else:
-                        top_tokens[i] = top_tokens_beam[i]
-                else: #will always execute
-                #if True:
-                    # correct mismatch mass, can only be used when true token is given
-                    #----------------------
-                    cal_mass, seq= mass_cal(true_peps[i])
-                    if abs(cal_mass-  mass_true ) > 0.9:
-                        mass[0] = mass[0] - 1
-                        print("error after correction:", mass[0].item()-cal_mass, " ", )
-                    #----------------------
-                    #batchscores[i] = 1 / torch.exp(beamscores[i]) #commonted score
-                    pred_mass, seq = mass_cal("".join(token_true))
-                #print("True mass:", mass_true)
-                #print("Decoded_mass: ", pred_mass)
-                #print("aminos: ", seq)
-                    # pred_mass = 0.0
-                    if abs(mass_true - pred_mass) < 0.1:
-                        top_tokens[i] = top_tokens_beam[i]
-                        # if beamscores[i] < 0.0:
-                        #     print(beamscores[i])
-                        #     print("I am CTCBeam")
-                        # batchscores[i] = 1 / torch.exp(beamscores[i])
-                        # if batchscores[i] > 1.0:
-                        #     print("xianggebuxing:",beamscores[i])
-                        
-                        # print("beamscore:",beamscores[i])
-                        #print("skip CTC length control")
-                        
-                    else:
-                        #ctc_customized_mass_control = CTCMassControl(self.decoder )
-                        print("I am CUDA program")
-                        temp = mass_con.knapDecode(logits, mass)
-                        # knapscores = torch.exp(_)
-                        # indTemp = torch.tensor(temp)
-                        # knapscores = torch.softmax(output_logits,-1)[0]
-                        # knapscores = knapscores[torch.arange(40),indTemp]
-                        # scoreTemp = 1.0
-                        # for x in knapscores:
-                        #     scoreTemp *= x
-                        # if scoreTemp == 0.0:
-                        #     print("I am CUDA program")
-                        #     print(knapscores)
-                        # knapscores = scoreTemp
-                        # knapscore = torch.sum(knapscores)
-                        # knapscores = torch.exp(knapscore)
-                        # print("knapscore:",torch.exp(_))
-                        temp =  ctc_post_processing(temp)
-                        if temp:
-                            top_tokens[i] = temp
-                            # batchscores[i] = knapscores
-                            token_temp = [self.decoder._idx2aa[each] for each in temp]
-                            token_temp = list(reversed(token_temp))
-                            # print("truth: ", true_peps[i])
-                            # print("inf: " , token_temp)
-                            # sys.stdout.flush()
-                        else:
-                            top_tokens[i] = top_tokens_beam[i]
-                            #batchscores[i] = 1 / torch.exp(beamscores[i]) #commented score
-                        #sequence0 = list(filter((self.decoder.get_pad_idx()).__ne__, top_tokens[i]))
-                        #token_true = [self.decoder._idx2aa[each] for each in sequence0]
-                        #print("".join(reversed(token_true)))
-            #print("woker ", i , "stopped")
+                temp = pmc.knapDecode(logits, mass, self.mass_control_tol)
+                temp = ctc_post_processing(temp)
+                if temp:
+                    top_tokens[i] = temp
+                    token_temp = [self.decoder._idx2aa[each] for each in temp]
+                    token_temp = list(reversed(token_temp))
+                else:
+                    top_tokens[i] = top_tokens_beam[i]
         threads = []
-        #log_prob = F.log_softmax(output_logits, -1)
-        log_prob = F.log_softmax(output_logits, -1) #to change back
+        log_prob = F.log_softmax(output_logits, -1)
         for i in range(batch_size):
             t = threading.Thread(target=worker, args=(log_prob[[i], :, :], precursors[[i], 0], i, output_logits))
             threads.append(t)
             t.start()
         
-        log_args = dict(on_step=True, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
-        #self.log("val/wrong_offset_average",self.mass_offset_total/self.mass_offset_count, **log_args)
-        
         for t in threads:
             t.join()
         
-        #-------------------
-        #top_tokens = top_tokens.tolist()
-        return [self.decoder.detokenize_truth(t, True) for t in top_tokens], batchscores
-
-        '''
-        aa_scores, tokens = self.beam_search_decode(  #to do 
-            spectra.to(self.encoder.device),
-            precursors.to(self.decoder.device),
-        )
-        '''
-        #return [self.decoder.detokenize(t) for t in tokens], aa_scores
+        end_time = datetime.now()
+        processing_time = (end_time - start_time).total_seconds()
+        self.model_logger.debug(f"Forward pass completed in {processing_time:.2f} seconds")
+        
+        # Log prediction statistics
+        peptides = [self.decoder.detokenize_truth(t, True) for t in top_tokens]
+        avg_peptide_length = sum(len(p) for p in peptides) / len(peptides)
+        self.model_logger.info(f"Average predicted peptide length: {avg_peptide_length:.2f}")
+        
+        return peptides, batchscores
 
     def _forward_step(
         self,
@@ -508,19 +448,35 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         -------
         torch.Tensor
             The loss of the training step.
+        """
+        self.model_logger.debug(f"Starting {mode} step with batch size: {len(batch[0])}")
+        step_start_time = datetime.now()
+        """
+        A single training step.
+
+        Parameters
+        ----------
+        batch : Tuple[torch.Tensor, torch.Tensor, List[str]]
+            A batch of (i) MS/MS spectra, (ii) precursor information, (iii)
+            peptide sequences as torch Tensors.
+        mode : str
+            Logging key to describe the current stage.
+
+        Returns
+        -------
+        torch.Tensor
+            The loss of the training step.
 
         """
-        # import time
-
-        # begintime=time.time()
-        
-        
         glat_prev = None
         
-        #chnage the peak factor with-respect to epoch here
-        peek_factor = max(0.93 - self.current_epoch * 0.01, 0.00 ) #max(0.9 - self.current_epoch * 0.025, 0.05 ) #max(0.9 - self.current_epoch * 0.0025, 0.05 ) # max(0.85 - self.current_epoch * 0.006, 0 )
-        # begintime=time.time()
-        #----curriculum learning sampling---
+        # Calculate peek factor based on mask schedule
+        peek_factor = max(
+            self.hparams.mask_schedule["initial_peek"] - 
+            self.current_epoch * self.hparams.mask_schedule["epoch_decay"],
+            self.hparams.mask_schedule["min_peek"]
+        )
+        
         if mode == "train":
             with torch.no_grad():
                 word_ins_out, tgt_tokens, _ = self._forward_step(*batch)
@@ -540,16 +496,11 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                 keep_prob = ((seq_lens - same_num) / seq_lens * peek_factor ).unsqueeze(-1)
                 keep_word_mask = (torch.rand(pred_tokens.shape, device=word_ins_out.device) < keep_prob).bool()
                 glat_prev = oracle_empty.masked_fill(~keep_word_mask, self.decoder.get_mask_idx())
-                #print("got it")
+        
         total_loss = torch.tensor([0]).to(self.device)
-        #_-------
+        
         for i in range(2):
-            
             pred, truth, output_list = self._forward_step(*batch, glat_prev)
-            
-            
-            
-            
             pred_temp = pred.permute(1, 0, 2)
             
             input_lengths = torch.full(size=(pred_temp.size()[1],), fill_value=pred_temp.size()[0]) 
@@ -557,106 +508,52 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             loss = self.ctcloss( torch.nn.functional.log_softmax(pred_temp, dim=-1), truth, input_lengths, target_lengths ) 
             glat_prev = pred.argmax(-1)
             total_loss = total_loss + loss
+        
         assert len(output_list) == self.n_layers 
         
-
-        # Compute AA recall, AA precision and Pep recall in training step
-        # Author: Sheng Xu
-        # Date: 20230220
         tokens = torch.argmax(pred, axis=2)
         peptides_pred = []
         peptides_true = []
         for idx in range(tokens.size()[0]):
             tokens_true = truth[idx,:]
             tokens_true = self.decoder.detokenize_truth(tokens_true)
-            #print("tokens_true: ", ''.join(tokens_true))
-            #print("tokens_batch: ", batch[2][idx])
             peptides_true.append(''.join(tokens_true))
 
             tokens_pred = tokens[idx,:]
             tokens_pred = self.decoder.detokenize(tokens_pred)
             peptides_pred.append(tokens_pred)
-            #print("token_predict: ", ''.join(tokens_pred))
 
         aa_precision, aa_recall, pep_recall = evaluate.aa_match_metrics(
             *evaluate.aa_match_batch(peptides_pred, peptides_true,
                                      self.decoder._peptide_mass.masses))
         
         rand = random.random()
-        sampling_factor=0.8
-        if(mode == "train"):
-            sampling_factor=0.3
-        if (rand < sampling_factor):
-            peptides_pred_sample = []
-            for tokenlist in peptides_pred:
-                peptides_pred_sample.append(''.join(tokenlist))
-            peptides_true_sample = peptides_true
-            peptides_pair_list = list(zip(batch[1].cpu().numpy().tolist(),peptides_true_sample, peptides_pred_sample))
-            peptides_pair = random.choices(peptides_pair_list, k=15)
-            # print("peptides_pred",peptides_pred_sample)
-            # print("peptides_true",peptides_true_sample)
-            # print(aa_precision, aa_recall, pep_recall)
-            if(not self.logger==None):
-                self.logger.experiment[mode+"/peptides_pair"].append("Epoch: "+str(self.trainer.current_epoch)+str(peptides_pair))
-
-            #self.log(mode+"/peptides_true", str(peptides_true_sample))
-            #self.log(mode+"/peptides_pred", str(peptides_pred_sample))
-        # endtime = time.time()
-        # calctime = (endtime - begintime) / len(peptides_pred)
+        sampling_factor = 0.3 if mode == "train" else 0.8
         
-        if (mode == "train"):
-            log_args = dict(on_step=True, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
+        if rand < sampling_factor:
+            peptides_pred_sample = [''.join(tokenlist) for tokenlist in peptides_pred]
+            peptides_pair_list = list(zip(batch[1].cpu().numpy().tolist(), peptides_true, peptides_pred_sample))
+            peptides_pair = random.choices(peptides_pair_list, k=15)
+            if self.logger is not None:
+                self.logger.experiment[mode+"/peptides_pair"].append("Epoch: "+str(self.trainer.current_epoch)+str(peptides_pair))
+        
+        log_args = dict(on_step=True, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
+        if mode == "train":
             self.log("train/aa_precision", aa_precision, **log_args)
             self.log("train/aa_recall", aa_recall, **log_args)
             self.log("train/pep_recall", pep_recall, **log_args)
-        if (mode == "valid" and self.n_beams==0):
-            log_args = dict(on_step=False, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
-            # self.log("valid/spec/second", calctime, **log_args)
+        elif mode == "valid" and self.n_beams == 0:
+            log_args.update(on_step=False)
             self.log("valid/aa_precision", aa_precision, **log_args)
             self.log("valid/aa_recall", aa_recall, **log_args)
             self.log("valid/pep_recall", pep_recall, **log_args)
-        if (mode == "test" and self.n_beams==0):
-            log_args = dict(on_step=False, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
+        elif mode == "test" and self.n_beams == 0:
+            log_args.update(on_step=False)
             self.log("test/aa_precision", aa_precision, **log_args)
             self.log("test/aa_recall", aa_recall, **log_args)
             self.log("test/pep_recall", pep_recall, **log_args)
-            
-        # for idx, pred in enumerate(output_list):
-        #     #if idx <= 0:  #5 
-        #         #continue 
-        #     total_loss = torch.tensor([0]).to(self.device)
-        #     pred = pred.permute(1, 0, 2)
-            
-        #     input_lengths = torch.full(size=(pred.size()[1],), fill_value=pred.size()[0]) 
-        #     target_lengths = (truth != self.decoder.get_pad_idx()).sum(axis=1) 
-        #     if self.custom_ctc_loss == True :
-        #         loss = custom_ctc_loss(torch.nn.functional.log_softmax(pred, dim=-1).float(), truth, input_lengths, target_lengths, blank=self.decoder.get_blank_idx(),
-        #                                 reduction="mean" )
-        #         loss = torch.stack([a / b for a, b in zip(loss, target_lengths)])
-        #         loss = torch.clip(loss, min=0, max=100)  # Clip the loss to avoid overflow
-        #         loss = loss.mean()
-        #         total_loss = total_loss + loss * (idx+1) * 0.2
-        #     else:
-
-        #         loss = self.ctcloss( torch.nn.functional.log_softmax(pred, dim=-1), truth, input_lengths, target_lengths ) 
-        #         '''
-        #         if self.trainer.current_epoch <= 50:
-        #             idx_ratio = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1]
-        #         else:x
-        #             idx_ratio = [ 0 for _ in range(self.n_layers-1)]
-        #             idx_ratio.append(1)
-        #         '''
-        #         #idx_ratio = [ 0 for _ in range(self.n_layers-1)]
-        #         #idx_ratio.append(1)
-        #         #idx_ratio = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1]
-        #         #idx_ratio = [0.3, 0.5, 0.7, 0.8, 1, 1]
-        #         idx_ratio = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1]
-        #         #idx_ratio = [0, 0, 0, 0, 0.1, 0.1, 0,1, 0,1, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1]
-        #         idx_ratio = [ 0 for _ in range(self.n_layers-1)]
-        #         idx_ratio.append(1)
-        #         total_loss = total_loss + loss *idx_ratio[idx]
-        # #loss = self.celoss(pred, truth.flatten())
-        loss = total_loss # to change
+        
+        
         
         if (mode == "train"):
             if(not self.logger==None):
@@ -670,7 +567,20 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                 add_dataloader_idx=False
             )
 
-        return loss
+        step_end_time = datetime.now()
+        step_duration = (step_end_time - step_start_time).total_seconds()
+        
+        # Log detailed metrics
+        self.model_logger.debug(f"{mode} step completed in {step_duration:.2f} seconds")
+        self.model_logger.debug(f"Total loss: {total_loss.item():.4f}")
+        
+        if mode == "train":
+            self.model_logger.debug(f"Current peek factor: {peek_factor:.4f}")
+            self.model_logger.debug(f"Amino acid precision: {aa_precision:.4f}")
+            self.model_logger.debug(f"Amino acid recall: {aa_recall:.4f}")
+            self.model_logger.debug(f"Peptide recall: {pep_recall:.4f}")
+        
+        return total_loss
 
     def validation_step(self, batch, batch_idx=None, dataloader_idx=None) -> torch.Tensor:
         """
@@ -681,23 +591,25 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         batch : Tuple[torch.Tensor, torch.Tensor, List[str]]
             A batch of (i) MS/MS spectra, (ii) precursor information, (iii)
             peptide sequences.
+        batch_idx : Optional[int]
+            The index of the current batch
+        dataloader_idx : Optional[int]
+            The index of the dataloader
 
         Returns
         -------
         torch.Tensor
             The loss of the validation step.
         """
-        #print("validation ssssss")
-        # import time
-
-        # begintime = time.time()
+        val_start_time = datetime.now()
+        self.model_logger.debug(f"Starting validation step {batch_idx if batch_idx is not None else 'N/A'}")
+        if dataloader_idx is None:
+            dataloader_idx = 0
+        key = "valid" if dataloader_idx == 0 else "test"
         
-        if (dataloader_idx==None): dataloader_idx=0
-        key = "valid" if dataloader_idx==0 else "test"
-        # Record the loss.
         loss = self.training_step(batch, mode=key)
         self.log(
-            "valid/CELoss" if dataloader_idx==0 else "test/CELoss",
+            "valid/CELoss" if dataloader_idx == 0 else "test/CELoss",
             loss.detach(),
             on_step=False,
             on_epoch=True,
@@ -705,34 +617,28 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             add_dataloader_idx=False
         )
 
-        # Calculate and log amino acid and peptide match evaluation metrics from
-        # the predicted peptides.
-
-        if(self.n_beams>0):
-            # print("Beam Search: 5")
+        if self.n_beams > 0:
             peptides_pred_raw, inferscores = self.forward(batch[0], batch[1], batch[2])
-            # print("inferscores:",inferscores)
-            # FIXME: Temporary fix to skip predictions with multiple stop tokens.
             peptides_pred, peptides_true = [], []
+            
+            # Process predictions
             for peptide_pred, peptide_true in zip(peptides_pred_raw, batch[2]):
                 if len(peptide_pred) > 0:
                     if peptide_pred[0] == "$":
-                        peptide_pred = peptide_pred[1:]  # Remove stop token.
+                        peptide_pred = peptide_pred[1:]  # Remove stop token
                     if "$" not in peptide_pred and len(peptide_pred) > 0:
                         peptides_pred.append(peptide_pred)
                         peptides_true.append(peptide_true)
-                        
-                    
+            
+            # Calculate per-amino-acid precision
             targets = ["M+15.995", "F", "Q", "K"]
             counts = {char: {"numChar": 1e-13, "numTrue": 0} for char in targets}
 
-            for i in range(len(peptides_pred)):
-                pred = peptides_pred[i]
-                true = peptides_true[i]
-                if isinstance(peptides_pred[i], str):
-                    pred = re.split(r"(?<=.)(?=[A-Z])", peptides_pred[i])
-                if isinstance(peptides_true[i], str):
-                    true = re.split(r"(?<=.)(?=[A-Z])", peptides_true[i])
+            for pred, true in zip(peptides_pred, peptides_true):
+                if isinstance(pred, str):
+                    pred = re.split(r"(?<=.)(?=[A-Z])", pred)
+                if isinstance(true, str):
+                    true = re.split(r"(?<=.)(?=[A-Z])", true)
 
                 for j, c in enumerate(true):
                     if c in counts:
@@ -740,120 +646,44 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                         if j < len(pred) and pred[j] == c:
                             counts[c]["numTrue"] += 1
 
-            # 计算精度并记录日志
+            # Log per-amino-acid precision
             for char, data in counts.items():
                 precision = data["numTrue"] / data["numChar"]
-                self.log(f"{key}/{char}_precision", precision, on_step=False, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
-                        
-            # with open("./denovo_random.txt",'a') as f:
-            #     for i in range(len(peptides_pred_raw)):
-                    
-            #         print("label:",batch[2][i], ":" , peptides[i] , "\n")
-                    
-                        
-            #         f.write("label: " + batch[2][i] + " prediction: " + "".join(peptides[i]) + " charge: " + str(int(batch[1][i][1])) +"\n")
-                    
-            #         f.write("label: " + batch[2][i] + " prediction : " + "".join(peptides_pred_raw[i]) + "\n")
-
-            # AA_sim_sum = {"M+15.995" : 0.0000001, 'Q' : 0.0000001, 'F' : 0.0000001, "K": 0.0000001}
-            # AA_sim_true = {"M+15.995" : 0, 'Q' : 0, 'F' : 0, "K": 0}
-            # #---------xiang: write the scores out---------
-            for i in range(len(peptides_pred)):
-                pred = peptides_pred[i]
-                true = peptides_true[i]
-                if isinstance(peptides_pred[i], str):
-                    pred = re.split(r"(?<=.)(?=[A-Z])", peptides_pred[i])
-                if isinstance(peptides_true[i], str):
-                    true = re.split(r"(?<=.)(?=[A-Z])", peptides_true[i])
-                matches , pep_match = evaluate.aa_match(pred,true,self.decoder._peptide_mass.masses)
-                import os
-
-                # species_name = os.environ.get('SPECIES_NAME_GL')
-                # with open("glance_"+species_name,'a') as f:
-                #     sum = np.sum(matches)
-                #     aaPre = sum / len(pred)
-                #     f.write(str(float(aaPre))+ " " + str(float(inferscores[i])) + " "  + str("".join(true))  + " " + str("".join(pred)) +"\n")
-                #     f.flush()
-                    #f.write(str(float(aaPre)) + " " + str(float(inferscores[i])) + " " + str("".join(pred)) + " " + str("".join(true)) +"\n")
-                    #f.write(str(float(pep_match)) + " " + str(float(inferscores[i])) + "\n")
-                    
-                    
-            #--
+                self.log(
+                    f"{key}/{char}_precision",
+                    precision,
+                    on_step=False,
+                    on_epoch=True,
+                    sync_dist=True,
+                    add_dataloader_idx=False
+                )
             
-    #             targets = ["M+15.995", "F", "Q", "K"]
-    #             counts = {char: {"numChar": 1e-13, "numTrue": 0} for char in targets}
-
-    #             for i in range(len(peptides_pred)):
-    #                 pred = peptides_pred[i]
-    #                 true = peptides_true[i]
-    #                 if isinstance(peptides_pred[i], str):
-    #                     pred = re.split(r"(?<=.)(?=[A-Z])", peptides_pred[i])
-    #                 if isinstance(peptides_true[i], str):
-    #                     true = re.split(r"(?<=.)(?=[A-Z])", peptides_true[i])
-
-    #                 for j, c in enumerate(true):
-    #                     if c in counts:
-    #                         counts[c]["numChar"] += 1
-    #                         if j < len(pred) and pred[j] == c:
-    #                             counts[c]["numTrue"] += 1
-
-    #             # 计算精度并记录日志
-    #             for char, data in counts.items():
-    #                 precision = data["numTrue"] / data["numChar"]
-    #                 self.log(f"{key}/{char}_precision", precision, on_step=False, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
-            # #------------------------------
-
-            #     pred_len = len(pred)
-            #     true_len = len(true)
-            #     min_len = min(pred_len, true_len)
-            #     for x in range(min_len):
-            #         if pred[x] in AA_sim_sum:
-            #             AA_sim_sum[pred[x]] += 1
-            #             if matches[x]:
-            #                 AA_sim_true[pred[x]] += 1
-
-            # endtime = time.time()
-            # calctime = (endtime - begintime) / len(peptides_pred_raw)
-            # for i in range(len(peptides_pred)):
-            #     pred = peptides_pred[i]
-            #     true = peptides_true[i]
-            #     if isinstance(peptides_pred[i], str):
-            #         pred = re.split(r"(?<=.)(?=[A-Z])", peptides_pred[i])
-            #     if isinstance(peptides_true[i], str):
-            #         true = re.split(r"(?<=.)(?=[A-Z])", peptides_true[i])
-
-            #     matches,_ = evaluate.aa_match(pred,true,self.decoder._peptide_mass.masses)
-            #     with open("./NATNovo/mouse.txt",'a') as f:
-            #         sum = np.sum(matches)
-            #         aaPre = sum / len(pred)
-            #         f.write(str(float(aaPre)) + " " + str(float(inferscores[i])) + " " + str(len(pred)) + "\n")
-                    
+            # Calculate overall metrics
             aa_precision, aa_recall, pep_recall = evaluate.aa_match_metrics(
                 *evaluate.aa_match_batch(peptides_pred, peptides_true,
-                                         self.decoder._peptide_mass.masses))
+                                       self.decoder._peptide_mass.masses))
+            
+            # Log overall metrics
             log_args = dict(on_step=True, on_epoch=True, sync_dist=True, add_dataloader_idx=False)
-            # self.log("{}/spec/second".format(key), calctime, **log_args)
-            # self.log("{}/M+0.984_precision".format(key), AA_sim_true["M+15.995"] / AA_sim_sum["M+15.995"], **log_args)
-            # self.log("{}/Q_precision".format(key), AA_sim_true["Q"] / AA_sim_sum["Q"], **log_args)
-            # self.log("{}/F_precision".format(key), AA_sim_true["F"] / AA_sim_sum["F"], **log_args)
-            # self.log("{}/K_precision".format(key), AA_sim_true["K"] / AA_sim_sum["K"], **log_args)
-
-            self.log("{}/aa_precision".format(key), aa_precision, **log_args)
-            self.log("{}/aa_recall".format(key), aa_recall, **log_args)
-            self.log("{}/pep_recall".format(key), pep_recall, **log_args)
-            # print("{}/pep_recall".format(key), pep_recall)
-            # sys.stdout.flush()
-            # with open("./denovo_prime_medium_bacillus.txt",'a') as f:
-            #     for i in range(len(peptides_pred_raw)):
-            #         # print("label:",batch[2][i], ":" , peptides[i] , "\n")
-            #         if batch[2][i].replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I") == "".join(peptides_pred_raw[i]).replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I"):
-            #             answer_is_correct = "correct"
-            #         else:
-            #             answer_is_correct = "incorrect"
-                        
-            #         #f.write("label: " + batch[2][i] + " prediction: " + "".join(peptides[i]) + " charge: " + str(int(batch[1][i][1])) + " score: " + str(float(inferscores[i]))+"\n")
-                    
-            #         f.write("label: " + batch[2][i] + " prediction : " + "".join(peptides_pred_raw[i]) + "  " + answer_is_correct + "\n")
+            self.log(f"{key}/aa_precision", aa_precision, **log_args)
+            self.log(f"{key}/aa_recall", aa_recall, **log_args)
+            self.log(f"{key}/pep_recall", pep_recall, **log_args)
+            
+            # Validation metrics are already logged through self.log
+        
+        val_end_time = datetime.now()
+        val_duration = (val_end_time - val_start_time).total_seconds()
+        
+        # Log validation metrics
+        self.model_logger.debug(f"Validation step completed in {val_duration:.2f} seconds")
+        self.model_logger.debug(f"Validation loss: {loss.item():.4f}")
+        
+        if self.n_beams > 0:
+            self.model_logger.debug(f"Validation metrics for {key}:")
+            self.model_logger.debug(f"AA precision: {aa_precision:.4f}")
+            self.model_logger.debug(f"AA recall: {aa_recall:.4f}")
+            self.model_logger.debug(f"Peptide recall: {pep_recall:.4f}")
+        
         return loss
 
     def predict_step(
@@ -879,11 +709,10 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         aa_scores : torch.Tensor of shape (n_spectra, length, n_amino_acids)
             The individual amino acid scores for each prediction.
         """
-  
-       peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
+        peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-        file_path = "./denovo.tsv"
+        file_path = os.path.join(self.result_output_dir, "denovo.tsv")
         headers = "label\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers
@@ -918,40 +747,11 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         
         return batch[2], batch[1], peptides  #batch[2]: identifier
 
-    # def on_train_epoch_end(self) -> None:
-    #     """
-    #     Log the training loss at the end of each epoch.
-    #     """
-    #     train_loss = self.trainer.callback_metrics["train/CELoss"].detach()
-
-    #     #self._history[-1]["train"] = train_loss
-    #     #self._log_history()
-
-
     def on_validation_epoch_end(self) -> None:
         """
         Log the validation metrics at the end of each epoch.
         """
-        '''
-        print("calculation:", self.calctime)
-        callback_metrics = self.trainer.callback_metrics
-        logger.info(callback_metrics)
-        metrics = {
-            "epoch": self.trainer.current_epoch,
-            "valid": callback_metrics["valid/CELoss"].detach(),
-            "valid_aa_precision":
-            callback_metrics["valid/aa_precision"].detach(),
-            "valid_aa_recall": callback_metrics["valid/aa_recall"].detach(),
-            "valid_pep_recall": callback_metrics["valid/pep_recall"].detach(),
-            "test": callback_metrics["test/CELoss"].detach(),
-            "test_aa_precision":
-            callback_metrics["test/aa_precision"].detach(),
-            "test_aa_recall": callback_metrics["test/aa_recall"].detach(),
-            "test_pep_recall": callback_metrics["test/pep_recall"].detach(),
-        }
-        self._history.append(metrics)
-        self._log_history()
-        '''
+        pass
 
     def on_predict_epoch_end(
         self, results: List[List[Tuple[np.ndarray, List[str],
@@ -960,58 +760,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         Write the predicted peptide sequences and amino acid scores to the
         output file.
         """
-
-
-        # if self.out_writer is None:
-        #     return
-        # for batch in results:
-        #     for step in batch:
-        #         for spectrum_i, precursor, aa_tokens in zip(*step):
-        #             # Get peptide sequence, amino acid and peptide-level
-        #             # confidence scores to write to output file.
-        #             (
-        #                 peptide,
-        #                 aa_tokens,
-        #                 peptide_score,
-        #                 aa_scores,
-        #             ) = self._get_output_peptide_and_scores(
-        #                 aa_tokens, 1)
-        #             # Compare the experimental vs calculated precursor m/z.
-        #             _, precursor_charge, precursor_mz = precursor
-        #             precursor_charge = int(precursor_charge.item())
-        #             precursor_mz = precursor_mz.item()
-        #             try:
-        #                 calc_mz = self.peptide_mass_calculator.mass(
-        #                     aa_tokens, precursor_charge)
-        #                 delta_mass_ppm = [
-        #                     _calc_mass_error(
-        #                         calc_mz,
-        #                         precursor_mz,
-        #                         precursor_charge,
-        #                         isotope,
-        #                     ) for isotope in range(
-        #                         self.isotope_error_range[0],
-        #                         self.isotope_error_range[1] + 1,
-        #                     )
-        #                 ]
-        #                 is_within_precursor_mz_tol = any(
-        #                     abs(d) < self.precursor_mass_tol
-        #                     for d in delta_mass_ppm)
-        #             except KeyError:
-        #                 calc_mz, is_within_precursor_mz_tol = np.nan, False
-        #             # Subtract one if the precursor m/z tolerance is violated.
-        #             if not is_within_precursor_mz_tol:
-        #                 peptide_score -= 1
-
-        #             self.out_writer.psms.append((
-        #                 peptide,
-        #                 spectrum_i,
-        #                 peptide_score,
-        #                 precursor_charge,
-        #                 precursor_mz,
-        #                 calc_mz,
-        #                 aa_scores,
-        #             ), )
+        pass
 
     def _get_output_peptide_and_scores(
             self, aa_tokens: List[str],
@@ -1242,5 +991,4 @@ def _calc_mass_error(calc_mz: float,
         The mass error in ppm.
     """
     return (calc_mz - (obs_mz - isotope * 1.00335 / charge)) / obs_mz * 10**6
-
 

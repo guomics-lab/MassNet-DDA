@@ -6,7 +6,7 @@ import torch
 
 from .encoders import MassEncoder, PeakEncoder, PositionalEncoder
 from ..masses import PeptideMass
-from .. import utils
+from ..utils2 import listify
 
 
 class SpectrumEncoder(torch.nn.Module):
@@ -112,7 +112,12 @@ class SpectrumEncoder(torch.nn.Module):
         #latent_spectra = self.latent_spectrum.expand(peaks.shape[0], -1, -1)
 
         peaks = torch.cat([precursors, peaks], dim=1)
-        return self.transformer_encoder(peaks, src_key_padding_mask=mask), mask
+        # Suppress nested tensor prototype warning
+        import warnings
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="The PyTorch API of nested tensors is in prototype stage")
+            output = self.transformer_encoder(peaks, src_key_padding_mask=mask)
+        return output, mask
 
     @property
     def device(self):
@@ -383,7 +388,7 @@ class PeptideEncoder(_PeptideTransformer):
         mem_mask : torch.Tensor
             The memory mask specifying which elements were padding in X.
         """
-        sequences = utils.listify(sequences)
+        sequences = listify(sequences)
         tokens = [self.tokenize(s) for s in sequences]
         tokens = torch.nn.utils.rnn.pad_sequence(tokens, batch_first=True, padding_value = len(self._amino_acids))
         encoded = self.aa_encoder(tokens)
@@ -402,7 +407,11 @@ class PeptideEncoder(_PeptideTransformer):
         encoded = self.pos_encoder(encoded)
 
         # Run through the model:
-        latent = self.transformer_encoder(encoded, src_key_padding_mask=mask)
+        # Suppress nested tensor prototype warning
+        import warnings
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="The PyTorch API of nested tensors is in prototype stage")
+            latent = self.transformer_encoder(encoded, src_key_padding_mask=mask)
         return latent, mask
 
 
@@ -525,17 +534,14 @@ class PeptideDecoder(_PeptideTransformer):
         # Prepare sequences
         
         if sequences is not None:
-            sequences = utils.listify(sequences)
+            sequences = listify(sequences)
             tokens = [self.tokenize(s) for s in sequences]
             tokens = torch.nn.utils.rnn.pad_sequence(tokens, batch_first=True, padding_value = self.get_pad_idx())
         else:
             tokens = torch.tensor([[]]).to(self.device)
         
 
-        # Prepare mass and charge
-        #mass_tensor = torch.tensor([ 57.021464, 71.037114, 87.032028, 97.052764, 99.068414, 101.04767, 160.030649, 113.084064, 113.084064, 114.042927, 115.026943, 128.058578, 128.094963, 129.042593, 131.040485, 137.058912, 147.068414, 156.101111, 163.063329, 186.079313, 147.0354, 115.026943, 129.042594, 42.010565, 43.005814, -17.026549, 25.980265, 0.0]).to(self.device)
-        #look_up_feature = self.mass_lookup_ln(mass_tensor)[None,  None, :] #(1, 1, dim)
-        #look_up_feature = look_up_feature.repeat(precursors.shape[0], 1, 1) # bz, max_len, dim
+      
         
         masses = self.mass_encoder(precursors[:, None, [0]])  #(bz, 1, dim)
         #print("charges:", precursors[:, 1].int() - 1)
@@ -581,25 +587,17 @@ class PeptideDecoder(_PeptideTransformer):
 
         output_list = []
 
-        for mod in self.layers:
-            output = mod(output, memory, tgt_mask=None,
-                         
-                         tgt_key_padding_mask=tgt_key_padding_mask,
-                         memory_key_padding_mask=memory_key_padding_mask)
-            preds = self.final(output) #bz, token_len, dic_size
-            output_list.append(preds) 
-            #pred_tokens = torch.argmax(preds, axis=2) #bz, token_len
-            #encoded_tokens = self.aa_encoder(pred_tokens) #bz, token_len, dim_model
-            #-------------not useful-------
-            #cum_mass = self.demass(pred_tokens) #bz, token_len
-            #cum_mass = cum_mass[:, :, None] #bz, token_len, 1
-            #encoded_mass = self.mass_ln(cum_mass) #bz, token_len, dim_model 
-            #aa_encoded = encoded_mass + encoded_tokens  #bz, token_len, dim_model
-            #--------------------------------
-            #total_encod = torch.cat([output, encoded_tokens], dim=2) # bz, token_len ,dim_model * 2 
-            #output = self.layer_ln(total_encod)
-            
-            #output = torch.nn.functional.dropout(output, p=self.dropout)
+        # Suppress nested tensor prototype warning
+        import warnings
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="The PyTorch API of nested tensors is in prototype stage")
+            for mod in self.layers:
+                output = mod(output, memory, tgt_mask=None,
+                           tgt_key_padding_mask=tgt_key_padding_mask,
+                           memory_key_padding_mask=memory_key_padding_mask)
+                preds = self.final(output)  # bz, token_len, dic_size
+                output_list.append(preds)
+           
         
             
 

@@ -20,7 +20,7 @@ class MyRandomSampler(torch.utils.data.Sampler):
         return self.N_1 + self.N_2
     def __iter__(self):
         offset = self.data_source.offset
-        print("offset in sampler: ", offset)
+       
         rand_tensor1 = torch.randint(low = 0, high = offset[0]-1, size = (self.N_1,) ).tolist()
         rand_tensor2 = torch.randint(low = offset[0], high = offset[1]-1, size = (self.N_2,)).tolist()
         rand_tensor1.extend(rand_tensor2)
@@ -47,8 +47,7 @@ class MyRandomSampler_adapt(torch.utils.data.Sampler):
         return self.N_1 + self.N_2
     def __iter__(self):
         offset = self.data_source.offset
-        #print("offset in sampler: ", offset)
-        #rand_tensor1 = torch.randint(low = 0, high = offset[0]-1, size = (self.N_1,) ).tolist()
+       
         rand_tensor2 = torch.randint(low = offset[0], high = offset[1]-1, size = (self.N_2,)).tolist()
         self.N_1_range.extend(rand_tensor2)
         random.shuffle(self.N_1_range)
@@ -204,8 +203,7 @@ class DeNovoDataModule(pl.LightningDataModule):
         
         
         '''
-        print("prepare_data ing.....")
-        
+      
         
         if self.train_index == None and self.mode == "fit": #prepare train_index
             

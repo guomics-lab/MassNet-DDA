@@ -29,7 +29,6 @@ class DB_Index:
         index_path = Path(db_path)
         self.db_path = index_path
         self.lock = lock
-        print("what lock is this:", lock)
         
         
         
@@ -43,16 +42,12 @@ class DB_Index:
         
         #create a new 
         if not is_exist:
-            # print("I am not exist")
             txn = self.env.begin(write=True)
             txn.put( "ms_level".encode(), str(self.ms_level).encode())
             txn.put("n_spectra".encode(),  str(0).encode())
             txn.put("n_peaks".encode(), str(0).encode())
             self.n_spectra = 0
-            # print("Before Writing:", self.annotated)
-            # txn.put("annotated".encode(), str(int(self.annotated)).encode())
-            # annotated_read = bool(txn.get("annotated".encode()).decode())
-            # print("jinzhi:",annotated_read,self.annotated)
+           
             txn.commit()
         else:
             txn=self.env.begin()
@@ -76,15 +71,12 @@ class DB_Index:
         txn = self.env.begin(write=True)
         assert n == len(parser.precursor_charge)
         for i in range(len(parser.precursor_charge)):
-            #print("write in %i th spectrum,", i)
-            #remember to round the charge 
-            #precusor m/z, precusor charge, peaks number, m/z1, .... , m/zn, i_1, ...., i_n 
+       
             collection_data = {"precursor_mz": parser.precursor_mz[i], "precursor_charge": parser.precursor_charge[i],
                                "mz_array": parser.mz_arrays[i], "intensity_array": parser.intensity_arrays[i]}
             
             collection_data["pep"] =  parser.annotations[i]
-            # print(parser.annotations[i])
-                
+      
             buffers = pickle.dumps(collection_data)
             
             txn.put(str(self.n_spectra).encode(), buffers)

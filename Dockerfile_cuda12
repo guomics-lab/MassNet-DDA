@@ -1,0 +1,19 @@
+FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime
+
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+ENV GIT_PYTHON_REFRESH=quiet
+
+WORKDIR /app
+
+COPY . /app/
+
+RUN apt update && apt install -y gcc g++ ninja-build
+
+RUN cd /app/ctcdecode-master && pip install .
+
+RUN pip install -r /app/requirements-docker-cuda12.txt
+RUN cd /app/imputer-pytorch && pip install -e .
+
+ENTRYPOINT ["python", "-m", "XuanjiNovo.XuanjiNovo"]
