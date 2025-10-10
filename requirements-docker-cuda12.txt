@@ -154,4 +154,4 @@ yapf==0.32.0
 yarl==1.8.2
 lmdb
 cupy-cuda12x
-pydantic>=2.5.0
+pydantic
