@@ -13,7 +13,7 @@ RUN apt update && apt install -y gcc g++ ninja-build
 
 RUN cd /app/ctcdecode-master && pip install .
 
-RUN pip install -r /app/requirements-docker-cuda11.txt -i https://mirrors.aliyun.com/pypi/simple/
+RUN pip install -r /app/requirements-docker-cuda11.txt
 RUN cd /app/imputer-pytorch && pip install -e .
 
 ENTRYPOINT ["python", "-m", "XuanjiNovo.XuanjiNovo"]

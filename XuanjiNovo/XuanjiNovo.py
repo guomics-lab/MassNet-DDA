@@ -173,7 +173,6 @@ def main(
             os.path.dirname(os.path.realpath(__file__)), "config.yaml"
         )
     config_fn = config
-    
     try:
         from .config import XuanjiNovoConfig, ConfigLogger
         
@@ -194,6 +193,7 @@ def main(
         
     except:
         print("skipping pydantic validation")
+        config2 = None
     if config2:
         with open(config_fn) as f_in:
             config = yaml.safe_load(f_in)
