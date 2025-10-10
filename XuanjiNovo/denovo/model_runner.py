@@ -78,6 +78,7 @@ def _execute_existing(
     The config parameter can be either a Dict or a XuanjiNovoConfig object.
     If it's a Dict, it will be validated if pydantic is available.
     """
+    config2 = None
     try:
         from ..config import XuanjiNovoConfig
         if isinstance(config, dict):
@@ -247,6 +248,7 @@ def train(
     The config parameter can be either a Dict or a XuanjiNovoConfig object.
     If it's a Dict, it will be validated if pydantic is available.
     """
+    config2 = None
     try:
         from ..config import XuanjiNovoConfig
         if isinstance(config, dict):
