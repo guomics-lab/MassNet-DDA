@@ -15,6 +15,8 @@
 
 The time estimated for setting up is 10-20 minutes depending on network speed and platform.
 
+> **⚠️Note**: This Docker container includes only the runtime environment — no models are included! Please make sure you have downloaded the required models from the official or designated sources and loaded them correctly as described in the documentation.
+
 ## Usage
 
 ### Option 1: Use a Pre-built Docker Image (Recommended)
@@ -33,6 +35,9 @@ docker pull guomics2017/massnet-dda:cuda12_v1.0
 ### Option 2: Build the Docker Image Locally
 
 ```bash
+# Change directory to MassNet-DDA
+cd MassNet-DDA
+
 # CUDA 11 version
 docker build -t massnet-dda:cuda11_v1.0 . -f Dockerfile_cuda11
 
