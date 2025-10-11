@@ -96,6 +96,7 @@ def main():
     for filename in files_to_download:
         file_info = DOWNLOADS[filename]
         destination = output_dir / filename
+        destination = str(destination)
 
         # Check if file exists and is valid
         if verify_checksum(destination, file_info['sha256']):
