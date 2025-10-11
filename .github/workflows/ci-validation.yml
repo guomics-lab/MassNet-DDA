@@ -27,12 +27,25 @@ jobs:
 
       - name: Download model file
         run: |
-          curl -L -o ./data/model.bin https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt
+          curl -L -o ./data/XuanjiNovo_100M_massnet.ckpt https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt
+
+      - name: Check model file
+        run: |
+          if [ ! -f "./data/XuanjiNovo_100M_massnet.ckpt" ]; then
+            echo "Model file not found!"
+            exit 1
+          fi
 
       - name: Download test file
         run: |
-          curl -L -o ./data/test_input.txt https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf
-
+          curl -L -o ./data/bacillus.10k.mgf https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf
+      - name: Check test file
+        run: |
+          if [ ! -f "./data/bacillus.10k.mgf" ]; then
+            echo "Test file not found!"
+            exit 1
+           fi
+        
       - name: Run container for validation
         run: |
           docker run --rm \
