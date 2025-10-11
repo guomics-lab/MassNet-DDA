@@ -1,0 +1,44 @@
+# .github/workflows/ci-validation.yml
+name: Docker Build + Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t mass-net:latest .
+
+      - name: Create data directory
+        run: mkdir -p ./data
+
+      - name: Download model file
+        run: |
+          curl -L -o ./data/model.bin https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt
+
+      - name: Download test file
+        run: |
+          curl -L -o ./data/test_input.txt https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf
+
+      - name: Run container for validation
+        run: |
+          docker run --rm \
+            -v "$(pwd)/data:/data" \
+            mass-net:latest \
+            --mode=eval \
+            --peak_path=/data/bacillus.10k.mgf \
+            --model=/data/XuanjiNovo_100M_massnet.ckpt \
+            --output=/data/output
