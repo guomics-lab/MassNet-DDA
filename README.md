@@ -19,6 +19,8 @@ The time estimated for setting up is 10-20 minutes depending on network speed an
 
 ## Usage
 
+Python version: 3.10
+
 ### Option 1: Use a Pre-built Docker Image (Recommended)
 
 You can directly pull the pre-built image from Docker Hub:
