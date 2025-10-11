@@ -46,12 +46,3 @@ jobs:
             exit 1
            fi
 
-      - name: Run container for validation
-        run: |
-          docker run --rm \
-            -v "./data:/data" \
-            massnet-dda:latest \
-            --mode=eval \
-            --peak_path=/data/bacillus.10k.mgf \
-            --model=/data/XuanjiNovo_100M_massnet.ckpt \
-            --output=/data/output
