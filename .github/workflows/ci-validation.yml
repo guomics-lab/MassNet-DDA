@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t mass-net:latest .
+          docker build -t massnet-dda:latest . -f Dockerfile_cuda11
 
       - name: Create data directory
         run: mkdir -p ./data
@@ -37,7 +37,7 @@ jobs:
         run: |
           docker run --rm \
             -v "$(pwd)/data:/data" \
-            mass-net:latest \
+            massnet-dda:latest \
             --mode=eval \
             --peak_path=/data/bacillus.10k.mgf \
             --model=/data/XuanjiNovo_100M_massnet.ckpt \
