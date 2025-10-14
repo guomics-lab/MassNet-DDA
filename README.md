@@ -47,18 +47,7 @@ docker build -t massnet-dda:cuda11_v1.0 . -f Dockerfile_cuda11
 docker build -t massnet-dda:cuda12_v1.0 . -f Dockerfile_cuda12
 ```
 
-### Example Run Command with Docker 
 
-Below is an example command to run the container (using the CUDA 11 version):
-
-```bash
-docker run --gpus all --rm \
-  -v /local/data:/data \
-  massnet-dda:cuda11_v1.0 \
-  --mode=eval \
-  --peak_path=/data/bacillus.10k.mgf \
-  --model=/data/XuanjiNovo_100M_massnet.ckpt \
-  --output /data/output_cuda11_v1.0
 ```
 
 ## Option B: Conda 
@@ -230,7 +219,7 @@ All files are also available in our [Hugging Face repository](https://huggingfac
 2. [XuanjiNovo_130M_massnet_massivekb.ckpt](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_130M_massnet_massivekb.ckpt)
 3. [Bacillus.10k.mgf](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf)
 
-After manual download, verify file integrity:
+After manual download, (optional) verify file integrity:
 ```bash
 # View expected checksums
 cat checksums.txt
@@ -301,13 +290,41 @@ Notes:
 - Use command-line arguments for temporary overrides or quick experiments
 ```
 
-### Running the Model
+# Running the Model
+
+## Example Run Command with Docker (If you are using Docker)
+
+Below is an example command to run the container (using the CUDA 11 version):
+
+```bash
+docker run --gpus all --rm \
+  -v /local/data:/data \
+  massnet-dda:cuda11_v1.0 \
+  --mode=eval \
+  --peak_path=/data/bacillus.10k.mgf \
+  --model=/data/XuanjiNovo_100M_massnet.ckpt \
+  --output /data/output_cuda11_v1.0
+
+
+
+## Example Run Command with Conda
 
 Execute the command with your desired options. For example:
+
+
+### Evaluation mode:
+
 
 ```bash
 # Basic evaluation with setting from file config.yaml in default directory
 python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
+```
+
+
+### De Novo mode:
+
+```bash
+python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 ```
 
 The model supports both single-GPU and multi-GPU execution. For multi-GPU training and inference, you must use `torchrun` instead of `python`:
