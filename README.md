@@ -47,7 +47,7 @@ docker build -t massnet-dda:cuda11_v1.0 . -f Dockerfile_cuda11
 docker build -t massnet-dda:cuda12_v1.0 . -f Dockerfile_cuda12
 ```
 
-### Example Run Command
+### Example Run Command with Docker 
 
 Below is an example command to run the container (using the CUDA 11 version):
 
@@ -62,6 +62,75 @@ docker run --gpus all --rm \
 ```
 
 ## Option B: Conda 
+
+Create a new conda environment first:
+
+```
+conda create --name XuanjiNovo python=3.11
+```
+
+This will create an anaconda environment
+
+Activate this environment by running:
+
+```
+conda activate XuanjiNovo
+```
+
+then install dependencies:
+
+```
+pip install -r ./requirements.txt
+```
+
+installing gcc and g++:
+
+```bash
+conda install -c conda-forge gcc
+conda install -c conda-forge cxx-compiler
+```
+
+then install ctcdecode, which is the package for ctc-beamsearch decoding
+
+```bash
+git clone --recursive https://github.com/WayenVan/ctcdecode.git
+cd ctcdecode
+pip install .
+cd ..  #this is needed as ctcdecode can not be imported under the current directory
+rm -rf ctcdecode
+```
+
+(if there are no errors, ignore the next line and proceed to CuPy install)
+
+if you encountered issues with C++ (gxx and gcc) version errors in this step, install gcc with version specified as :  
+
+```bash
+conda install -c conda-forge gcc_linux-64=9.3.0
+```
+
+then install pytorch imputer for CTC-curriculum sampling
+
+```bash
+cd imputer-pytorch
+pip install -e .
+cd ..
+```
+
+lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
+
+**_Please install the following Cupy package in a GPU available env, If you are using a slurm server, this means you have to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking by nvidia-smi), then there's no problem_**
+
+**Check your CUDA version using command nvidia-smi, the CUDA version will be on the top-right corner**
+
+| cuda version | command |
+|-------|-------|
+|v10.2 (x86_64 / aarch64)| pip install cupy-cuda102 |
+|v11.0 (x86_64)| pip install cupy-cuda110 |
+|v11.1 (x86_64)| pip install cupy-cuda111 |
+|v11.2 ~ 11.8 (x86_64 / aarch64)| pip install cupy-cuda11x |
+|v12.x (x86_64 / aarch64)| pip install cupy-cuda12x |
+
+
 ## Model Settings
 
 Some of the important settings in config.yaml under ./XuanjiNovo 
