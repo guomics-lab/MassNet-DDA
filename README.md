@@ -50,7 +50,7 @@ docker build -t massnet-dda:cuda12_v1.0 . -f Dockerfile_cuda12
 
 ## Option B: Conda 
 
-```
+
 
 
 
