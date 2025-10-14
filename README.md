@@ -306,7 +306,7 @@ docker run --gpus all --rm \
   --peak_path=/data/bacillus.10k.mgf \
   --model=/data/XuanjiNovo_100M_massnet.ckpt \
   --output /data/output_cuda11_v1.0
-
+```
 
 
 ## Example Run Command with Conda
@@ -323,7 +323,7 @@ python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --mod
 ```
 
 
-### De Novo mode:
+### DeNovo mode:
 
 ```bash
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
