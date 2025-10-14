@@ -3,11 +3,7 @@
 ![xuanji](./assets/Xuanji.png)
 
 
-   
-
-## Environment Setup
-
-### Platform Support with docker
+### Platform Support
 
 - **Linux**: Fully supported and tested
 - **Windows**: Supported with WSL2 (Windows Subsystem for Linux) or native installation
@@ -15,13 +11,17 @@
 
 The time estimated for setting up is 10-20 minutes depending on network speed and platform.
 
-> **⚠️Note**: This Docker container includes only the runtime environment — no models are included! Please make sure you have downloaded the required models from the official or designated sources and loaded them correctly as described in the documentation.
 
-## Usage
+
+# Environment Setup
+
+We provide both Docker and Conda set-up guide, user can choose between option A: Docker and option B: Conda below:
+
+## Option A: Docker
 
 Python version: 3.10
 
-### Option 1: Use a Pre-built Docker Image (Recommended)
+###  Option A.1: Use a Pre-built Docker Image (Recommended)
 
 You can directly pull the pre-built image from Docker Hub:
 
@@ -34,7 +34,7 @@ docker pull guomics2017/massnet-dda:cuda12_v1.0
 
 ```
 
-### Option 2: Build the Docker Image Locally
+### Option A.2: Build the Docker Image Locally
 
 ```bash
 # Change directory to MassNet-DDA
@@ -61,7 +61,7 @@ docker run --gpus all --rm \
   --output /data/output_cuda11_v1.0
 ```
 
-
+## Option B: Conda 
 ## Model Settings
 
 Some of the important settings in config.yaml under ./XuanjiNovo 
