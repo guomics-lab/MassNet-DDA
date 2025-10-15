@@ -391,3 +391,15 @@ To run the checks manually on all files:
 ```bash
 pre-commit run --all-files
 ```
+
+## Unit test
+
+To run unit tests:
+
+```bash
+
+pip install pytest
+
+pytest tests/test_denovo.py::test_denovo_process -v -s
+
+```
