@@ -319,14 +319,14 @@ Execute the command with your desired options. For example:
 
 ```bash
 # Basic evaluation with setting from file config.yaml in default directory
-python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
+python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 ```
 
 
 ### DeNovo mode:
 
 ```bash
-python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
+python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 ```
 
 The model supports both single-GPU and multi-GPU execution. For multi-GPU training and inference, you must use `torchrun` instead of `python`:
