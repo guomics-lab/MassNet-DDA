@@ -91,13 +91,27 @@ cd ..  #this is needed as ctcdecode can not be imported under the current direct
 rm -rf ctcdecode
 ```
 
-(if there are no errors, ignore the next line and proceed to CuPy install)
+(if there are no errors, ignore the next subsection and proceed to CuPy install)
 
-if you encountered issues with C++ (gxx and gcc) version errors in this step, install gcc with version specified as :  
+### issues handling of potential error in CTCdecode install
+
+if you encountered issues with C++ (gxx and gcc) version errors in above step, install gcc with version specified as :  
 
 ```bash
 conda install -c conda-forge gcc_linux-64=9.3.0
 ```
+
+
+Notes on Installing ctcdecoder:
+
+When installing ctcdecoder (via pip install .), make sure that your CUDA and GCC versions are compatible. For example, CUDA 12.1 officially supports up to GCC 12.2. You can find this information in the official CUDA documentation:
+
+https://docs.nvidia.com/cuda/archive/12.1.0/cuda-installation-guide-linux/
+
+
+If the versions are not compatible, the installation may fail.
+
+
 
 then install pytorch imputer for CTC-curriculum sampling
 
