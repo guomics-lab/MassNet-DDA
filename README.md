@@ -11,6 +11,7 @@
 
 The time estimated for setting up is 10-20 minutes depending on network speed and platform.
 
+The algorithm can peform evaluation/ De novo with a speed of roughly 280 spectra per-GPU, tested with Nvidia-H200.
 
 
 # Environment Setup
