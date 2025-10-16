@@ -94,7 +94,7 @@ rm -rf ctcdecode
 (if there are no errors, ignore the next block and proceed to CuPy install)
 
 --------------------
-## Troubleshooting
+    **Troubleshooting**
 
 if you encountered issues with C++ (gxx and gcc) version errors in above step, install gcc with version specified as :  
 
