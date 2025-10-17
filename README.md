@@ -18,10 +18,12 @@ The algorithm can peform evaluation/ De novo with a speed of roughly 280 spectra
 
 We provide both Docker and Conda set-up guide, user can choose between option A: Docker and option B: Conda below:
 
+
 ## Option A: Docker
 
 Python version: 3.10
 
+About use Docker to run this project, you can choose one of the following two options.
 ###  Option A.1: Use a Pre-built Docker Image (Recommended)
 
 You can directly pull the pre-built image from Docker Hub:
