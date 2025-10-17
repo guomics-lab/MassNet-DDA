@@ -74,9 +74,7 @@ are retained for final scoring and output.
 
 - **Units:** All mass values are expressed in **Daltons (Da)**.  
 - **Measured mass formula:**  
-  \[
-  \text{measured\_mass} = (\text{pepMass} - 1.007276\ \text{Da}) \times \text{charge} - 18.010565\ \text{Da}
-  \]
+  `measured_mass = (pepMass - 1.007276 Da) × charge - 18.010565 Da`
   where:
   - **pepMass** is the precursor ion m/z value provided in the MGF file (in Daltons per charge, Da/z),  
   - **1.007276 Da** corresponds to the mass of a proton (H⁺),  
