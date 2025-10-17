@@ -65,7 +65,28 @@ Some of the important settings in config.yaml under ./XuanjiNovo
 
 **refine_iters**: Number of refinement iterations performed during forward pass (default: 3). Controls how many times the model refines its predictions. Higher values can lead to more refined predictions but increase computation time.
 
-**mass_control_tol**: This setting is only useful when **PMC_enable** is ```True```. The tolerance of PMC-decoded mass from the measured mass by MS, when mass control algorithm (PMC) is used. For example, if this is set to 0.1, we will only obtain peptides that fall under the mass range [measured_mass-0.1, measured_mass+0.1]. ```Measured mass``` is calculated by : (pepMass - 1.007276) * charge - 18.01. pepMass and charge are given by input spectrum file (MGF).
+**mass_control_tol**: This setting is only relevant when **PMC_enable** is set to `True`.  
+It defines the **mass tolerance window (in Daltons, Da)** used by the Precise Mass Control (PMC) decoding algorithm to constrain candidate peptide sequences by their total calculated mass.  
+
+When **PMC_enable=True**, only peptides whose calculated mass falls within the range  
+**[measured_mass − mass_control_tol, measured_mass + mass_control_tol]**  
+are retained for final scoring and output.  
+
+- **Units:** All mass values are expressed in **Daltons (Da)**.  
+- **Measured mass formula:**  
+  \[
+  \text{measured\_mass} = (\text{pepMass} - 1.007276\ \text{Da}) \times \text{charge} - 18.010565\ \text{Da}
+  \]
+  where:
+  - **pepMass** is the precursor ion m/z value provided in the MGF file (in Daltons per charge, Da/z),  
+  - **1.007276 Da** corresponds to the mass of a proton (H⁺),  
+  - **18.010565 Da** corresponds to the mass of a neutral water molecule (H₂O), representing peptide terminal loss.  
+
+- **Adduct assumptions:** The formula assumes standard positive-mode protonation ([M + H]⁺) without additional adducts such as Na⁺ or K⁺. If alternative ionization modes or adducts are present, users should disable PMC and rely on unconstrained beam search instead.  
+
+- **Edge-case behavior:** Some datasets contain systematic precursor mass deviations of approximately **0.99–1.02 Da** due to charge misassignments or instrument rounding errors. In such cases, PMC may incorrectly reject correct peptide candidates because the measured precursor mass falls outside the tolerance window. Therefore, we recommend:
+  - **Disable PMC (set `PMC_enable=False`)** for datasets with uncertain or inconsistent precursor m/z or charge information.  
+  - **Enable PMC** only when users are confident that the MGF file contains accurate precursor m/z and charge annotations.  
 
 **PMC_enable**: Whether to use PMC decoding unit or not, either ```True``` or ```False```.
 
