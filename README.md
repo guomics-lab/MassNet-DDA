@@ -23,7 +23,7 @@ We provide both Docker and Conda set-up guide, user can choose between option A:
 
 Python version: 3.10
 
-About use Docker to run this project, you can choose one of the following two options.
+To run this project with Docker, you can choose one of the following two options.
 ###  Option A.1: Use a Pre-built Docker Image (Recommended)
 
 You can directly pull the pre-built image from Docker Hub:
