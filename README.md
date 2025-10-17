@@ -66,11 +66,7 @@ Some of the important settings in config.yaml under ./XuanjiNovo
 **refine_iters**: Number of refinement iterations performed during forward pass (default: 3). Controls how many times the model refines its predictions. Higher values can lead to more refined predictions but increase computation time.
 
 **mass_control_tol**: This setting is only relevant when **PMC_enable** is set to `True`.  
-It defines the **mass tolerance window (in Daltons, Da)** used by the Precise Mass Control (PMC) decoding algorithm to constrain candidate peptide sequences by their total calculated mass.  
-
-When **PMC_enable=True**, only peptides whose calculated mass falls within the range  
-**[measured_mass − mass_control_tol, measured_mass + mass_control_tol]**  
-are retained for final scoring and output.  
+It defines the **mass tolerance window (in Daltons, Da)** used by the Precise Mass Control (PMC) decoding algorithm to constrain candidate peptide sequences by their total calculated mass.   When **PMC_enable=True**, only peptides whose calculated mass falls within the range  **[measured_mass − mass_control_tol, measured_mass + mass_control_tol]**  are retained for final scoring and output.  
 
 - **Units:** All mass values are expressed in **Daltons (Da)**.  
 - **Measured mass formula:**  
