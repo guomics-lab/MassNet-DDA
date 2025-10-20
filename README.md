@@ -327,7 +327,7 @@ docker run --gpus all --rm \
   --model=/data/XuanjiNovo_100M_massnet.ckpt \
   --output /data/output_cuda11_v1.0
 ```
-
+> **⚠️Note**: In the -v flag (-v /local/data:/data), please replace /local/data with the actual path on your local machine where you want to store the application data. This path must exist and be accessible.
 
 ## Example Run Command with Conda
 
