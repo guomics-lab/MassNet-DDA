@@ -13,7 +13,6 @@ The time estimated for setting up is 10-20 minutes depending on network speed an
 
 The algorithm can peform evaluation/ De novo with a speed of roughly 280 spectra per-GPU, tested with Nvidia-H200.
 
-M
 # Environment Setup
 
 We provide both Docker and Conda set-up guide, user can choose between option A: Docker and option B: Conda below:
