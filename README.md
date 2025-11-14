@@ -189,7 +189,7 @@ log_level: "ERROR"  # Minimal logging for production use
 
 ## Run Instructions
 
-**Note!!!!!!!!!!!!!!!!!!:** All the following steps should be performed under the main directory: `XuanjiNovo`. Do **not** use `cd XuanjiNovo` !!!!!!!!!!!!!!!!!!!
+**Note!!!!!!!!!!!!!!!!!!:** All the following steps should be performed under the main directory. Do **not** use `cd XuanjiNovo` !!!!!!!!!!!!!!!!!!!
 
 ### Step 1: Download Required Files
 
