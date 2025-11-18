@@ -43,6 +43,9 @@ def test_denovo_process():
     demo_file = os.path.join(dest_dir, 'Xbacillus.10k.mgf')
     demo_output = os.path.join(dest_dir, 'test_output')
     os.makedirs(dest_dir, exist_ok=True)
+    result_file = os.path.join(demo_output, 'denovo.tsv')
+    if os.path.exists(result_file):
+        os.remove(result_file)
     print(f"Downloading XuanjiNovo_100M_massnet.ckpt...")
     download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt',
                          demo_model)
