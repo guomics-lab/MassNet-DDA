@@ -92,7 +92,7 @@ pip install . --no-build-isolation
 cd .. 
 ```
 
-If pip install . fails, try installing with
+If pip install . fails(No module named 'torch'), try installing with
 ```bash
 pip install . --no-build-isolation
 ```
