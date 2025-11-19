@@ -75,6 +75,11 @@ then install dependencies:
 pip install -r ./requirements.txt
 ```
 
+**You need install torch from pytorch (https://pytorch.org/)**. It is advisable to install the entire pytorch package and follow the official installation method provided by pytorch.
+Specifically, first select the CUDA version according to your own operating system, and then, based on the CUDA version, choose the corresponding installation command to execute. For example, run "pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121". You can check the installed CUDA version by running the nvcc --version command.
+> **⚠️Note**: The torch version should be 2.1.0.
+
+
 installing gcc and g++:
 
 ```bash
