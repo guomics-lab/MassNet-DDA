@@ -93,7 +93,7 @@ then install ctcdecode, which is the package for ctc-beamsearch decoding
 
 ```bash
 cd ctcdecode-master
-pip install . --no-build-isolation
+pip install .
 cd .. 
 ```
 
