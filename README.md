@@ -136,8 +136,8 @@ cd ..
 
 lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
-*
-*_Please install the following Cupy package in a GPU available env, If you are using a slurm server, this means you have
+
+**_Please install the following Cupy package in a GPU available env, If you are using a slurm server, this means you have
 to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking
 by nvidia-smi), then there's no problem_**
 
@@ -457,9 +457,10 @@ To ensure the correctness of core components, we provide unit tests based on the
 pip install pytest
 ```
 
-```bash
+
 2. Run a specific test (e.g., de novo peptide processing):
 
+```bash
 pytest tests/test_denovo.py::test_denovo_process -v -s
 
 ```
