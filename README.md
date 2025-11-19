@@ -84,11 +84,19 @@ conda install -c conda-forge cxx-compiler
 
 then install ctcdecode, which is the package for ctc-beamsearch decoding
 
+
+
 ```bash
 cd ctcdecode-master
 pip install . --no-build-isolation
 cd .. 
 ```
+
+If pip install . fails, try installing with
+```bash
+pip install . --no-build-isolation
+```
+to avoid potential dependency conflicts.
 
 (if there are no errors, ignore the next block and proceed to CuPy install)
 
