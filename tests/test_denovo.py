@@ -40,19 +40,21 @@ def download_from_mirror(url, destination):
 def test_denovo_process():
     dest_dir = f'test_data'
     demo_model = os.path.join(dest_dir, 'XuanjiNovo_100M_massnet.ckpt')
-    demo_file = os.path.join(dest_dir, 'Xbacillus.10k.mgf')
+    demo_file = os.path.join(dest_dir, 'bacillus.10k.mgf')
     demo_output = os.path.join(dest_dir, 'test_output')
     os.makedirs(dest_dir, exist_ok=True)
     result_file = os.path.join(demo_output, 'denovo.tsv')
     if os.path.exists(result_file):
         os.remove(result_file)
     print(f"Downloading XuanjiNovo_100M_massnet.ckpt...")
-    download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt',
+    if not os.path.exists(demo_file):
+        download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt',
                          demo_model)
     print(f"Finished download XuanjiNovo_100M_massnet.ckpt...")
     # download test file
     print(f"Downloading Xbacillus.10k.mgf...")
-    download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf', demo_file)
+    if not os.path.exists(demo_file):
+        download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf', demo_file)
     print(f"Finished download Bacillus.10k.mgf...")
 
     runner = CliRunner()
