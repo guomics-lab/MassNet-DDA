@@ -58,7 +58,7 @@ docker build -t massnet-dda:cuda12_v1.0 . -f Dockerfile_cuda12
 Create a new conda environment first:
 
 ```
-conda create --name XuanjiNovo python=3.11
+conda create --name XuanjiNovo python=3.10
 ```
 
 This will create an anaconda environment
@@ -78,18 +78,16 @@ pip install -r ./requirements.txt
 installing gcc and g++:
 
 ```bash
-conda install -c conda-forge gcc
+conda install -c conda-forge gcc==11.4
 conda install -c conda-forge cxx-compiler
 ```
 
 then install ctcdecode, which is the package for ctc-beamsearch decoding
 
 ```bash
-git clone --recursive https://github.com/WayenVan/ctcdecode.git
-cd ctcdecode
-pip install .
-cd ..  #this is needed as ctcdecode can not be imported under the current directory
-rm -rf ctcdecode
+cd ctcdecode-master
+pip install . --no-build-isolation
+cd .. 
 ```
 
 (if there are no errors, ignore the next block and proceed to CuPy install)
@@ -101,7 +99,7 @@ rm -rf ctcdecode
 if you encountered issues with C++ (gxx and gcc) version errors in above step, install gcc with version specified as :
 
 ```bash
-conda install -c conda-forge gcc_linux-64=9.3.0
+conda install -c conda-forge gcc_linux-64=11.4
 ```
 
 Notes on Installing ctcdecoder:
