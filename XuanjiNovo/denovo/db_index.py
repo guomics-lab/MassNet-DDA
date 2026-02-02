@@ -2,7 +2,7 @@ import lmdb
 import numpy as np
 import logging
 from pathlib import Path
-from .parser2 import  MzmlParser, MzxmlParser, MgfParser
+from .parser2 import  MzmlParser, MzxmlParser, MgfParser, ParquetParser
 import os 
 import pickle
 
@@ -120,5 +120,7 @@ class DB_Index:
 
         if ms_data_file.suffix.lower() == ".mgf":
             return MgfParser(ms_data_file, **kw_args)
+        if ms_data_file.suffix.lower() == ".parquet":
+            return ParquetParser(ms_data_file, **kw_args)
 
         raise ValueError("Only mzML, mzXML, and MGF files are supported.")
