@@ -151,7 +151,7 @@ def _execute_existing(
         raise FileNotFoundError("Could not find peak files")
     
     peak_is_not_index = any(
-        [os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml") for fn in peak_filenames])
+        [os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml", ".parquet") for fn in peak_filenames])
     
     class MyDirectory:
         def __init__(self, sdir=None):
@@ -282,7 +282,7 @@ def train(
         raise FileNotFoundError("Could not find training peak files")
     
     train_is_not_index = any([
-        os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml") for fn in train_filenames
+        os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml", ".parquet") for fn in train_filenames
     ])
     if config2:
         print("config validated via pydantic")
@@ -294,7 +294,7 @@ def train(
         raise FileNotFoundError("Could not find validation peak files")
     
     val_is_not_index = any(
-        [os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml") for fn in val_filenames])
+        [os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml", ".parquet") for fn in val_filenames])
     
     if (peak_path_test is None
             or len(test_filenames := _get_peak_filenames(peak_path_test, ext))
@@ -304,7 +304,7 @@ def train(
         raise FileNotFoundError("Could not find testing peak files")
     
     test_is_not_index = any(
-        [os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml") for fn in test_filenames])
+        [os.path.splitext(fn)[1] in (".mgf", ".mzxml", ".mzml", ".parquet") for fn in test_filenames])
     
     class MyDirectory:
         def __init__(self, sdir=None):
