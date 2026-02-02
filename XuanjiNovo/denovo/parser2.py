@@ -8,6 +8,7 @@ from tqdm.auto import tqdm
 from pyteomics.mzml import MzML
 from pyteomics.mzxml import MzXML
 from pyteomics.mgf import MGF
+import pandas as pd
 
 
 LOGGER = logging.getLogger(__name__)
@@ -284,6 +285,123 @@ class MgfParser(BaseParser):
             self.scan_id.append(self._counter)
 
         self._counter += 1
+
+
+class ParquetParser(BaseParser):
+    """Parse mass spectra from a Parquet file.
+
+    Parameters
+    ----------
+    ms_data_file : str or Path
+        The Parquet file to parse.
+    ms_level : int
+        The MS level of the spectra to parse.
+    valid_charge : Iterable[int], optional
+        Only consider spectra with the specified precursor charges. If `None`,
+        any precursor charge is accepted.
+    annotationsLabel : bool, optional
+        If True, use "peptide" field for annotations. If False, use "scan" field.
+    """
+
+    def __init__(self, ms_data_file, ms_level=2, valid_charge=None, annotationsLabel=False):
+        """Initialize the ParquetParser."""
+        super().__init__(
+            ms_data_file,
+            ms_level=ms_level,
+            valid_charge=valid_charge,
+            id_type="scan",
+        )
+        self.annotationsLabel = annotationsLabel
+        self.annotations = []
+        self._df = None
+
+    def open(self):
+        """Open the Parquet file for reading"""
+        self._df = pd.read_parquet(str(self.path))
+        return _ParquetContextManager(self._df)
+
+    def parse_spectrum(self, spectrum):
+        """Parse a single spectrum.
+
+        Parameters
+        ----------
+        spectrum : dict or pd.Series
+            The dictionary or Series defining the spectrum in Parquet format.
+        """
+        # Convert Series to dict if needed
+        if isinstance(spectrum, pd.Series):
+            spectrum = spectrum.to_dict()
+
+        # Extract precursor information
+        precursor_mz = float(spectrum.get("precursor_mz", 0.0))
+        precursor_charge = int(spectrum.get("precursor_charge", 0))
+        
+        # Extract m/z and intensity arrays
+        mz_array = spectrum.get("mz_array", [])
+        intensity_array = spectrum.get("intensity_array", [])
+        
+        # Convert to lists if they are numpy arrays or other types
+        if isinstance(mz_array, np.ndarray):
+            mz_array = mz_array.tolist()
+        elif not isinstance(mz_array, list):
+            mz_array = list(mz_array) if mz_array is not None else []
+            
+        if isinstance(intensity_array, np.ndarray):
+            intensity_array = intensity_array.tolist()
+        elif not isinstance(intensity_array, list):
+            intensity_array = list(intensity_array) if intensity_array is not None else []
+
+        # Extract scan ID
+        scan_id = spectrum.get("scan", None)
+        if scan_id is None:
+            # Try to parse from index if scan is not available
+            scan_id = 0
+        else:
+            try:
+                scan_id = int(scan_id)
+            except (ValueError, TypeError):
+                scan_id = _parse_scan_id(str(scan_id)) if isinstance(scan_id, str) else 0
+
+        # Extract annotation (peptide or scan)
+        if self.annotationsLabel:
+            peptide = spectrum.get("peptide")
+            peptide_temp = peptide
+            peptide = peptide[2:-2]
+            peptide = peptide.replace("C[57.0215]", "C+57.021").replace("M[15.9949]", "M+15.995").replace("n[42.0106]", "+42.011").replace("[43.0058]", "+43.006").replace("[17.0265]", "-17.027")
+            #print("/n","before peptide: ", peptide_temp, "after peptide: ", peptide, "/n")
+            
+            # if peptide and isinstance(peptide, str):
+            #     # Remove prefix (X.) and suffix (.Y) from peptide like "R.GGGFGGGSSFGGGSGFSGGGFGGGGFGGGR.F"
+            #     # Pattern: single_char.sequence.single_char -> extract middle sequence
+            #     parts = peptide.split(".", 2)
+            #     if len(parts) == 3:
+            #         # Extract middle part (the actual sequence)
+            #         peptide = parts[1]
+            self.annotations.append(peptide)
+        else:
+            #self.annotations.append(spectrum.get("peptide"))
+            self.annotations.append(str(spectrum.get("scan")))
+
+        # Filter by charge if specified
+        if self.valid_charge is None or precursor_charge in self.valid_charge:
+            self.mz_arrays.append(mz_array)
+            self.intensity_arrays.append(intensity_array)
+            self.precursor_mz.append(precursor_mz)
+            self.precursor_charge.append(precursor_charge)
+            self.scan_id.append(scan_id)
+
+
+class _ParquetContextManager:
+    """Context manager for iterating over parquet dataframe rows."""
+    
+    def __init__(self, df):
+        self.df = df
+    
+    def __enter__(self):
+        return (row.to_dict() for _, row in self.df.iterrows())
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        return False
 
 
 def _parse_scan_id(scan_str):
