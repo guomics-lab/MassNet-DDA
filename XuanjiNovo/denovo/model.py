@@ -712,7 +712,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-        file_path = os.path.join(self.result_output_dir, "denovo.tsv")
+        file_path = os.path.join(self.result_output_dir, "denovo1.tsv")
         headers = "label\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers
@@ -736,10 +736,10 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                         sequence += el
 
                 # print("label:",batch[2][i], ":" , peptides[i] , "\n")
-                if batch[2][i].replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I") == "".join(peptides[i]).replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I"):
-                    answer_is_correct = "correct"
-                else:
-                    answer_is_correct = "incorrect"
+                # if batch[2][i].replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I") == "".join(peptides[i]).replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I"):
+                #     answer_is_correct = "correct"
+                # else:
+                #     answer_is_correct = "incorrect"
                 #each line output this: label (title if label is none), predictions, charge, and confidence score
                 f.write(batch[2][i].replace("\t", " ") + "\t" + sequence + "\t" + str(int(batch[1][i][1])) + "\t" + str(float(inferscores[i])) + "\n")
                 
