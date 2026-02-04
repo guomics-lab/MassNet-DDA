@@ -318,6 +318,21 @@ class ParquetParser(BaseParser):
     def open(self):
         """Open the Parquet file for reading"""
         self._df = pd.read_parquet(str(self.path))
+        if 'precursor_charge' not in self._df.columns:
+            self._df['precursor_charge'] = self._df['charge']
+        if 'peptide' not in self._df.columns:
+            self._df['peptide'] = self._df['precursor_sequence']
+
+        if isinstance(self._df['peptide'][0], (list, np.ndarray)):
+            self._df = self._df[['scan', 'peptide', 'mz_array', 'intensity_array', 'precursor_mz', 'precursor_charge', 'sage_discriminant_score']]
+            # if is sage result file, explode
+            sage_exploeded = self._df.explode(['peptide', 'precursor_charge', 'sage_discriminant_score'])
+            sage_exploeded = sage_exploeded.sort_values(by=['scan', 'sage_discriminant_score'],
+                                                   ascending=[True, False]).drop_duplicates(subset=['scan'],
+                                                                                            keep='first')
+            self._df = sage_exploeded[['scan', 'peptide', 'mz_array', 'intensity_array', 'precursor_mz', 'precursor_charge']]
+        else:
+            self._df = self._df[['scan', 'peptide', 'mz_array', 'intensity_array', 'precursor_mz', 'precursor_charge']]
         return _ParquetContextManager(self._df)
 
     def parse_spectrum(self, spectrum):
@@ -366,8 +381,12 @@ class ParquetParser(BaseParser):
         if self.annotationsLabel:
             peptide = spectrum.get("peptide")
             peptide_temp = peptide
-            peptide = peptide[2:-2]
+            if peptide[1] == '.':
+                peptide = peptide[2:-2]
             peptide = peptide.replace("C[57.0215]", "C+57.021").replace("M[15.9949]", "M+15.995").replace("n[42.0106]", "+42.011").replace("[43.0058]", "+43.006").replace("[17.0265]", "-17.027")
+            peptide = peptide.replace("C[57.02]", "C+57.021").replace("M[15.99]", "M+15.995").replace("n[42.01]",
+                                                                                                      "+42.011").replace(
+                "n[42]", "+42.011")
             #print("/n","before peptide: ", peptide_temp, "after peptide: ", peptide, "/n")
             
             # if peptide and isinstance(peptide, str):
