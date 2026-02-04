@@ -26,7 +26,7 @@ from .denovo import model_runner
 
 logger = logging.getLogger("XuanjiNovo")
 
-
+@click.version_option(version='1.1')
 @click.command(help="""XuanjiNovo: A deep learning model for de novo peptide sequencing.
 
 This tool provides three main functionalities:
