@@ -9,7 +9,7 @@ scalable performance across heterogeneous MS/MS datasets.
 To facilitate data preparation and adoption, we provide a dedicated data conversion toolkit that enables seamless transformation of commonly used MS file formats—including mzML, MGF, and Bruker native .d 
 files—into the unified MSDT format optimized for AI model training (see: https://github.com/guomics-lab/MSDT-Converter). Detailed documentation of the MSDT format is available at https://guomics.com/software/massnet/msdt.html.
 
-### XuanjiNovo
+## XuanjiNovo
 
 ![xuanji](./assets/Xuanji.png) 
 
