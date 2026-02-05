@@ -227,7 +227,7 @@ log_level: "ERROR"  # Minimal logging for production use
 
 ### Step 1: Download Required Files
 
-We provide multiple alternative download methods for model checkpoints and test data. The _download_data.py_ supports both **Google Drive** and **HTTPS mirrors**, 
+We provide multiple alternative download methods for model checkpoints and test data. The `_download_data.py_` supports both **Google Drive** and **HTTPS mirrors**, 
 with SHA-256 checksum verification to ensure file integrity, and automatically falls back to alternative sources if the primary download fails. In environments 
 where Google Drive access is unreliable or external tools such as gdown are not available, we recommend using HTTPS mirrors hosted on Hugging Face or performing 
 manual downloads using standard command-line tools such as **wget** or **curl**.  
