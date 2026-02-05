@@ -286,6 +286,14 @@ All files are also available in our [Hugging Face repository](https://huggingfac
 3. [bacillus.10k.mgf](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf)
 4. [msdt_demo.zip](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/msdt_demo.zip)
 
+```bash
+# Download model checkpoint from Hugging Face using wget
+wget -O XuanjiNovo_100M_massnet.ckpt "https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt"
+
+# Or download using curl
+curl -L -o XuanjiNovo_100M_massnet.ckpt "https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt"
+```
+
 After manual download, (optional) verify file integrity:
 
 ```bash
