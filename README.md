@@ -376,7 +376,7 @@ python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./Bacillus.10k.mgf --mod
 ### DeNovo mode:
 
 ```bash
-python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
+python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
 The model supports both single-GPU and multi-GPU execution. For multi-GPU training and inference, you must use
