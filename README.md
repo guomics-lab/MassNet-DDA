@@ -382,22 +382,23 @@ docker run --gpus all --rm \
 Execute the command with your desired options. For example:
 
 ### Evaluation mode:
-
+#### Example 1: MGF input
 ```bash
 # Basic evaluation with setting from file config.yaml in default directory
 python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
-```
-
-### DeNovo mode:
-#### Example 1: MGF input
-```bash
-python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
 #### Example 2: MSDT (Parquet) input
 ```bash
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
+
+### DeNovo mode:
+
+```bash
+python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
+```
+
 XuanjiNovo supports inference on **multiple input files in a single run**. Imput files can be specified by concatenating file paths with the **"&"**. For example: 
 ```bash
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path="./sample1.mgf&./sample2.mgf&./sample3.mgf" --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
