@@ -713,7 +713,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         import os
         
         file_path = os.path.join(self.result_output_dir, "denovo1.tsv")
-        headers = "label\tprediction\tcharge\tscore\n"
+        headers = "title\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers
         if not os.path.exists(file_path) or open(file_path, 'r').readline().strip() != headers.strip():
