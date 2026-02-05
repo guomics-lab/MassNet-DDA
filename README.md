@@ -236,7 +236,7 @@ HTTPS mirrors, with SHA-256 checksum verification to ensure file integrity.
     - `XuanjiNovo_100M_massnet.ckpt`: Base model trained on MassNet
     - `XuanjiNovo_130M_massnet_massivekb.ckpt`: Model finetuned on 30M MassiveKB
 2. **Test Data**:
-    - `Bacillus.10k.mgf`: Test MGF file
+    - `bacillus.10k.mgf`: Test MGF file
 
 #### Automatic Download:
 
@@ -248,7 +248,7 @@ pip install gdown requests tqdm
 python download_data.py
 
 # Download specific files
-python download_data.py --files XuanjiNovo_100M_massnet.ckpt Bacillus.10k.mgf
+python download_data.py --files XuanjiNovo_100M_massnet.ckpt bacillus.10k.mgf
 
 # Use HTTPS mirrors instead of Google Drive
 python download_data.py --prefer-mirror
@@ -272,14 +272,14 @@ If you prefer manual downloads, you can use either Google Drive or Hugging Face 
 
 1. [XuanjiNovo_100M_massnet.ckpt](https://drive.google.com/file/d/1BtEYZ9FuWvQub2YQEHYMy5l2Y7bcmQDr/view?usp=sharing)
 2. [XuanjiNovo_130M_massnet_massivekb.ckpt](https://drive.google.com/file/d/1dcbdn5tV5x2tmUKT7nJe8deqMwGzpx4E/view?usp=sharing)
-3. [Bacillus.10k.mgf](https://drive.google.com/file/d/1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT/view?usp=drive_link)
+3. [bacillus.10k.mgf](https://drive.google.com/file/d/1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT/view?usp=drive_link)
 
 **Hugging Face Links:**
 All files are also available in our [Hugging Face repository](https://huggingface.co/Wyattz23/XuanjiNovo):
 
 1. [XuanjiNovo_100M_massnet.ckpt](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt)
 2. [XuanjiNovo_130M_massnet_massivekb.ckpt](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_130M_massnet_massivekb.ckpt)
-3. [Bacillus.10k.mgf](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf)
+3. [bacillus.10k.mgf](https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf)
 
 After manual download, (optional) verify file integrity:
 
@@ -381,13 +381,13 @@ Execute the command with your desired options. For example:
 
 ```bash
 # Basic evaluation with setting from file config.yaml in default directory
-python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
+python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 ```
 
 ### DeNovo mode:
 
 ```bash
-python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
+python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
 XuanjiNovo supports inference on **multiple input files in a single run**. Imput files can be specified by concatenating file paths with the **"&"**. For example: 

@@ -23,7 +23,7 @@ DOWNLOADS = {
         "mirror_url": "https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_130M_massnet_massivekb.ckpt",
         "sha256": "d909f907aeaa9b215d343b95c6694d85809265ccaabc9f90b1e1b58942cbdcec"
     },
-    "Bacillus.10k.mgf": {
+    "bacillus.10k.mgf": {
         "gdrive_id": "1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT",
         "mirror_url": "https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf",
         "sha256": "47eba8c23197214ca7f40200c53ca2abe96a7824b613377738526353a67264df"
