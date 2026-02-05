@@ -385,10 +385,10 @@ Execute the command with your desired options. For example:
 #### Example 1: MGF input
 ```bash
 # Basic evaluation with setting from file config.yaml in default directory
-Example 1: MGF input
+## Example 1: MGF input
 python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 
-Example 2: MSDT (Parquet) input
+## Example 2: MSDT (Parquet) input
 python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
