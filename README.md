@@ -239,6 +239,7 @@ manual downloads using standard command-line tools such as **wget** or **curl**.
     - `XuanjiNovo_130M_massnet_massivekb.ckpt`: Model finetuned on 30M MassiveKB
 2. **Test Data**:
     - `bacillus.10k.mgf`: Test MGF file
+	- `msdt_demo.zip`: Test MSDT file
 
 #### Automatic Download:
 
