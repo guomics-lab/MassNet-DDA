@@ -712,7 +712,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-        file_path = os.path.join(self.result_output_dir, "denovo1.tsv")
+        file_path = os.path.join(self.result_output_dir, "denovo.tsv")
         headers = "title\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers
