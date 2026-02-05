@@ -299,7 +299,7 @@ Options:
   --mode TEXT                  Operation mode: 'eval' for labeled data evaluation,
                               'denovo' for unlabeled data analysis [required]
   
-  --peak_path TEXT            Path to input peak files, supporting MGF and MSDT (Parquet) formats [required]
+  --peak_path TEXT           Path to input peak files, supporting MGF and MSDT (Parquet) formats [required]
   
   --model TEXT               Path to model checkpoint file [required]
   
