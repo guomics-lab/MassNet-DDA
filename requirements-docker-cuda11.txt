@@ -152,6 +152,6 @@ wrapt==1.14.1
 wurlitzer==3.0.3
 yapf==0.32.0
 yarl==1.8.2
-lmdb
-cupy-cuda11x
-pydantic
+lmdb==1.7.3
+cupy-cuda11x==13.6.0
+pydantic==1.10.24

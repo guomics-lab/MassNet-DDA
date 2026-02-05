@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY . /app/
 
-RUN apt update && apt install -y gcc g++ ninja-build
+RUN apt-get update && apt-get install -y gcc g++ ninja-build
 
 RUN cd /app/ctcdecode-master && pip install .
 
