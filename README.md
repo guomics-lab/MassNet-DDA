@@ -382,7 +382,6 @@ docker run --gpus all --rm \
 Execute the command with your desired options. For example:
 
 ### Evaluation mode:
-#### Example 1: MGF input
 ```bash
 # Basic evaluation with setting from file config.yaml in default directory
 ## Example 1: MGF input
