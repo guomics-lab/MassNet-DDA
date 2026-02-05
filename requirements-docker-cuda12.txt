@@ -155,3 +155,5 @@ yarl==1.8.2
 lmdb==1.7.3
 cupy-cuda12x==13.6.0
 pydantic==1.10.24
+pyarrow==23.0.0
+fastparquet==2025.12.0
