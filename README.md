@@ -316,6 +316,10 @@ Options:
   
   --peak_path TEXT           Path to input peak files, supporting MGF and MSDT (Parquet) formats [required]
   
+  --peak_path_val TEXT       Path to validation data in MGF or MSDT (Parquet) format. Only used in training mode
+  
+  --peak_path_test TEXT      Path to test data in MGF or MSDT (Parquet) format. Only used in training mode
+  
   --model TEXT               Path to model checkpoint file [required]
   
   --config TEXT              Path to config file (default: config.yaml)
@@ -388,7 +392,7 @@ Execute the command with your desired options. For example:
 python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 
 ## Example 2: MSDT (Parquet) input
-python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
+python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt
 ```
 
 ### DeNovo mode:
@@ -408,7 +412,7 @@ In this case, all specified files will be processed sequentially using the same 
 ### Training mode
 
 ```bash
-python -m XuanjiNovo.XuanjiNovo --mode=train --peak_path=./train_file.parquet --peak_path_val=./validation_file.mgf --peak_path_text=./bacillus.mgf  
+python -m XuanjiNovo.XuanjiNovo --mode=train --peak_path=./train_file.parquet --peak_path_val=./validation_file.mgf --peak_path_test=./bacillus.mgf  
 ```
 
 

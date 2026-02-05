@@ -65,11 +65,11 @@ For detailed documentation, visit: https://github.com/path/to/XuanjiNovo
 )
 @click.option(
     "--peak_path_val",
-    help="Path to validation data (MGF format). Only used in training mode.",
+    help="Path to validation data in MGF or MSDT (Parquet) format. Only used in training mode.",
 )
 @click.option(
     "--peak_path_test",
-    help="Path to test data (MGF format). Only used in training mode.",
+    help="Path to test data in MGF or MSDT (Parquet) format. Only used in training mode.",
 )
 @click.option(
     "--config",
