@@ -61,7 +61,7 @@ For detailed documentation, visit: https://github.com/path/to/XuanjiNovo
 @click.option(
     "--peak_path",
     required=True,
-    help="Path to input peak files (MGF format). For training, this is the training data.",
+    help="Path to input peak files, supporting both MGF format and MSDT files (Parquet format). For training, this argument specifies the training dataset.",
 )
 @click.option(
     "--peak_path_val",
