@@ -392,6 +392,9 @@ python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --mod
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
+```bash
+python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
+```
 XuanjiNovo supports inference on **multiple input files in a single run**. Imput files can be specified by concatenating file paths with the **"&"**. For example: 
 ```bash
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path="./sample1.mgf&./sample2.mgf&./sample3.mgf" --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
