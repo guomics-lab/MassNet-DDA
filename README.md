@@ -398,6 +398,14 @@ In this case, all specified files will be processed sequentially using the same 
 
 > **⚠️Note**: The --output argument expects a **directory path** rather than a file path. If this argument is specified, please ensure that the target directory does not already exist, as it will be created during execution.
 
+### Training mode
+
+```bash
+python -m XuanjiNovo.XuanjiNovo --mode=train --peak_path=./train_file.parquet --peak_path_val=./validation_file.mgf --peak_path_text=./bacillus.mgf  
+```
+
+
+
 The model supports both single-GPU and multi-GPU execution. For multi-GPU training and inference, you must use
 `torchrun` instead of `python`:
 
