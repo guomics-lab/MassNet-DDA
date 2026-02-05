@@ -473,4 +473,4 @@ pytest tests/test_denovo.py::test_denovo_process -v -s
 
 ```
 
-For detailed documentation of the MSDT format, please refer to https://guomics.com/software/massnet/exp.html
+For detailed documentation of the MSDT format, please refer to https://guomics.com/software/massnet/msdt.html
