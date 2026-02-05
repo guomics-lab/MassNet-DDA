@@ -389,7 +389,7 @@ Example 1: MGF input
 python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt
 
 Example 2: MSDT (Parquet) input
-python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
+python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./demo2_fp.parquet --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
 ### DeNovo mode:
