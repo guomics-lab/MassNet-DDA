@@ -379,11 +379,13 @@ python -m XuanjiNovo.XuanjiNovo --mode=eval --peak_path=./Bacillus.10k.mgf --mod
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path=./Bacillus.10k.mgf --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
 
-XuanjiNovo supports inference on multiple input files in a single run. Imput files can be specified by concatenating file paths with the "&". For example: 
+XuanjiNovo supports inference on **multiple input files in a single run**. Imput files can be specified by concatenating file paths with the **"&"**. For example: 
 ```bash
 python -m XuanjiNovo.XuanjiNovo --mode=denovo --peak_path="./sample1.mgf&./sample2.mgf&./sample3.mgf" --model=./XuanjiNovo_100M_massnet.ckpt --output ./demo_output
 ```
-In this case, all specified files will be processed sequentially using the same model and configuration, and the inference results from all input files will be aggregated and written to a single output file.
+In this case, all specified files will be processed sequentially using the same model and configuration, and the inference results from all input files will be aggregated and written to a single output file.  
+
+> **⚠️Note**: The --output argument expects a directory path rather than a file path. If this argument is specified, please ensure that the target directory does not already exist, as it will be created during execution.
 
 The model supports both single-GPU and multi-GPU execution. For multi-GPU training and inference, you must use
 `torchrun` instead of `python`:
