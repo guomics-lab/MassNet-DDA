@@ -27,6 +27,11 @@ DOWNLOADS = {
         "gdrive_id": "1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT",
         "mirror_url": "https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf",
         "sha256": "47eba8c23197214ca7f40200c53ca2abe96a7824b613377738526353a67264df"
+    },
+    "msdt_demo.zip": {
+        "gdrive_id": "1IrR8LGbhK9bsd7rr5M4Yi-rig9qCpqxh",
+        "mirror_url": "https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/msdt_demo.zip",
+        "sha256": "a420e63aabb8d490414561e7a5af69004f5f2dd81b8e8d509a730c651917c485"
     }
 }
 
