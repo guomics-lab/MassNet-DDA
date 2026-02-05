@@ -2,6 +2,14 @@
 
 ![xuanji](./assets/Xuanji.png)
 
+### About MassNet-DDA
+
+MassNet-DDA is a large-scale data resource for deep learning–based proteomics, providing curated data-dependent acquisition (DDA) mass spectrometry data across multiple species for AI model development. 
+It defines the Mass Spectrometry DDA Tensor (MSDT), a Parquet-based logical data format designed for standardized data organization, sharing, and long-term storage. Building on this data resource, 
+we developed XuanjiNovo, a non-autoregressive Transformer model for de novo peptide sequencing. XuanjiNovo uses MSDT-formatted datasets as its primary training input and performs an internal conversion 
+to LMDB as a high-performance physical loading format, enabling efficient large-scale training and inference. Trained on 100 million peptide-spectrum matches from MassNet, XuanjiNovo achieves robust and 
+scalable performance across heterogeneous MS/MS datasets.  
+
 ### Platform Support
 
 - **Linux**: Fully supported and tested
