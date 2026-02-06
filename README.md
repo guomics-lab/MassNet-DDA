@@ -44,10 +44,10 @@ You can directly pull the pre-built image from Docker Hub:
 
 ```bash
 # Pull the CUDA 11 version
-docker pull guomics2017/massnet-dda:cuda11_v1.0
+docker pull guomics2017/massnet-dda:cuda11_v1.1
 
 # Pull the CUDA 12 version
-docker pull guomics2017/massnet-dda:cuda12_v1.0
+docker pull guomics2017/massnet-dda:cuda12_v1.1
 
 ```
 
@@ -497,7 +497,7 @@ pre-commit run --all-files
 ## Unit test
 
 To ensure the correctness of core components, we provide unit tests based on the pytest framework.
-
+d
 1. Install pytest:
 
 ```bash
