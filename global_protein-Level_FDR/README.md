@@ -27,13 +27,3 @@ cd ./global_fdr/; python /ajun/massnet/global_protein-Level_FDR/global_protein_i
 ```
 
 ------------------------------------------------------------------------
-
-## 📌 Methodological Background
-
-Protein-level FDR is controlled globally using the **picked group FDR**
-strategy. For methodological details, please refer to the original implementation:
-
-> Käll et al., Picked Group FDR\
-> https://github.com/kusterlab/picked_group_fdr
-
-------------------------------------------------------------------------
