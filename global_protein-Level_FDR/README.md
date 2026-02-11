@@ -1,6 +1,6 @@
 # Global Protein-Level FDR Control
 
-This repository provides a Python script for protein inference with
+We provides a Python script for protein inference with
 **global protein-level FDR control**, implemented using the
 `picked_group_fdr` method from the Käll/Kuster lab.
 
