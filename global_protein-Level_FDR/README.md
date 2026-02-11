@@ -1,7 +1,7 @@
 # Global Protein-Level FDR Control Script
 
-This repository provides a Python script for **protein inference with
-global protein-level FDR control**, implemented using the
+This repository provides a Python script for protein inference with
+**global protein-level FDR control**, implemented using the
 `picked_group_fdr` method from the Käll/Kuster lab.
 
 The script applies the *picked group target--decoy strategy* to control
@@ -36,7 +36,7 @@ pip install picked_group_fdr
 2.  Run the protein-level FDR inference script:
 
 ``` bash
-cd ./global_fdr/; python /ajun/massnet/global_pro_fdr/global_protein_inference_fdr.py
+cd ./global_fdr/; python /ajun/massnet/global_protein-Level_FDR/global_protein_inference_fdr.py
 ```
 
 ------------------------------------------------------------------------
