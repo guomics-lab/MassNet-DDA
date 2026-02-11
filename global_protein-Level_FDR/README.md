@@ -8,14 +8,7 @@ This script applies the *picked group target--decoy strategy* developed by the K
 
 This script relies on the official implementation of:
 
--   **picked_group_fdr**\
-    https://github.com/kusterlab/picked_group_fdr
-
-Install via pip:
-
-``` bash
-pip install picked_group_fdr
-```
+-   **picked_group_fdr**\: https://github.com/kusterlab/picked_group_fdr
 
 ------------------------------------------------------------------------
 
