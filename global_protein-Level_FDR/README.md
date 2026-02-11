@@ -1,12 +1,6 @@
 # Global Protein-Level FDR Control
 
-We provide a Python script for protein inference with
-**global protein-level FDR control**, implemented using the
-`picked_group_fdr` method from the Kuster lab.
-
-The script applies the *picked group target--decoy strategy* to control
-protein-level false discovery rates (FDR) in large-scale proteomics
-datasets.
+This script applies the *picked group target--decoy strategy* developed by the Kuster lab for global protein-level FDR control in proteomics analyses.
 
 ------------------------------------------------------------------------
 
