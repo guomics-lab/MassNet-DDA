@@ -1,4 +1,4 @@
-# Global Protein-Level FDR Control Script
+# Global Protein-Level FDR Control
 
 This repository provides a Python script for protein inference with
 **global protein-level FDR control**, implemented using the
