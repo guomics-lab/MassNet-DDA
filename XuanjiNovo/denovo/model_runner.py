@@ -583,7 +583,7 @@ def _get_devices() -> Union[int, str]:
             operator.attrgetter(device + ".is_available")(torch)()
             for device in ["cuda", "backends.mps"]):
         return -1  # Use all available GPUs
-    elif not (n_workers := n_workers()):
+    elif not (n_workers_run := n_workers()):
         return "auto"
     else:
-        return n_workers
+        return n_workers_run
