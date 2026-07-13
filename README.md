@@ -58,10 +58,10 @@ docker pull guomics2017/massnet-dda:cuda12_v1.1
 cd MassNet-DDA
 
 # CUDA 11 version
-docker build -t massnet-dda:cuda11_v1.0 . -f Dockerfile_cuda11
+docker build -t massnet-dda:cuda11_v1.1 . -f Dockerfile_cuda11
 
 # CUDA 12 version
-docker build -t massnet-dda:cuda12_v1.0 . -f Dockerfile_cuda12
+docker build -t massnet-dda:cuda12_v1.1 . -f Dockerfile_cuda12
 ```
 
 ## Option B: Conda
