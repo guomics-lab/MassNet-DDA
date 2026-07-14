@@ -75,7 +75,7 @@ n_log: 1
 tb_summarywriter:
 
 # Logging configuration
-log_level: "CRITICAL"  # One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_level: "INFO"  # One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 # Neptune logger
 enable_neptune: False

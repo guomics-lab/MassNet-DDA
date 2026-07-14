@@ -79,7 +79,7 @@ For detailed documentation, visit: https://github.com/path/to/XuanjiNovo
 @click.option(
     "--output",
     help="Base output path for logs (.log) and results. Defaults to timestamped file in current directory.",
-    type=click.Path(dir_okay=False),
+    type=click.Path(dir_okay=True),
 )
 @click.option(
     "--pmc-enable/--no-pmc-enable",
@@ -140,8 +140,28 @@ def main(
         )
     else:
         output = os.path.splitext(os.path.abspath(output))[0]
+        output = os.path.join(
+            output,
+            datetime.datetime.now().strftime('%Y%m%d%H%M%S'),
+        )
 
     os.makedirs(output, exist_ok=True)
+    # Tee stdout to log file so PyTorch Lightning's metric tables are captured.
+    log_path = os.path.join(output, f"{os.path.basename(output)}.log")
+    class _Tee:
+        def __init__(self, stream, path):
+            self._stream = stream
+            self._file = open(path, "a", buffering=1)
+        def write(self, data):
+            self._stream.write(data)
+            self._file.write(data)
+        def flush(self):
+            self._stream.flush()
+            self._file.flush()
+        def __getattr__(self, attr):
+            return getattr(self._stream, attr)
+    sys.stdout = _Tee(sys.stdout, log_path)
+    sys.stderr = _Tee(sys.stderr, log_path)
     # Configure logging.
     logging.captureWarnings(True)
     root = logging.getLogger()
@@ -155,7 +175,7 @@ def main(
     console_handler.setLevel(logging.DEBUG)
     console_handler.setFormatter(log_formatter)
     root.addHandler(console_handler)
-    file_handler = logging.FileHandler(f"{output}.log")
+    file_handler = logging.FileHandler(log_path)
     file_handler.setFormatter(log_formatter)
     root.addHandler(file_handler)
     # Disable dependency non-critical log messages.
@@ -163,7 +183,7 @@ def main(
     logging.getLogger("github").setLevel(logging.WARNING)
     logging.getLogger("h5py").setLevel(logging.WARNING)
     logging.getLogger("numba").setLevel(logging.WARNING)
-    logging.getLogger("pytorch_lightning").setLevel(logging.WARNING)
+    logging.getLogger("pytorch_lightning").setLevel(logging.INFO)
     logging.getLogger("torch").setLevel(logging.WARNING)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
@@ -174,20 +194,11 @@ def main(
         )
     config_fn = config
     try:
-        from .config import XuanjiNovoConfig, ConfigLogger
-        
+        from .config import XuanjiNovoConfig
+
         # Load and validate configuration
         config_obj = XuanjiNovoConfig.from_yaml(config_fn)
-        
-        # Set up configuration logging
-        config_logger = ConfigLogger(output)
-        config_paths = config_logger.log_config(config_obj)
-        
-        logger.info(f"Configuration validated and logged:")
-        logger.info(f"  Full config: {config_paths['json']}")
-        logger.info(f"  Summary: {config_paths['summary']}")
-        logger.info(f"  Device config: {config_paths['device']}")
-        
+
         # Convert validated config back to flat dict for backward compatibility
         config2 = config_obj.to_flat_dict()
         

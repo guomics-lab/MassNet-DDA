@@ -206,16 +206,10 @@ def _execute_existing(
     
     # Record metadata before prediction/validation
     # Use model_save_folder_path from config if available
-    if isinstance(config, dict):
-        output_dir = config.get("model_save_folder_path")
-    else:
-        output_dir = config.model_save_folder_path if hasattr(config, 'model_save_folder_path') else None
-    
+    output_dir = config.get("result_output_dir") if isinstance(config, dict) else None
     if not output_dir:
-        # If no output directory specified, use model directory
         output_dir = os.path.dirname(os.path.abspath(model_filename))
-        logger.info(f"Using model directory for metadata: {output_dir}")
-    
+
     # Create a run-specific subdirectory for metadata
     metadata_dir = os.path.join(output_dir, "run_metadata")
     os.makedirs(metadata_dir, exist_ok=True)
@@ -583,7 +577,7 @@ def _get_devices() -> Union[int, str]:
             operator.attrgetter(device + ".is_available")(torch)()
             for device in ["cuda", "backends.mps"]):
         return -1  # Use all available GPUs
-    elif not (n_workers_run := n_workers()):
+    elif not (n_cpu_workers := n_workers()):
         return "auto"
     else:
-        return n_workers_run
+        return n_cpu_workers

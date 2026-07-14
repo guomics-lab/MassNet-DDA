@@ -18,7 +18,7 @@
     ],
     "learning_rate": 0.00035,
     "load_file_name": "./NON351/epoch=5-step=65000.ckpt",
-    "log_level": "CRITICAL",
+    "log_level": "DEBUG",
     "logger": null,
     "mask_schedule": {
       "epoch_decay": 0.01,
@@ -40,13 +40,13 @@
     "n_log": 1,
     "n_nodes": 1,
     "n_peaks": 800,
-    "n_workers": 48,
+    "n_workers": 20,
     "neptune_api_token": null,
     "neptune_project": null,
     "num_sanity_val_steps": 0,
     "precursor_mass_tol": 50.0,
     "predict_batch_size": 64,
-    "random_seed": 7044,
+    "random_seed": 4084,
     "refine_iters": 3,
     "remove_precursor_tol": 1.0,
     "residues": {
@@ -78,14 +78,14 @@
       "W": 186.079313,
       "Y": 163.063329
     },
-    "result_output_dir": "/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001131152",
+    "result_output_dir": "/mnt/shared-storage-user/beam/gzhq/code/MassNet-DDA-main-0703/test_data/result/20260703133113",
     "save_model": false,
     "save_weights_only": false,
     "sync_batchnorm": false,
     "tags": [],
     "tb_summarywriter": null,
     "temp_dir_auto": true,
-    "train_batch_size": 100,
+    "train_batch_size": 400,
     "train_from_resume": false,
     "train_from_scratch": true,
     "val_interval": 1,
@@ -94,10 +94,7 @@
     "weight_decay": 8e-05
   },
   "git_info": {
-    "git_branch": "feature/sept2025-update-output",
-    "git_commit": "24fe5d80ab6174e2558139faa35bf99e0318d82b",
-    "git_dirty": true,
-    "git_remote_url": "https://github.com/guomics-lab/MassNet-DDA.git"
+    "git_info": "Not a git repository"
   },
   "hardware_info": {
     "cpu": {
@@ -114,38 +111,14 @@
         ],
         "name": "NVIDIA H200",
         "total_memory": "140.06 GB"
-      },
-      {
-        "compute_capability": [
-          9,
-          0
-        ],
-        "name": "NVIDIA H200",
-        "total_memory": "140.06 GB"
-      },
-      {
-        "compute_capability": [
-          9,
-          0
-        ],
-        "name": "NVIDIA H200",
-        "total_memory": "140.06 GB"
-      },
-      {
-        "compute_capability": [
-          9,
-          0
-        ],
-        "name": "NVIDIA H200",
-        "total_memory": "140.06 GB"
       }
     ],
     "memory": {
-      "available": "92.55 GB",
-      "total": "97.66 GB"
+      "available": "194.20 GB",
+      "total": "195.31 GB"
     }
   },
-  "model_name": "epoch=695-step=324000.ckpt",
+  "model_name": "XuanjiNovo_100M_massnet.ckpt",
   "software_info": {
     "cuda_version": "12.1",
     "cudnn_version": 8902,
@@ -153,7 +126,6 @@
       "absl-py": "1.3.0",
       "aiohttp": "3.8.3",
       "aiosignal": "1.3.1",
-      "annotated-types": "0.6.0",
       "appdirs": "1.4.4",
       "arrow": "1.2.3",
       "asttokens": "2.0.5",
@@ -190,10 +162,11 @@
       "einops": "0.6.0",
       "entrypoints": "0.4",
       "everett": "3.1.0",
+      "exceptiongroup": "1.3.0",
       "executing": "0.8.3",
       "fastobo": "0.12.2",
       "fastrlock": "0.8.3",
-      "filelock": "3.19.1",
+      "filelock": "3.20.0",
       "flit-core": "3.6.0",
       "fonttools": "4.38.0",
       "fqdn": "1.5.1",
@@ -205,8 +178,9 @@
       "google-auth": "2.6.0",
       "google-auth-oauthlib": "0.4.4",
       "grpcio": "1.74.0",
-      "h5py": "3.8.0",
+      "h5py": "3.15.1",
       "idna": "3.4",
+      "iniconfig": "2.3.0",
       "ipykernel": "6.19.2",
       "ipython": "8.7.0",
       "isoduration": "20.11.0",
@@ -222,14 +196,14 @@
       "kiwisolver": "1.4.4",
       "lark": "1.1.5",
       "lightning-utilities": "0.5.0",
-      "llvmlite": "0.45.0",
-      "lmdb": "1.7.3",
+      "llvmlite": "0.45.1",
+      "lmdb": "1.7.5",
       "lxml": "6.0.2",
       "markdown": "3.4.1",
       "markupsafe": "2.1.1",
       "matchms": "0.18.0",
-      "matplotlib": "3.10.6",
-      "matplotlib-inline": "0.1.7",
+      "matplotlib": "3.10.7",
+      "matplotlib-inline": "0.2.1",
       "monotonic": "1.6",
       "mpmath": "1.3.0",
       "msgpack": "1.0.4",
@@ -238,7 +212,7 @@
       "nest-asyncio": "1.5.6",
       "networkx": "3.1",
       "ninja": "1.13.0",
-      "numba": "0.62.0",
+      "numba": "0.62.1",
       "numpy": "1.26.4",
       "nvidia-cublas-cu12": "12.1.3.1",
       "nvidia-cuda-cupti-cu12": "12.1.105",
@@ -259,9 +233,10 @@
       "pexpect": "4.8.0",
       "pickleshare": "0.7.5",
       "pickydict": "0.4.0",
-      "pillow": "11.3.0",
+      "pillow": "12.0.0",
       "pip": "25.2",
       "platformdirs": "2.5.2",
+      "pluggy": "1.6.0",
       "prompt-toolkit": "3.0.36",
       "protobuf": "3.19.6",
       "psutil": "5.9.4",
@@ -270,8 +245,7 @@
       "pyasn1": "0.4.8",
       "pyasn1-modules": "0.2.8",
       "pycparser": "2.21",
-      "pydantic": "2.11.7",
-      "pydantic-core": "2.33.2",
+      "pydantic": "1.10.24",
       "pygithub": "1.57",
       "pygments": "2.11.2",
       "pyjwt": "2.6.0",
@@ -281,6 +255,7 @@
       "pyrsistent": "0.19.3",
       "pysocks": "1.7.1",
       "pyteomics": "4.5.6",
+      "pytest": "9.0.1",
       "python-dateutil": "2.8.2",
       "pytorch-lightning": "1.8.6",
       "pytorch-ranger": "0.1.1",
@@ -313,6 +288,7 @@
       "tensorboard-plugin-wit": "1.8.1",
       "tensorboardx": "2.5.1",
       "threadpoolctl": "3.1.0",
+      "tomli": "2.3.0",
       "torch": "2.1.0",
       "torch-imputer": "0.1.0",
       "torch-optimizer": "0.3.0",
@@ -322,7 +298,6 @@
       "traitlets": "5.7.1",
       "triton": "2.1.0",
       "typing-extensions": "4.15.0",
-      "typing-inspection": "0.4.0",
       "uri-template": "1.2.0",
       "urllib3": "1.26.13",
       "wcwidth": "0.2.5",
@@ -336,11 +311,11 @@
       "yarl": "1.8.2"
     },
     "python": {
-      "executable": "/home/weijiaqi/miniconda3/envs/XuanjiNovo/bin/python3.11",
+      "executable": "/mnt/shared-storage-user/gaozhiqiang/miniconda3/envs/XuanjiNovo_py310/bin/python3.10",
       "platform": "Linux-5.15.0-89-generic-x86_64-with-glibc2.35",
-      "version": "3.11.13 (main, Jun  5 2025, 13:12:00) [GCC 11.2.0]"
+      "version": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]"
     },
     "pytorch_version": "2.1.0+cu121"
   },
-  "timestamp": "2025-10-01T13:11:59.945003"
+  "timestamp": "2026-07-03T13:31:20.794419"
 }
