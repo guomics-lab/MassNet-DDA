@@ -146,6 +146,9 @@ def main(
         )
 
     os.makedirs(output, exist_ok=True)
+    # In multi-GPU (torchrun) runs each rank is a separate process.
+    # Only rank 0 should write to the shared log file to avoid interleaved output.
+    local_rank = int(os.environ.get("LOCAL_RANK", 0))
     # Tee stdout to log file so PyTorch Lightning's metric tables are captured.
     log_path = os.path.join(output, f"{os.path.basename(output)}.log")
     class _Tee:
@@ -160,8 +163,9 @@ def main(
             self._file.flush()
         def __getattr__(self, attr):
             return getattr(self._stream, attr)
-    sys.stdout = _Tee(sys.stdout, log_path)
-    sys.stderr = _Tee(sys.stderr, log_path)
+    if local_rank == 0:
+        sys.stdout = _Tee(sys.stdout, log_path)
+        sys.stderr = _Tee(sys.stderr, log_path)
     # Configure logging.
     logging.captureWarnings(True)
     root = logging.getLogger()
@@ -175,9 +179,6 @@ def main(
     console_handler.setLevel(logging.DEBUG)
     console_handler.setFormatter(log_formatter)
     root.addHandler(console_handler)
-    file_handler = logging.FileHandler(log_path)
-    file_handler.setFormatter(log_formatter)
-    root.addHandler(file_handler)
     # Disable dependency non-critical log messages.
     logging.getLogger("depthcharge").setLevel(logging.INFO)
     logging.getLogger("github").setLevel(logging.WARNING)
@@ -279,10 +280,11 @@ def main(
     if n_gpus > 1:
         config["train_batch_size"] = config["train_batch_size"] // n_gpus
     
-    logger.info(f"Number of available GPUs: {n_gpus}")
-    if n_gpus > 0:
-        gpu_names = [torch.cuda.get_device_name(i) for i in range(n_gpus)]
-        logger.info(f"GPU devices: {gpu_names}")
+    if local_rank == 0:
+        logger.info(f"Number of available GPUs: {n_gpus}")
+        if n_gpus > 0:
+            gpu_names = [torch.cuda.get_device_name(i) for i in range(n_gpus)]
+            logger.info(f"GPU devices: {gpu_names}")
 
     import random
     if(config["random_seed"]==-1):
@@ -293,16 +295,17 @@ def main(
 
     LightningLite.seed_everything(seed=config["random_seed"], workers=True)
 
-    # Log the active configuration.
-    logger.debug("mode = %s", mode)
-    logger.debug("model = %s", model)
-    logger.debug("peak_path = %s", peak_path)
-    logger.debug("peak_path_val = %s", peak_path_val)
-    logger.debug("peak_path_test = %s", peak_path_test)
-    logger.debug("config = %s", config_fn)
-    logger.debug("output = %s", output)
-    for key, value in config.items():
-        logger.debug("%s = %s", str(key), str(value))
+    # Log the active configuration (only rank 0 to avoid duplicate output in multi-GPU runs).
+    if local_rank == 0:
+        logger.debug("mode = %s", mode)
+        logger.debug("model = %s", model)
+        logger.debug("peak_path = %s", peak_path)
+        logger.debug("peak_path_val = %s", peak_path_val)
+        logger.debug("peak_path_test = %s", peak_path_test)
+        logger.debug("config = %s", config_fn)
+        logger.debug("output = %s", output)
+        for key, value in config.items():
+            logger.debug("%s = %s", str(key), str(value))
 
     # Run XuanjiNovo in the specified mode.
     if mode == "denovo":

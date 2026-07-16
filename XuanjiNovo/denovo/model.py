@@ -711,8 +711,10 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         """
         peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
-        
-        file_path = os.path.join(self.result_output_dir, "denovo.tsv")
+
+        # Each rank writes to its own file to avoid concurrent-write conflicts.
+        # on_predict_epoch_end (rank 0) will merge all rank files into denovo.tsv.
+        file_path = os.path.join(self.result_output_dir, f"denovo_rank{self.global_rank}.tsv")
         headers = "title\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers
@@ -742,9 +744,9 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                 #     answer_is_correct = "incorrect"
                 #each line output this: label (title if label is none), predictions, charge, and confidence score
                 f.write(batch[2][i].replace("\t", " ") + "\t" + sequence + "\t" + str(int(batch[1][i][1])) + "\t" + str(float(inferscores[i])) + "\n")
-                
-                
-        
+
+
+
         return batch[2], batch[1], peptides  #batch[2]: identifier
 
     def on_validation_epoch_end(self) -> None:
@@ -759,8 +761,21 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         """
         Write the predicted peptide sequences and amino acid scores to the
         output file.
+        Rank 0 merges all per-rank files (denovo_rank*.tsv) into denovo.tsv.
         """
-        pass
+        if self.global_rank == 0:
+            import glob
+            final_path = os.path.join(self.result_output_dir, "denovo.tsv")
+            rank_files = sorted(glob.glob(os.path.join(self.result_output_dir, "denovo_rank*.tsv")))
+            with open(final_path, 'w') as fout:
+                fout.write("title\tprediction\tcharge\tscore\n")
+                for rf in rank_files:
+                    with open(rf) as fin:
+                        for line in fin:
+                            if not line.startswith("title\t"):
+                                fout.write(line)
+            for rf in rank_files:
+                os.remove(rf)
 
     def _get_output_peptide_and_scores(
             self, aa_tokens: List[str],
