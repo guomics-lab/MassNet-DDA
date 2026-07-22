@@ -524,7 +524,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             peptides_pred.append(tokens_pred)
 
         aa_precision, aa_recall, pep_recall = evaluate.aa_match_metrics(
-            *evaluate.aa_match_batch(peptides_pred, peptides_true,
+            *evaluate.aa_match_batch(peptides_true, peptides_pred,
                                      self.decoder._peptide_mass.masses))
         
         rand = random.random()
@@ -660,7 +660,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             
             # Calculate overall metrics
             aa_precision, aa_recall, pep_recall = evaluate.aa_match_metrics(
-                *evaluate.aa_match_batch(peptides_pred, peptides_true,
+                *evaluate.aa_match_batch(peptides_true, peptides_pred,
                                        self.decoder._peptide_mass.masses))
             
             # Log overall metrics
