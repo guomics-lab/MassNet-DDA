@@ -1,0 +1,442 @@
+Using MASTER_PORT=24047
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Configuration validated and logged:
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Full config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_full.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Summary: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_summary.txt
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Device config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/device_config.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Configuration validated and logged:
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Full config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_full.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Configuration validated and logged:
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Configuration validated and logged:
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Summary: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_summary.txt
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Full config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_full.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Device config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/device_config.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Full config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_full.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Summary: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_summary.txt
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Summary: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/config_summary.txt
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Device config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/device_config.json
+2025-10-01 13:07:48 [INFO] XuanjiNovo -   Device config: /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748/config_logs/20251001_130748/device_config.json
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mode = train
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_val = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_test = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - random_seed = 5277
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - log_level = CRITICAL
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - enable_neptune = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_batch_size = 100
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_scratch = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - val_interval = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Train the XuanjiNovo model.
+2025-10-01 13:07:48 [INFO] natNovo - Training configuration validated via pydantic
+config validated via pydantic
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Using GPUs: ['0', '1', '2', '3']
+2025-10-01 13:07:48 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Number of available GPUs: 4
+2025-10-01 13:07:48 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 13:07:48 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 13:07:48 [INFO] XuanjiNovo - GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mode = train
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mode = train
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mode = train
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_val = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_val = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_test = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_val = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_test = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - peak_path_test = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - random_seed = 5112
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - random_seed = 3075
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - random_seed = 478
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - PMC_enable = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mass_control_tol = 0.1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_peaks = 800
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_mz = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_mz = 6500.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - min_intensity = 0.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - remove_precursor_tol = 1.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_charge = 10
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - precursor_mass_tol = 50.0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - isotope_error_range = (0, 1)
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_model = 400
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_head = 8
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_feedforward = 1024
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_layers = 9
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dropout = 0.18
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - refine_iters = 3
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - dim_intensity = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - custom_encoder = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_length = 40
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - log_level = CRITICAL
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - log_level = CRITICAL
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_log = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - enable_neptune = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - enable_neptune = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tb_summarywriter = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - log_level = CRITICAL
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - enable_neptune = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_project = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - neptune_api_token = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - tags = []
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warmup_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_iters = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - max_epochs = 150
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - warm_up_epochs = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - learning_rate = 0.00035
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - weight_decay = 8e-05
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_val = 2.5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - gradient_clip_algorithm = norm
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_batch_size = 100
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - accumulate_grad_batches = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_batch_size = 100
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - sync_batchnorm = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - SWA = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_batch_size = 100
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - predict_batch_size = 64
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_scratch = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_beams = 5
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_scratch = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - val_interval = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - logger = None
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - val_interval = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - num_sanity_val_steps = 0
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_scratch = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - val_interval = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_nodes = 1
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_model = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - train_from_resume = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - model_save_folder_path = ./saved_models
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - save_weights_only = False
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - every_n_train_steps = 2500
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Train the XuanjiNovo model.
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - temp_dir_auto = True
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Train the XuanjiNovo model.
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - n_workers = 48
+2025-10-01 13:07:48 [DEBUG] XuanjiNovo - result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA/XuanjiNovo_20251001130748
+2025-10-01 13:07:48 [INFO] natNovo - Training configuration validated via pydantic
+2025-10-01 13:07:48 [INFO] natNovo - Training configuration validated via pydantic
+2025-10-01 13:07:48 [INFO] XuanjiNovo - Train the XuanjiNovo model.
+config validated via pydantic
+config validated via pydantic
+2025-10-01 13:07:48 [INFO] natNovo - Training configuration validated via pydantic
+config validated via pydantic
+2025-10-01 13:07:48 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:48 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:48 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:53 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:53 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:53 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:53 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:57 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:57 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:58 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:07:58 [INFO] XuanjiNovo.denovo.db_index - Reading 1 files...
+2025-10-01 13:08:03 [INFO] natNovo - Recording metadata in: ./saved_models
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'remote', 'get-url', '--all', 'origin'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [INFO] natNovo - Run metadata recorded in ./saved_models/run_metadata.json
+2025-10-01 13:08:03 [INFO] natNovo - Quick summary available in ./saved_models/run_summary.txt
+2025-10-01 13:08:03 [INFO] natNovo - Recording metadata in: ./saved_models
+2025-10-01 13:08:03 [INFO] natNovo - Recording metadata in: ./saved_models
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'remote', 'get-url', '--all', 'origin'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'remote', 'get-url', '--all', 'origin'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [INFO] natNovo - Run metadata recorded in ./saved_models/run_metadata.json
+2025-10-01 13:08:03 [INFO] natNovo - Quick summary available in ./saved_models/run_summary.txt
+2025-10-01 13:08:03 [INFO] natNovo - Recording metadata in: ./saved_models
+2025-10-01 13:08:03 [INFO] natNovo - Run metadata recorded in ./saved_models/run_metadata.json
+2025-10-01 13:08:03 [INFO] natNovo - Quick summary available in ./saved_models/run_summary.txt
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:03 [DEBUG] git.cmd - Popen(['git', 'remote', 'get-url', '--all', 'origin'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/new_test/MassNet-DDA, universal_newlines=False, shell=None, istream=None)
+2025-10-01 13:08:04 [INFO] natNovo - Run metadata recorded in ./saved_models/run_metadata.json
+2025-10-01 13:08:04 [INFO] natNovo - Quick summary available in ./saved_models/run_summary.txt
+
+Validation DataLoader 0:   0%|          | 0/611 [00:00<?, ?it/s][AWarning: string series 'valid/peptides_pair' value was longer than 1000 characters and was truncated. This warning is printed only once per series.
+
+
+Validation DataLoader 0:   0%|          | 1/611 [00:00<05:22,  1.89it/s][A
+Epoch 0:  14%|█▍        | 251/1732 [06:38<39:10,  1.59s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   0%|          | 2/611 [00:00<04:57,  2.05it/s][A
+Epoch 0:  15%|█▍        | 252/1732 [06:38<39:02,  1.58s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   0%|          | 3/611 [00:01<04:49,  2.10it/s][A
+Epoch 0:  15%|█▍        | 253/1732 [06:39<38:54,  1.58s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   1%|          | 4/611 [00:01<04:40,  2.16it/s][A
+Epoch 0:  15%|█▍        | 254/1732 [06:39<38:45,  1.57s/it, loss=2.51, v_num=1091]
+2025-04-28 12:58:11,676 DEBUG [bravado.client/MainProcess] client.__call__ : executeOperations({'experimentId': '9ec7f188-e3a4-43c7-bfd8-d9b49f71235a', 'operations': [{'path': 'monitoring/stdout', 'logStrings': {'entries': [{'value': '\n', 'step': None, 'timestampMilliseconds': 1745816289111}, {'value': '\rValidation:   0%|          | 0/611 [00:00<?, ?it/s]', 'step': None, 'timestampMilliseconds': 1745816289114}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816289115}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816289117}, {'value': '\rValidation DataLoader 0:   0%|          | 0/611 [00:00<?, ?it/s]', 'step': None, 'timestampMilliseconds': 1745816289118}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816289120}, {'value': "Warning: string series 'valid/peptides_pair' value was longer than 1000 characters and was truncated. This warning is printed only once per series.\n", 'step': None, 'timestampMilliseconds': 1745816289635}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816289640}, {'value': '\rValidation DataLoader 0:   0%|          | 1/611 [00:00<05:22,  1.89it/s]', 'step': None, 'timestampMilliseconds': 1745816289641}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816289643}, {'value': '\rEpoch 0:  14%|█▍        | 251/1732 [06:38<39:10,  1.59s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816289644}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816290087}, {'value': '\rValidation DataLoader 0:   0%|          | 2/611 [00:00<04:57,  2.05it/s]', 'step': None, 'timestampMilliseconds': 1745816290090}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816290091}, {'value': '\rEpoch 0:  15%|█▍        | 252/1732 [06:38<39:02,  1.58s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816290096}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816290540}, {'value': '\rValidation DataLoader 0:   0%|          | 3/611 [00:01<04:49,  2.10it/s]', 'step': None, 'timestampMilliseconds': 1745816290541}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816290543}, {'value': '\rEpoch 0:  15%|█▍        | 253/1732 [06:39<38:54,  1.58s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816290544}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816290958}, {'value': '\rValidation DataLoader 0:   1%|          | 4/611 [00:01<04:40,  2.16it/s]', 'step': None, 'timestampMilliseconds': 1745816290960}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816290962}, {'value': '\rEpoch 0:  15%|█▍        | 254/1732 [06:39<38:45,  1.57s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816290963}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816291363}, {'value': '\rValidation DataLoader 0:   1%|          | 5/611 [00:02<04:32,  2.22it/s]', 'step': None, 'timestampMilliseconds': 1745816291365}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816291366}, {'value': '\rEpoch 0:  15%|█▍        | 255/1732 [06:40<38:37,  1.57s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816291368}]}}, {'path': 'valid/peptides_pair', 'logStrings': {'entries': [{'value': "Epoch: 0[([2142.064208984375, 4.0, 536.5233154296875], 'ARPFPDGLAEDLDKGEVSAR', 'KLLLLLLLLLLLLLLLK'), ([1819.923095703125, 3.0, 607.6483154296875], 'SQTQSLNTPGPTLSHPR', 'LLLPPPPLLLLLLR'), ([1107.5340576171875, 2.0, 554.7742919921875], 'VSGVM+15.995TQGASR', 'LLLLLLLLLK'), ([1183.6146240234375, 3.0, 395.54547119140625], 'LEFYELDKK', 'EEEEELLLK'), ([1397.7415771484375, 2.0, 699.8780517578125], 'LTTYAMTVPFVR', 'LLLLELLLLK'), ([1761.818603515625, 2.0, 881.9165649414062], 'DDLTASLVTTDHSEMK', 'LLLLLLLLLLLLLK'), ([925.5059204101562, 2.0, 463.7602233886719], 'YSYLKPR', 'LLLLLLK'), ([2288.000732421875, 3.0, 763.6741943359375], 'MEFTSSC+57.021PNVSERNFDNVR', 'LLLLLLLLLLLLLLLLK'), ([1711.7987060546875, 2.0, 856.9066162109375], 'FDLNSPWEAFPAYR', 'LLLLLELLLLLLK'), ([867.5555419921875, 2.0, 434.7850341796875], 'VLVLAPTR', 'LLLLLLK'), ([1182.7034912109375, 2.0, 592.3590087890625], 'PFGLTPPTLLK', 'LLLLLLLLLR'), ([1315.634521484375, 2.0, 658.8245239257812], 'NELESYAYSLK', 'LLLLLLLLLK'), ([1460.72692871093", 'step': None, 'timestampMilliseconds': 1745816289633}, {'value': "Epoch: 0[([1214.6600341796875, 2.0, 608.3372802734375], 'NAGVEGSLLVEK', 'LLELEELLLLK'), ([2106.1123046875, 3.0, 703.0447387695312], 'VKYEETVFYGLQYLLNK', 'LEELEELEELLLLLLK'), ([1734.8564453125, 3.0, 579.292724609375], 'SLEELRLEDYQANR', 'LLLLLLLLR'), ([1096.6358642578125, 2.0, 549.3251953125], 'AGLLKPQTGGR', 'LLLLLLLK'), ([979.5248413085938, 2.0, 490.7696838378906], 'LGHPAPNFK', 'LLLLLLK'), ([1494.669189453125, 3.0, 499.2303466796875], 'GHTSFVNSC+57.021YPAR', 'LLLPLLLLLLLK'), ([1086.5391845703125, 2.0, 544.27685546875], 'LGDLAPQDMK', 'LLLLLLLLLK'), ([1250.66650390625, 3.0, 417.8960876464844], 'LEDLEVLQHR', 'LLLLLLLLLLK'), ([1576.6527099609375, 3.0, 526.5581665039062], 'FDEFFSEGC+57.021APGSK', 'LLLLLLLLLLLLK'), ([1412.7139892578125, 4.0, 354.1857604980469], 'QDPAHPHVVATGGK', 'HLLHHHHLLLLLK'), ([1074.60009765625, 2.0, 538.3073120117188], 'DVELLYPVK', 'LLLLLLLK'), ([992.5044555664062, 2.0, 497.2594909667969], 'SLGVSNFNR', 'LLLLLLLK'), ([1653.922119140625, 2.0, 827.9683227539062], 'LSAMPVPFT", 'step': None, 'timestampMilliseconds': 1745816290084}, {'value': "Epoch: 0[([1267.6875, 2.0, 634.8510131835938], 'LPANALLGEENK', 'LLLLLLLLLR'), ([881.34033203125, 2.0, 441.67742919921875], 'FYM+15.995GHDP', 'LLLLKK'), ([1122.595458984375, 2.0, 562.3049926757812], 'LSLSGEYNLK', 'LLLLLLLLR'), ([1417.6575927734375, 2.0, 709.8360595703125], 'FDDKPDYSYLR', 'LLLLLLLK'), ([813.4989013671875, 2.0, 407.7567138671875], 'SLSPLLGK', 'LLLLLLK'), ([1278.603759765625, 3.0, 427.2085266113281], 'LGEHMEEHGLK', 'LLLLLLLLLK'), ([1025.44775390625, 2.0, 513.7311401367188], 'QAC+57.021TPM+15.995FR', 'LLLLLLK'), ([1612.805908203125, 3.0, 538.6092529296875], 'QLVLEVMHNLM+15.995DR', 'ELLLLLLLLR'), ([1225.622802734375, 2.0, 613.8186645507812], 'LSFDSQLSTTK', 'LLLLLLLLLK'), ([1821.9310302734375, 2.0, 911.9727783203125], 'VQVAALQASPPLDQDDR', 'LLLLLLLLLLLLLLLK'), ([813.4989013671875, 2.0, 407.7567138671875], 'SLSPLLGK', 'LLLLLLK'), ([1666.8638916015625, 2.0, 834.439208984375], 'LEPSTVVPAQTPWDK', 'LLLLLLLLLLLLLK'), ([1612.805908203125, 3.0, 538.6092529296875], 'QLVLEVMHNLM+15.995D", 'step': None, 'timestampMilliseconds': 1745816290536}, {'value': "Epoch: 0[([3175.478515625, 4.0, 794.8768920898438], 'LLEM+15.995NLM+15.995HAPQVADALLGNQM+15.995FTHYDR', 'LLLLLLLLLLLLLLLLLLLLK'), ([848.4774780273438, 2.0, 425.2460021972656], 'YSTPLLR', 'LLLLLLR'), ([1226.613525390625, 2.0, 614.3140258789062], 'LLDHVC+57.021VESR', 'LLLLLLK'), ([1153.552978515625, 3.0, 385.52490234375], 'VPDFSDYRR', 'KLLLLLLLK'), ([1375.647216796875, 3.0, 459.55633544921875], 'MDYVELNLDHK', 'LLLLLLLLLK'), ([1228.630126953125, 2.0, 615.3223266601562], 'SLEDPLGLNSGK', 'LLLLLLLLLK'), ([1140.5538330078125, 2.0, 571.2841796875], 'LGLHEDSTNR', 'LLLLLLLR'), ([1428.5849609375, 3.0, 477.2022705078125], 'EASC+57.021HDAVAGC+57.021PR', 'LLLLLLLLLLK'), ([1573.713623046875, 2.0, 787.8640747070312], 'DGETFQLM+15.995ELYGR', 'LLLLLLLLLLLK'), ([1125.6986083984375, 2.0, 563.8565673828125], 'LPGLLMTLLR', 'LGEEEEEELK'), ([1056.5926513671875, 2.0, 529.3035888671875], 'NLGTALAELR', 'LLLLLLLLR'), ([1257.660400390625, 2.0, 629.8374633789062], 'KSVQLDPSEQK', 'LLLLLLELLK'), ([1072.5303955078125,", 'step': None, 'timestampMilliseconds': 1745816290955}, {'value': "Epoch: 0[([1417.7474365234375, 2.0, 709.8809814453125], 'GFSVVADTPELQR', 'LLLLLLLLLLK'), ([1680.7764892578125, 2.0, 841.3955078125], 'QGWWYFMPPAPSSK', 'LLLLLLLLLLLLK'), ([2345.169921875, 2.0, 1173.59228515625], 'AVTESLNQLLM+15.995LC+57.021TQQAPGQK', 'SSSSSSSSSEEAAEEEK'), ([1296.6300048828125, 2.0, 649.322265625], 'M+15.995ALDVELATYR', 'LLLLELLLLLK'), ([926.5545654296875, 2.0, 464.2845458984375], 'TQLSLLPR', 'LLLLLLR'), ([1713.7333984375, 2.0, 857.8739624023438], 'M+15.995LVEC+57.021VMNNATC+57.021TR', 'LLELLLLLLLLLLK'), ([1340.6895751953125, 2.0, 671.35205078125], 'TPAAAAAMNLASPR', 'AAAALLLLLLLLLK'), ([1101.614013671875, 3.0, 368.2119140625], 'LKSDTAAAAVR', 'LALALLLLLK'), ([1364.648193359375, 2.0, 683.3313598632812], 'LAATQQNWDYR', 'LLLLLLLLLLK'), ([1265.6077880859375, 2.0, 633.8111572265625], 'C+57.021FLVGADNVGSK', 'LLLLLLLLLLK'), ([2191.1015625, 2.0, 1096.55810546875], 'TNLLVNYLPQNM+15.995TQEELR', 'LLLLLLLLLLLLLK'), ([1413.6441650390625, 2.0, 707.829345703125], 'KFEDATVQSDM+15.995K', ", 'step': None, 'timestampMilliseconds': 1745816291360}]}}], '_request_options': {'connect_timeout': 30, 'timeout': None, 'headers': {'X-Neptune-LegacyClient': 'false'}}})
+
+Validation DataLoader 0:   1%|          | 5/611 [00:02<04:32,  2.22it/s][A
+Epoch 0:  15%|█▍        | 255/1732 [06:40<38:37,  1.57s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   1%|          | 6/611 [00:02<04:28,  2.25it/s][A
+Epoch 0:  15%|█▍        | 256/1732 [06:40<38:29,  1.56s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   1%|          | 7/611 [00:03<04:25,  2.28it/s][A
+Epoch 0:  15%|█▍        | 257/1732 [06:40<38:21,  1.56s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   1%|▏         | 8/611 [00:03<04:30,  2.23it/s][A
+Epoch 0:  15%|█▍        | 258/1732 [06:41<38:13,  1.56s/it, loss=2.51, v_num=1091]
+2025-04-28 12:58:13,369 DEBUG [bravado.client/MainProcess] client.__call__ : ping({'experimentId': '9ec7f188-e3a4-43c7-bfd8-d9b49f71235a', '_request_options': {'timeout': 10, 'connect_timeout': 10}})
+
+Validation DataLoader 0:   1%|▏         | 9/611 [00:04<04:36,  2.18it/s][A
+Epoch 0:  15%|█▍        | 259/1732 [06:42<38:06,  1.55s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   2%|▏         | 10/611 [00:04<04:42,  2.13it/s][A
+Epoch 0:  15%|█▌        | 260/1732 [06:42<37:59,  1.55s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   2%|▏         | 11/611 [00:05<04:43,  2.12it/s][A
+Epoch 0:  15%|█▌        | 261/1732 [06:43<37:51,  1.54s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   2%|▏         | 12/611 [00:05<04:46,  2.09it/s][A
+Epoch 0:  15%|█▌        | 262/1732 [06:43<37:44,  1.54s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   2%|▏         | 13/611 [00:06<04:50,  2.06it/s][A
+Epoch 0:  15%|█▌        | 263/1732 [06:44<37:37,  1.54s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   2%|▏         | 14/611 [00:06<04:52,  2.04it/s][A
+Epoch 0:  15%|█▌        | 264/1732 [06:44<37:30,  1.53s/it, loss=2.51, v_num=1091]
+2025-04-28 12:58:17,083 DEBUG [bravado.client/MainProcess] client.__call__ : executeOperations({'experimentId': '9ec7f188-e3a4-43c7-bfd8-d9b49f71235a', 'operations': [{'path': 'monitoring/cpu', 'logFloats': {'entries': [{'value': 37.8, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_0', 'logFloats': {'entries': [{'value': 14.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_1', 'logFloats': {'entries': [{'value': 50.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_2', 'logFloats': {'entries': [{'value': 76.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_3', 'logFloats': {'entries': [{'value': 14.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_4', 'logFloats': {'entries': [{'value': 56.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_5', 'logFloats': {'entries': [{'value': 17.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_6', 'logFloats': {'entries': [{'value': 67.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_7', 'logFloats': {'entries': [{'value': 14.0, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_0', 'logFloats': {'entries': [{'value': 37.07269287109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_1', 'logFloats': {'entries': [{'value': 37.10003662109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_2', 'logFloats': {'entries': [{'value': 36.86175537109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_3', 'logFloats': {'entries': [{'value': 36.95550537109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_4', 'logFloats': {'entries': [{'value': 37.24066162109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_5', 'logFloats': {'entries': [{'value': 37.51995849609375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_6', 'logFloats': {'entries': [{'value': 37.54144287109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/gpu_memory_7', 'logFloats': {'entries': [{'value': 35.60784912109375, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/memory', 'logFloats': {'entries': [{'value': 218.70040893554688, 'step': None, 'timestampMilliseconds': 1745816293283}]}}, {'path': 'monitoring/stdout', 'logStrings': {'entries': [{'value': '\n', 'step': None, 'timestampMilliseconds': 1745816291777}, {'value': '\rValidation DataLoader 0:   1%|          | 6/611 [00:02<04:28,  2.25it/s]', 'step': None, 'timestampMilliseconds': 1745816291779}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816291781}, {'value': '\rEpoch 0:  15%|█▍        | 256/1732 [06:40<38:29,  1.56s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816291782}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816292187}, {'value': '\rValidation DataLoader 0:   1%|          | 7/611 [00:03<04:25,  2.28it/s]', 'step': None, 'timestampMilliseconds': 1745816292189}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816292190}, {'value': '\rEpoch 0:  15%|█▍        | 257/1732 [06:40<38:21,  1.56s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816292192}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816292700}, {'value': '\rValidation DataLoader 0:   1%|▏         | 8/611 [00:03<04:30,  2.23it/s]', 'step': None, 'timestampMilliseconds': 1745816292701}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816292703}, {'value': '\rEpoch 0:  15%|█▍        | 258/1732 [06:41<38:13,  1.56s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816292704}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816293244}, {'value': '\rValidation DataLoader 0:   1%|▏         | 9/611 [00:04<04:36,  2.18it/s]', 'step': None, 'timestampMilliseconds': 1745816293247}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816293249}, {'value': '\rEpoch 0:  15%|█▍        | 259/1732 [06:42<38:06,  1.55s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816293250}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816293809}, {'value': '\rValidation DataLoader 0:   2%|▏         | 10/611 [00:04<04:42,  2.13it/s]', 'step': None, 'timestampMilliseconds': 1745816293811}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816293812}, {'value': '\rEpoch 0:  15%|█▌        | 260/1732 [06:42<37:59,  1.55s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816293814}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816294303}, {'value': '\rValidation DataLoader 0:   2%|▏         | 11/611 [00:05<04:43,  2.12it/s]', 'step': None, 'timestampMilliseconds': 1745816294305}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816294307}, {'value': '\rEpoch 0:  15%|█▌        | 261/1732 [06:43<37:51,  1.54s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816294308}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816294854}, {'value': '\rValidation DataLoader 0:   2%|▏         | 12/611 [00:05<04:46,  2.09it/s]', 'step': None, 'timestampMilliseconds': 1745816294856}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816294858}, {'value': '\rEpoch 0:  15%|█▌        | 262/1732 [06:43<37:44,  1.54s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816294859}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816295421}, {'value': '\rValidation DataLoader 0:   2%|▏         | 13/611 [00:06<04:50,  2.06it/s]', 'step': None, 'timestampMilliseconds': 1745816295422}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816295424}, {'value': '\rEpoch 0:  15%|█▌        | 263/1732 [06:44<37:37,  1.54s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816295425}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816295972}, {'value': '\rValidation DataLoader 0:   2%|▏         | 14/611 [00:06<04:52,  2.04it/s]', 'step': None, 'timestampMilliseconds': 1745816295973}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816295975}, {'value': '\rEpoch 0:  15%|█▌        | 264/1732 [06:44<37:30,  1.53s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816295976}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816296574}, {'value': '\rValidation DataLoader 0:   2%|▏         | 15/611 [00:07<04:56,  2.01it/s]', 'step': None, 'timestampMilliseconds': 1745816296576}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816296577}, {'value': '\rEpoch 0:  15%|█▌        | 265/1732 [06:45<37:23,  1.53s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816296579}]}}, {'path': 'valid/peptides_pair', 'logStrings': {'entries': [{'value': "Epoch: 0[([2067.903076171875, 5.0, 414.587890625], 'FAAGHDAEGSQSHVHFDEK', 'HLRHHHHEHEHEEEEER'), ([1211.52490234375, 2.0, 606.7697143554688], 'VDTQDQGMYR', 'LLLLLLLLLR'), ([1144.5645751953125, 2.0, 573.28955078125], 'NLDEDELLGK', 'LLLLLLLLR'), ([1111.6136474609375, 2.0, 556.8140869140625], 'EPLDLVEGLK', 'LLLLLLLLK'), ([1077.5484619140625, 2.0, 539.781494140625], 'SLLSVQC+57.021GSK', 'LLLLLLLLK'), ([1477.6298828125, 3.0, 493.550537109375], 'HSGDFGADAQGAMSK', 'ALALLLLLLLLLLR'), ([863.4035034179688, 2.0, 432.7090148925781], 'GDLPDGYK', 'LLLLLK'), ([1155.6265869140625, 2.0, 578.820556640625], 'TAAVSDPLNLR', 'LLLLLLLLK'), ([1159.610107421875, 2.0, 580.8123168945312], 'ELLWSWAQK', 'LLLLLLLK'), ([784.5054321289062, 2.0, 393.2599792480469], 'LAEVLLK', 'LLLLLLK'), ([1527.7568359375, 2.0, 764.8856811523438], 'NLEPEWAAAATEVK', 'LLLLLLLLLLLLK'), ([1232.60986328125, 2.0, 617.3121948242188], 'TLPSGLDDYPR', 'LLLLLLLLLK'), ([1076.5274658203125, 2.0, 539.27099609375], 'LREEYPDR', 'LLLLLLR'), ([985.48376", 'step': None, 'timestampMilliseconds': 1745816291773}, {'value': "Epoch: 0[([2183.081298828125, 3.0, 728.7010498046875], 'KLEFEQFLPMM+15.995QALSNNK', 'ELELLLLLLLLLLLLLK'), ([2096.12841796875, 3.0, 699.7167358398438], 'QATVGDVNTDRPGLLDLKGK', 'LLLLLLLLLLLLLLR'), ([969.5164184570312, 2.0, 485.7654724121094], 'GLRDPWAR', 'LLLLLLK'), ([1791.871826171875, 2.0, 896.9431762695312], 'LEAELGNMQGLVEDFK', 'LLLLLLLLLLLK'), ([1179.5760498046875, 2.0, 590.7952880859375], 'LTAEDLYEAR', 'LLELLLLLLK'), ([948.4651489257812, 2.0, 475.2398376464844], 'GANLNAFDK', 'LLLLLLLK'), ([1160.6136474609375, 2.0, 581.3140869140625], 'ELTALAPSTMK', 'LLLLLLLLLK'), ([1326.6705322265625, 2.0, 664.342529296875], 'FVFSLVDAMNGK', 'AAAALALLAAK'), ([839.392822265625, 2.0, 420.70367431640625], 'AFNADFR', 'LLLLLR'), ([1757.841552734375, 3.0, 586.9544677734375], 'SDDRDHLNSLQALM+15.995K', 'LLELLLLLLLLR'), ([920.4720458984375, 2.0, 461.2432861328125], 'DNLAYGLR', 'LLLLLLLR'), ([1123.4644775390625, 2.0, 562.739501953125], 'AEMM+15.995ELNDR', 'LELLLLK'), ([1443.7626953125, 3.0, 482.2615051269531],", 'step': None, 'timestampMilliseconds': 1745816292183}, {'value': "Epoch: 0[([1486.7584228515625, 2.0, 744.386474609375], 'VDQELMNLLQER', 'LEEEEELLLLK'), ([2520.24560546875, 3.0, 841.0891723632812], 'AKELDPTNMTYLTNQAAVHFEK', 'LLLLLLLLLLLLLLLLLLLLK'), ([1208.657958984375, 2.0, 605.3362426757812], 'VHLQTQQEVK', 'LLLLLLLLK'), ([1126.6014404296875, 2.0, 564.3079833984375], 'WTGMLLGPPR', 'LLLLLLLLR'), ([1624.781005859375, 2.0, 813.3977661132812], 'GM+15.995GQVLPPHLM+15.995EER', 'LLELLLEEELLK'), ([1037.570068359375, 2.0, 519.7922973632812], 'GLVYLFNGR', 'LLLLLLLR'), ([1412.7113037109375, 2.0, 707.3629150390625], 'GGVFYLPDYLNR', 'LLLLLLLLK'), ([2521.12646484375, 4.0, 631.2888793945312], 'ADM+15.995EDLM+15.995SSKDDVGKNVHELEK', 'LLLLLELLLLLLLLLR'), ([1305.6021728515625, 2.0, 653.808349609375], 'AQEEWTTGAWK', 'LLEELLLLLLLK'), ([1712.77294921875, 3.0, 571.9315795898438], 'ADATNVNNWHWTER', 'LLLLLLLLLLLLK'), ([1268.5948486328125, 2.0, 635.3046875], 'GSDSLAYDKGEK', 'LLLLLLLLLR'), ([1831.899169921875, 2.0, 916.9568481445312], 'NLEAVQTDFSNEPLQK', 'LLLLLLLLLLLLLLLLK')", 'step': None, 'timestampMilliseconds': 1745816292697}, {'value': "Epoch: 0[([1528.71142578125, 3.0, 510.5777282714844], 'NSAEETWMVLHGR', 'ELLLLLLLLK'), ([1724.9417724609375, 2.0, 863.4781494140625], 'AAVLLEQERQQELAK', 'EEELELLLLLLLR'), ([1651.90478515625, 2.0, 826.9596557617188], 'GLFVQSVMPYLVATK', 'LSEELEEELLLK'), ([1746.93359375, 2.0, 874.4740600585938], 'VDPVVLMQVLHPDGTK', 'LLLLLLLLLLLK'), ([3593.604736328125, 5.0, 719.7282104492188], 'NEC+57.021FLQHKDDNPSLPPFERPEAEAMC+57.021TSFK', 'LLLKLEKKEEELEEELLLLLLLR'), ([1149.6756591796875, 3.0, 384.23248291015625], 'LLLETHLPSK', 'LLLLLLLLK'), ([1667.872314453125, 3.0, 556.9647216796875], 'LPMNKEWPANLDLK', 'LLELLLLLLLLK'), ([1423.7615966796875, 3.0, 475.5944519042969], 'LREQMEQHLKL', 'EEEEEEEEKK'), ([1214.6514892578125, 2.0, 608.3330078125], 'NAGVEGSLLVEK', 'LLLLLELLLLK'), ([936.5399169921875, 2.0, 469.2772216796875], 'VALEPGVPR', 'LLLLLLK'), ([1001.5167846679688, 2.0, 501.7656555175781], 'ELGSLDNVR', 'LLLLLLLK'), ([1448.7265625, 3.0, 483.9161071777344], 'QKLTAEFEEAQR', 'EEEEEELLLK'), ([2209.009521484375, 3", 'step': None, 'timestampMilliseconds': 1745816295418}, {'value': "Epoch: 0[([1979.9698486328125, 2.0, 990.9921875], 'LGQQPQQPGAPPQQDYTK', 'LLLLLLLLLLLLLLLK'), ([1995.024169921875, 3.0, 666.0153198242188], 'TFHLFYYLLSGAGEHLK', 'LLLLLLLLLLLLLLLK'), ([1995.0189208984375, 4.0, 499.7619934082031], 'TFHLFYYLLSGAGEHLK', 'LLLLLLLLLLLLLLLK'), ([1829.85009765625, 3.0, 610.957275390625], 'QLEEAEEEAQRANASR', 'EELEELLLLLLLLLK'), ([3237.511962890625, 5.0, 648.5096435546875], 'EAFNM+15.995LDQNRDGFLDKEDLHDMLASLGK', 'LLLLLLLLLLLLLLLLLLR'), ([914.4332275390625, 2.0, 458.223876953125], '+42.011TEADVNPK', 'LLLLLLLK'), ([1621.67578125, 3.0, 541.5658569335938], 'MTGSEFDFEEM+15.995KR', 'LELLLLLLLLK'), ([1712.7640380859375, 2.0, 857.3892822265625], 'ADATNVNNWHWTER', 'LLLLLLLLLLLLK'), ([1479.76513671875, 2.0, 740.8898315429688], 'QAYLDKLEELMK', 'LLLLLLLLLK'), ([1153.553955078125, 3.0, 385.5252380371094], 'VPDFSDYRR', 'KLLLLLLLK'), ([1539.72314453125, 2.0, 770.8688354492188], 'LLVTDMSDAEQYR', 'LLLLLLLLLLK'), ([1126.5960693359375, 2.0, 564.3052978515625], 'WTGMLLGPPR', 'LLLLLL", 'step': None, 'timestampMilliseconds': 1745816295969}, {'value': "Epoch: 0[([2282.171630859375, 3.0, 761.7311401367188], 'LLTHPNFNGNTLDNDLMLLK', 'LLLLLLLLLLLLLLLLLK'), ([808.48095703125, 2.0, 405.24774169921875], 'TLPHLTK', 'LLLLLK'), ([2669.201171875, 4.0, 668.3075561523438], 'MDPEGSKLLDDAMAADKSDEWFAK', 'LLLLLLLLLLLLLLLLLLLLK'), ([2486.240478515625, 4.0, 622.5673828125], 'AVTEQGHELSNEERNLLSVAYK', 'LLLLELLLEELLLLLLLLLR'), ([1498.8262939453125, 3.0, 500.61602783203125], 'PSKGPLQSVQVFGR', 'LKHLLLLLLLLK'), ([1431.77734375, 3.0, 478.266357421875], 'MGPLLNRPHLER', 'EEEEELEEELR'), ([2606.19775390625, 3.0, 869.7398071289062], 'NSNVNNNRSQEPNNMFVQTTGGGK', 'LLLLLLLLLLLLLLLLLLLLLLLLK'), ([1538.8123779296875, 4.0, 385.7103576660156], 'LC+57.021VLHEKTPVSEK', 'HHHHHHHHHHHK'), ([1521.766845703125, 2.0, 761.8906860351562], 'VAAETQSPSLFGSTK', 'LLLLLLLLLLLLK'), ([1283.7080078125, 2.0, 642.8612670898438], 'SLVPAAELLESR', 'LLLELLLLLK'), ([944.4569091796875, 2.0, 473.2357177734375], 'QLAAEEER', 'LLLLLLLR'), ([2302.25439453125, 3.0, 768.4254150390625], 'VLSVETPLSLQAHPNKEL", 'step': None, 'timestampMilliseconds': 1745816296571}]}}], '_request_options': {'connect_timeout': 30, 'timeout': None, 'headers': {'X-Neptune-LegacyClient': 'false'}}})
+
+Validation DataLoader 0:   2%|▏         | 15/611 [00:07<04:56,  2.01it/s][A
+Epoch 0:  15%|█▌        | 265/1732 [06:45<37:23,  1.53s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   3%|▎         | 16/611 [00:08<05:00,  1.98it/s][A
+Epoch 0:  15%|█▌        | 266/1732 [06:45<37:17,  1.53s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   3%|▎         | 17/611 [00:08<05:00,  1.97it/s][A
+Epoch 0:  15%|█▌        | 267/1732 [06:46<37:10,  1.52s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   3%|▎         | 18/611 [00:09<05:01,  1.97it/s][A
+Epoch 0:  15%|█▌        | 268/1732 [06:47<37:03,  1.52s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   3%|▎         | 19/611 [00:09<05:01,  1.96it/s][A
+Epoch 0:  16%|█▌        | 269/1732 [06:47<36:56,  1.52s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   3%|▎         | 20/611 [00:10<05:02,  1.96it/s][A
+Epoch 0:  16%|█▌        | 270/1732 [06:48<36:49,  1.51s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   3%|▎         | 21/611 [00:10<05:02,  1.95it/s][A
+Epoch 0:  16%|█▌        | 271/1732 [06:48<36:43,  1.51s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   4%|▎         | 22/611 [00:11<05:01,  1.95it/s][A
+Epoch 0:  16%|█▌        | 272/1732 [06:49<36:36,  1.50s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   4%|▍         | 23/611 [00:11<05:03,  1.93it/s][A
+Epoch 0:  16%|█▌        | 273/1732 [06:49<36:29,  1.50s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   4%|▍         | 24/611 [00:12<05:03,  1.93it/s][A
+Epoch 0:  16%|█▌        | 274/1732 [06:50<36:23,  1.50s/it, loss=2.51, v_num=1091]
+2025-04-28 12:58:22,540 DEBUG [bravado.client/MainProcess] client.__call__ : executeOperations({'experimentId': '9ec7f188-e3a4-43c7-bfd8-d9b49f71235a', 'operations': [{'path': 'monitoring/stdout', 'logStrings': {'entries': [{'value': '\n', 'step': None, 'timestampMilliseconds': 1745816297203}, {'value': '\rValidation DataLoader 0:   3%|▎         | 16/611 [00:08<05:00,  1.98it/s]', 'step': None, 'timestampMilliseconds': 1745816297205}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816297206}, {'value': '\rEpoch 0:  15%|█▌        | 266/1732 [06:45<37:17,  1.53s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816297208}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816297725}, {'value': '\rValidation DataLoader 0:   3%|▎         | 17/611 [00:08<05:00,  1.97it/s]', 'step': None, 'timestampMilliseconds': 1745816297727}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816297728}, {'value': '\rEpoch 0:  15%|█▌        | 267/1732 [06:46<37:10,  1.52s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816297730}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816298267}, {'value': '\rValidation DataLoader 0:   3%|▎         | 18/611 [00:09<05:01,  1.97it/s]', 'step': None, 'timestampMilliseconds': 1745816298269}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816298270}, {'value': '\rEpoch 0:  15%|█▌        | 268/1732 [06:47<37:03,  1.52s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816298271}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816298801}, {'value': '\rValidation DataLoader 0:   3%|▎         | 19/611 [00:09<05:01,  1.96it/s]', 'step': None, 'timestampMilliseconds': 1745816298803}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816298804}, {'value': '\rEpoch 0:  16%|█▌        | 269/1732 [06:47<36:56,  1.52s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816298805}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816299332}, {'value': '\rValidation DataLoader 0:   3%|▎         | 20/611 [00:10<05:02,  1.96it/s]', 'step': None, 'timestampMilliseconds': 1745816299333}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816299334}, {'value': '\rEpoch 0:  16%|█▌        | 270/1732 [06:48<36:49,  1.51s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816299336}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816299876}, {'value': '\rValidation DataLoader 0:   3%|▎         | 21/611 [00:10<05:02,  1.95it/s]', 'step': None, 'timestampMilliseconds': 1745816299878}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816299880}, {'value': '\rEpoch 0:  16%|█▌        | 271/1732 [06:48<36:43,  1.51s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816299881}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816300390}, {'value': '\rValidation DataLoader 0:   4%|▎         | 22/611 [00:11<05:01,  1.95it/s]', 'step': None, 'timestampMilliseconds': 1745816300391}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816300393}, {'value': '\rEpoch 0:  16%|█▌        | 272/1732 [06:49<36:36,  1.50s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816300394}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816300999}, {'value': '\rValidation DataLoader 0:   4%|▍         | 23/611 [00:11<05:03,  1.93it/s]', 'step': None, 'timestampMilliseconds': 1745816301001}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816301002}, {'value': '\rEpoch 0:  16%|█▌        | 273/1732 [06:49<36:29,  1.50s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816301004}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816301521}, {'value': '\rValidation DataLoader 0:   4%|▍         | 24/611 [00:12<05:03,  1.93it/s]', 'step': None, 'timestampMilliseconds': 1745816301522}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816301524}, {'value': '\rEpoch 0:  16%|█▌        | 274/1732 [06:50<36:23,  1.50s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816301525}, {'value': '\n', 'step': None, 'timestampMilliseconds': 1745816302059}, {'value': '\rValidation DataLoader 0:   4%|▍         | 25/611 [00:12<05:03,  1.93it/s]', 'step': None, 'timestampMilliseconds': 1745816302061}, {'value': '\x1b[A', 'step': None, 'timestampMilliseconds': 1745816302062}, {'value': '\rEpoch 0:  16%|█▌        | 275/1732 [06:50<36:16,  1.49s/it, loss=2.51, v_num=1091]', 'step': None, 'timestampMilliseconds': 1745816302064}]}}, {'path': 'valid/peptides_pair', 'logStrings': {'entries': [{'value': "Epoch: 0[([1099.4969482421875, 2.0, 550.7557373046875], '+42.011SNNSFTNFK', 'LLLLLLLK'), ([1947.0283203125, 3.0, 650.0167236328125], 'TFAEALRLGSEVYHNLK', 'ELLLELLELLLLLLK'), ([1482.847412109375, 3.0, 495.28973388671875], 'LRVTPVDGLEGTVK', 'LLLLLLLLLLLLK'), ([2275.99658203125, 2.0, 1139.005615234375], 'LGTQPDSASSTYQENYEQMK', 'LLLLLLLLLLLLLLK'), ([1091.4947509765625, 2.0, 546.754638671875], 'DVENNLNM+15.995K', 'LLLLLLLLR'), ([1454.707275390625, 2.0, 728.3609008789062], 'YQEVTNNLEFAK', 'LLLLEELLLK'), ([2275.99658203125, 2.0, 1139.005615234375], 'LGTQPDSASSTYQENYEQMK', 'LLLLLLLLLLLLLLK'), ([1953.858154296875, 3.0, 652.2933349609375], '+42.011MDSEVAALVLDNGSGM+15.995C+57.021K', 'LLLLLLLLLLLLLLLLLLK'), ([1356.7431640625, 3.0, 453.2549743652344], 'ENRGLNVVETVK', 'LELELLLLLK'), ([1366.7052001953125, 2.0, 684.35986328125], 'HLQQPLSAMNTK', 'LLLLLLLLLLK'), ([1326.6285400390625, 3.0, 443.2167663574219], 'ESVNTFREM+15.995AK', 'LLLLLLLLK'), ([940.501708984375, 2.0, 471.25811767578125], 'TGDLHTLGK', '", 'step': None, 'timestampMilliseconds': 1745816297200}, {'value': "Epoch: 0[([1812.88720703125, 3.0, 605.302978515625], 'EVGGGHGC+57.021TVLFPQEVK', 'LLLLLLLLLLLLLLLK'), ([1729.840087890625, 3.0, 577.62060546875], 'GFC+57.021FLTFKEEEPVK', 'LEELELELLLLLK'), ([1352.640869140625, 2.0, 677.3276977539062], 'VM+15.995EAFEQAERK', 'EEEELLLLLK'), ([1129.5809326171875, 2.0, 565.7977294921875], 'EM+15.995LGGELLPR', 'LLLEEELLR'), ([991.5015258789062, 2.0, 496.7580261230469], 'QLM+15.995TLENK', 'LLLLLLK'), ([1218.6126708984375, 2.0, 610.3135986328125], 'GQPLC+57.021VLSAM+15.995K', 'LLLLLLLR'), ([1867.8572998046875, 2.0, 934.9359130859375], 'QLQLQLDNQNDPEEGQ', 'LLLLLLLLLLLLR'), ([1135.5762939453125, 2.0, 568.79541015625], 'LEFEDGSVLK', 'LLLLLLLLK'), ([1474.780517578125, 2.0, 738.3975219726562], 'FLEQQNQVLQTK', 'LLLLLLLLLLK'), ([833.5039672851562, 2.0, 417.7592468261719], 'LNVLFTK', 'SLLLLK'), ([1315.630859375, 2.0, 658.8226928710938], 'NELESYAYSLK', 'LLLLLLLLLK'), ([833.5039672851562, 2.0, 417.7592468261719], 'LNVLFTK', 'SLLLLK'), ([1543.8262939453125, 3.0, 515.6160", 'step': None, 'timestampMilliseconds': 1745816297722}, {'value': "Epoch: 0[([2076.12451171875, 2.0, 1039.069580078125], 'TLAGLVVQLLQFQEDAFGK', 'LLLLLLLLLLLLLLLLLK'), ([1841.8758544921875, 3.0, 614.9658813476562], 'LMDPNLVGNEHYDVAR', 'LLLLLLLLLLLLLLLK'), ([1691.8990478515625, 2.0, 846.956787109375], 'HLQLALRNDEELNK', 'LLLLLLLLLLLLLLK'), ([1519.770263671875, 2.0, 760.8923950195312], 'TAEAQLAYELQGAR', 'LLLLLLLLLLLLK'), ([1308.7889404296875, 2.0, 655.4017333984375], 'KAGRLPEQLLGK', 'ELELLLLLK'), ([865.5068969726562, 2.0, 433.7607116699219], 'VVFGLFGK', 'LLLLLLK'), ([1540.8753662109375, 3.0, 514.6323852539062], 'DGGAQLLFRPLLNK', 'LLEEEEELLELLLK'), ([1953.055908203125, 3.0, 652.02587890625], 'DLPDPYVSVLLLPDKNR', 'LLLLELEELLLLLLLK'), ([1728.878662109375, 3.0, 577.3001708984375], 'EASTLLDRPAPQFER', 'LLLLLLLLLLLLLK'), ([1648.8115234375, 3.0, 550.611083984375], 'AFGFSHLEALLDDSK', 'LLLLLLLLLLLLLK'), ([1403.8157958984375, 3.0, 468.94586181640625], 'HRPLNLGPFVVR', 'KLLLLLLLLLK'), ([1500.6944580078125, 3.0, 501.2387390136719], 'SLQDFQEDLHNR', 'LLLLLLLLLLR'), ([145", 'step': None, 'timestampMilliseconds': 1745816298264}, {'value': "Epoch: 0[([1201.7183837890625, 3.0, 401.5800476074219], 'TLLPSPPPRPK', 'LKLKLLLKLR'), ([1188.587890625, 2.0, 595.3012084960938], 'VGVGPGSVC+57.021TTR', 'GGLLLLLLLLK'), ([844.4998779296875, 2.0, 423.2572021484375], 'LATLSVNK', 'LLLLLK'), ([1921.944580078125, 3.0, 641.6554565429688], 'TLNDELELLEGMKFDR', 'LLELELLLLLLLLLK'), ([1242.6944580078125, 2.0, 622.3544921875], 'VYQPPAQVTLK', 'LLLLLLLLLK'), ([949.5717163085938, 2.0, 475.7931213378906], 'AGLLQPPVR', 'LLLLLLK'), ([1951.923828125, 3.0, 651.6485595703125], 'KKMEDSVGC+57.021LETAEEVK', 'LLLLLLLLLLLLLLLK'), ([2436.215087890625, 3.0, 813.0789794921875], 'SVTEQGAELSNEERNLLSVAYK', 'LLELLLEELLLLLLLLLK'), ([1294.7476806640625, 3.0, 432.5898132324219], 'KLLLDPSSPPTK', 'LLKLLLLLLK'), ([2468.192626953125, 4.0, 618.055419921875], 'M+15.995VTTEC+57.021PQFVQNLNLENLFR', 'LLLLLLLLLLLLLLLLLLK'), ([1295.57861328125, 2.0, 648.7965698242188], 'LQAQM+15.995KDC+57.021MR', 'LLLLLLLLLK'), ([949.5717163085938, 2.0, 475.7931213378906], 'AGLLQPPVR', 'LLLLLLK'), (", 'step': None, 'timestampMilliseconds': 1745816298799}, {'value': "Epoch: 0[([1383.730712890625, 2.0, 692.8726196289062], 'FFVAPFPEVFGK', 'LLLLLLLLLK'), ([1662.802001953125, 3.0, 555.2745971679688], 'ESNLDRLNEQGNFK', 'LLLLLLLLLLLLK'), ([1576.8017578125, 2.0, 789.4081420898438], 'FGGGNPELLTQMVSK', 'LLLLLLLLLLLLK'), ([857.4628295898438, 2.0, 429.7386779785156], 'QAELAAQK', 'LLLLLLLR'), ([1637.941650390625, 2.0, 819.9780883789062], 'LLLLDPATGELQLSR', 'LLLLLLLLLLLLR'), ([1107.605224609375, 3.0, 370.208984375], 'ALTQTGGPHVK', 'LLLLLLLLLK'), ([1431.7064208984375, 2.0, 716.8604736328125], 'EFQAPLGSEEGLR', 'LLLLLLLLLLLK'), ([1089.5689697265625, 3.0, 364.1969299316406], 'RPYDLDRR', 'KLLELLLR'), ([1353.771728515625, 2.0, 677.8931274414062], 'LVALVDVLDQNR', 'LLLLLLLLLLK'), ([1840.9716796875, 3.0, 614.6644897460938], 'LHLFPDEYLPEDLLK', 'ELKLELELELELLK'), ([1896.863525390625, 3.0, 633.2951049804688], 'LDHDGALLDVDEDDVEK', 'LLLLLLLLLLLLLLK'), ([3071.38427734375, 3.0, 1024.802001953125], 'KLYDYC+57.021DVPQC+57.021AAPSFDC+57.021GKPQVEPK', 'LLLLLPLLLLLLLLLLLLLLLLLK'), ", 'step': None, 'timestampMilliseconds': 1745816299328}, {'value': "Epoch: 0[([756.4751586914062, 2.0, 379.2448425292969], 'DGLLVLK', 'LLLLLLK'), ([1666.861328125, 3.0, 556.627685546875], 'DAVLYFSESLVPTAR', 'LLLLLLLLLLLLK'), ([1176.5665283203125, 2.0, 589.29052734375], 'GQQLVM+15.995M+15.995PNK', 'LLLLLLLK'), ([1114.6629638671875, 3.0, 372.56158447265625], 'LLDLLESGKK', 'LLLLLLLLLK'), ([1012.655029296875, 3.0, 338.5589294433594], 'VLRPFLLR', 'LLLLLLLLR'), ([840.4398193359375, 2.0, 421.2271728515625], 'GFELTFK', 'LLLLLK'), ([1187.6400146484375, 3.0, 396.88726806640625], 'SAEFLLHMLK', 'EEEELEELR'), ([2254.159912109375, 4.0, 564.5472412109375], 'VLEDRDHYLPNTLNPVFGR', 'LLLLLLLLLLLLLLLLLK'), ([1522.7569580078125, 4.0, 381.6965026855469], 'PMSFHPPHYLAAR', 'LLLLLLLLLLLLLK'), ([1789.8533935546875, 2.0, 895.9339599609375], 'AQGM+15.995PEGGGALAEGFQVR', 'ALGSSEEEELLLLLK'), ([1759.8951416015625, 3.0, 587.6389770507812], 'GLDRYNPENLATLER', 'LLLELLLLLLLK'), ([1384.744384765625, 2.0, 693.3794555664062], 'DLDVALLVGSMPR', 'LLLLLLLLLLK'), ([1256.5897216796875, 2.0, 629.", 'step': None, 'timestampMilliseconds': 1745816299873}, {'value': "Epoch: 0[([1066.5150146484375, 2.0, 534.2647705078125], 'M+15.995DELQLFR', 'LLLLLLLK'), ([1931.0460205078125, 4.0, 483.7687683105469], 'QLHQELPSHGVPLLNHL', 'LLHHKHHHHKHHHKKK'), ([1163.50634765625, 2.0, 582.7604370117188], 'SNGEFWDPGR', 'LLLLLLLLK'), ([1602.91650390625, 3.0, 535.312744140625], 'GAELLEVLHSLPAVR', 'EEPELLELLLLR'), ([1183.65283203125, 2.0, 592.8336791992188], 'VAEQVLNAVNK', 'LELLLLLLK'), ([1326.67919921875, 2.0, 664.3468627929688], 'FVFSLVDAMNGK', 'SLLLLLLLLLK'), ([1487.7550048828125, 2.0, 744.884765625], 'TVLDPVTGDLSDTR', 'LLLLLLLLLLLLK'), ([1729.885498046875, 3.0, 577.6357421875], 'DPTNPFRFPNLGVEK', 'LLLLLLLLLLLLLLK'), ([1814.03076171875, 3.0, 605.6842041015625], 'TVGALQVLGTEAQSSLLK', 'LEELLLLLELLLLELLK'), ([905.4578247070312, 2.0, 453.7361755371094], 'RAAVAASSSS', 'ASSSSSSSR'), ([1091.4971923828125, 2.0, 546.755859375], 'DNLAEDLM+15.995R', 'LLLLLLLR'), ([1691.897705078125, 4.0, 423.981689453125], 'HLQLALRNDEELNK', 'LELELLLLLLLLLLK'), ([976.5371704101562, 2.0, 489.275848", 'step': None, 'timestampMilliseconds': 1745816300387}, {'value': "Epoch: 0[([1057.604736328125, 3.0, 353.54217529296875], 'KLDEEALLK', 'KLLLLLLK'), ([1691.9036865234375, 2.0, 846.9591064453125], 'HLQLALRNDEELNK', 'LLLLLLLLLLLLLK'), ([1349.61181640625, 2.0, 675.8131713867188], 'STNLDASENTGNK', 'LLLLLLLLLR'), ([1710.854248046875, 3.0, 571.2919921875], 'AHMGMFTELALLYSK', 'LEELELLLLLLLK'), ([1207.6143798828125, 2.0, 604.814453125], 'ELQTQYDALK', 'LLLLLLLLK'), ([1578.8232421875, 2.0, 790.4188842773438], 'YLLNLNLEPFSEK', 'LLLLLLLLLLK'), ([1353.6717529296875, 3.0, 452.2311706542969], 'LMGNLGAADLDHK', 'LLLLLLLLLLLK'), ([1440.7076416015625, 2.0, 721.361083984375], 'AGVNFSEFTGVWK', 'LLLLLLLLLK'), ([1371.828125, 2.0, 686.9213256835938], 'LLHLPLNNLLVGG', 'LLLLLLLLLLK'), ([2994.38232421875, 3.0, 999.1347045898438], 'SGDAALVDMVPGKPMC+57.021VESFSDYPPLGR', 'LLLLLLLLLLLLLLLLLLLLLLK'), ([1576.872802734375, 3.0, 526.6315307617188], 'AQPSVVLSAAHTVAAR', 'AAAALLLLLLLLLLK'), ([1432.7535400390625, 2.0, 717.384033203125], 'PAYFQRPENALK', 'LLLLLLLLLK'), ([967.4173583984375, 2", 'step': None, 'timestampMilliseconds': 1745816300996}, {'value': "Epoch: 0[([2935.46044921875, 4.0, 734.8723754882812], 'LTHTDLKPENLLFVQSDYTEAYNPK', 'LLLLELELLLLLLLLLLLLLLR'), ([1790.732177734375, 2.0, 896.3733520507812], 'GGSGGSYGGGGSGGGYGGGSGSR', 'GGGGGGGGGGGGGGGLLLLLLLLK'), ([1823.9307861328125, 2.0, 912.97265625], 'LYQEVELASVDAFQGR', 'LLLLLLLLLLLLLLLK'), ([1353.7510986328125, 3.0, 452.25762939453125], 'LDDLVRPYVHK', 'LLELLLLLLLK'), ([1740.8465576171875, 2.0, 871.4305419921875], 'VMQQNLVYYQYHR', 'LLLEELLLLLLK'), ([1315.67041015625, 2.0, 658.8424682617188], 'LLEDQQESLNK', 'LLLLLLLLLK'), ([2549.176025390625, 2.0, 1275.5953369140625], 'LC+57.021YVALDFEQEMATAASSSSLEK', 'LLLLLLLLLLLLLLLLLK'), ([885.4458618164062, 2.0, 443.7301940917969], 'SFAVGMFK', 'LLLLLLK'), ([1567.892822265625, 3.0, 523.63818359375], 'LASQANLAQVLAELK', 'LLLLLLLLLLLLK'), ([1172.6466064453125, 2.0, 587.33056640625], 'NQTLTENLLK', 'LLLELLLLK'), ([901.5228881835938, 2.0, 451.7687072753906], 'PFLWLAR', 'LLLLLK'), ([1141.57958984375, 2.0, 571.7970581054688], 'GEVLDPTAANR', 'LLLLLLLK'), (", 'step': None, 'timestampMilliseconds': 1745816301518}, {'value': "Epoch: 0[([2549.18017578125, 3.0, 850.7340087890625], 'LC+57.021YVALDFEQEMATAASSSSLEK', 'ALLAELEALLLLLLLLLLLR'), ([1009.64404296875, 3.0, 337.5552673339844], 'RTPALLALR', 'KAALLLLK'), ([1121.577880859375, 2.0, 561.7962036132812], 'TTFEDLLQR', 'LLLLLLK'), ([2397.23046875, 3.0, 800.0840454101562], 'DSLPVTELSASGPFESHDLLRK', 'LLLLLLLLLLLLLLLLK'), ([1833.7938232421875, 2.0, 917.9041748046875], 'EENSTEEQALEDQNAK', 'LLLELLLLLLLLLK'), ([914.4371948242188, 2.0, 458.2258605957031], '+42.011TEADVNPK', 'LLLLLLLR'), ([3244.597412109375, 4.0, 812.1566162109375], 'DLFDM+15.995KPFEDALRVPPPPQSVSM+15.995AEQLR', 'LLLLLLLLLLLLLLLLLLLLLLK'), ([1572.88525390625, 2.0, 787.4498901367188], 'SSAVVVDALPVFLEK', 'LLLLLLLLLLLK'), ([1130.6697998046875, 2.0, 566.3421630859375], 'RLDLTLSSVK', 'LLLLLLLLR'), ([878.4729614257812, 2.0, 440.2437438964844], 'LFQALC+57.021K', 'LLLLLK'), ([1011.6232299804688, 2.0, 506.8188781738281], 'NRQALLAVK', 'LEELLLLK'), ([1248.55029296875, 3.0, 417.190673828125], 'TM+15.995AQHEELM+15.99", 'step': None, 'timestampMilliseconds': 1745816302056}]}}], '_request_options': {'connect_timeout': 30, 'timeout': None, 'headers': {'X-Neptune-LegacyClient': 'false'}}})
+
+Validation DataLoader 0:   4%|▍         | 25/611 [00:12<05:03,  1.93it/s][A
+Epoch 0:  16%|█▌        | 275/1732 [06:50<36:16,  1.49s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   4%|▍         | 26/611 [00:13<05:03,  1.93it/s][A
+Epoch 0:  16%|█▌        | 276/1732 [06:51<36:10,  1.49s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   4%|▍         | 27/611 [00:13<05:02,  1.93it/s][A
+Epoch 0:  16%|█▌        | 277/1732 [06:51<36:03,  1.49s/it, loss=2.51, v_num=1091]
+2025-04-28 12:58:23,742 DEBUG [bravado.client/MainProcess] client.__call__ : ping({'experimentId': '9ec7f188-e3a4-43c7-bfd8-d9b49f71235a', '_request_options': {'timeout': 10, 'connect_timeout': 10}})
+
+Validation DataLoader 0:   5%|▍         | 28/611 [00:14<05:00,  1.94it/s][A
+Epoch 0:  16%|█▌        | 278/1732 [06:52<35:56,  1.48s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   5%|▍         | 29/611 [00:14<04:59,  1.94it/s][A
+Epoch 0:  16%|█▌        | 279/1732 [06:52<35:49,  1.48s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   5%|▍         | 30/611 [00:15<04:57,  1.95it/s][A
+Epoch 0:  16%|█▌        | 280/1732 [06:53<35:43,  1.48s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   5%|▌         | 31/611 [00:15<04:55,  1.96it/s][A
+Epoch 0:  16%|█▌        | 281/1732 [06:53<35:36,  1.47s/it, loss=2.51, v_num=1091]
+
+Validation DataLoader 0:   5%|▌         | 32/611 [00:16<04:55,  1.96it/s][A
+Epoch 0:  16%|█▋        | 282/1732 [06:54<35:29,  1.47s/it, loss=2.51, v_num=1091]
+

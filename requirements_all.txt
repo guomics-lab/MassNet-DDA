@@ -1,0 +1,8 @@
+
+-r requirements.txt
+
+# GitHub repo (ctcdecode)
+git+https://github.com/WayenVan/ctcdecode.git@master#egg=ctcdecode
+
+# Local repo (editable install)
+-e ./imputer-pytorch

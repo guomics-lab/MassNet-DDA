@@ -1,0 +1,296 @@
+2025-10-01 10:23:50,743 WARNING [XuanjiNovo/MainProcess] XuanjiNovo.main : Pydantic not available, falling back to basic config validation
+2025-10-01 10:23:50,748 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:23:50,784 WARNING [XuanjiNovo/MainProcess] XuanjiNovo.main : Pydantic not available, falling back to basic config validation
+2025-10-01 10:23:50,789 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:23:50,808 WARNING [XuanjiNovo/MainProcess] XuanjiNovo.main : Pydantic not available, falling back to basic config validation
+2025-10-01 10:23:50,812 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:23:50,812 WARNING [XuanjiNovo/MainProcess] XuanjiNovo.main : Pydantic not available, falling back to basic config validation
+2025-10-01 10:23:50,817 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Using GPUs: ['0', '1', '2', '3']
+2025-10-01 10:23:50,967 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Number of available GPUs: 4
+2025-10-01 10:23:50,982 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Number of available GPUs: 4
+2025-10-01 10:23:50,984 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Number of available GPUs: 4
+2025-10-01 10:23:50,987 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Number of available GPUs: 4
+2025-10-01 10:23:51,424 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mode = denovo
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_val = None
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_test = None
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : random_seed = 5692
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : PMC_enable = True
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mass_control_tol = 0.1
+2025-10-01 10:23:51,424 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_peaks = 800
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_mz = 1.0
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_mz = 6500.0
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_intensity = 0.0
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : remove_precursor_tol = 1.0
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_charge = 10
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : precursor_mass_tol = 50.0
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : isotope_error_range = (0, 1)
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_model = 400
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_head = 8
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_feedforward = 1024
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_layers = 9
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dropout = 0.18
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : refine_iters = 3
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_intensity = None
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : custom_encoder = None
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_length = 40
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_log = 1
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tb_summarywriter = None
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : log_level = CRITICAL
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : enable_neptune = True
+2025-10-01 10:23:51,425 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_project = None
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_api_token = None
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tags = []
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warmup_iters = None
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_iters = None
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_epochs = 150
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warm_up_epochs = 1
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : learning_rate = 0.00035
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : weight_decay = 8e-05
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_val = 2.5
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_algorithm = norm
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : accumulate_grad_batches = 1
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : sync_batchnorm = False
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : SWA = False
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_batch_size = 700
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : predict_batch_size = 64
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_beams = 5
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : logger = None
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : num_sanity_val_steps = 0
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_scratch = False
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_nodes = 1
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_model = False
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_resume = False
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model_save_folder_path = ./saved_models
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_weights_only = False
+2025-10-01 10:23:51,426 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : every_n_train_steps = 2500
+2025-10-01 10:23:51,426 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : temp_dir_auto = True
+2025-10-01 10:23:51,427 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_workers = 48
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,427 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Predict peptide sequences with XuanjiNovo.
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mode = denovo
+2025-10-01 10:23:51,427 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : GPU devices: ['NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200', 'NVIDIA H200']
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mode = denovo
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_val = None
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_test = None
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_val = None
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_test = None
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : random_seed = 9587
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : PMC_enable = True
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mode = denovo
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mass_control_tol = 0.1
+2025-10-01 10:23:51,427 WARNING [natNovo/MainProcess] model_runner._execute_existing : Pydantic not available, skipping additional config validation
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model = /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : random_seed = 4182
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_peaks = 800
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/bacillus.10k.mgf
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : PMC_enable = True
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_mz = 1.0
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mass_control_tol = 0.1
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_mz = 6500.0
+2025-10-01 10:23:51,427 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_val = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_intensity = 0.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : peak_path_test = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_peaks = 800
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : remove_precursor_tol = 1.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : config = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo/config.yaml
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_mz = 1.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_charge = 10
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : output = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_mz = 6500.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : precursor_mass_tol = 50.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : random_seed = 3954
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_intensity = 0.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : isotope_error_range = (0, 1)
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : PMC_enable = True
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : remove_precursor_tol = 1.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_model = 400
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mass_control_tol = 0.1
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_charge = 10
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_head = 8
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : load_file_name = ./NON351/epoch=5-step=65000.ckpt
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : precursor_mass_tol = 50.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_feedforward = 1024
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_peaks = 800
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : isotope_error_range = (0, 1)
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_layers = 9
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_mz = 1.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_model = 400
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dropout = 0.18
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_mz = 6500.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_head = 8
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : refine_iters = 3
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : min_intensity = 0.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_feedforward = 1024
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : remove_precursor_tol = 1.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_layers = 9
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_intensity = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_charge = 10
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dropout = 0.18
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : custom_encoder = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : precursor_mass_tol = 50.0
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : refine_iters = 3
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_length = 40
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : isotope_error_range = (0, 1)
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_model = 400
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_intensity = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_head = 8
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : custom_encoder = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_log = 1
+2025-10-01 10:23:51,428 INFO [xuanjinovo/MainProcess] model.__init__ : PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_feedforward = 1024
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_length = 40
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tb_summarywriter = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_layers = 9
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : log_level = CRITICAL
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dropout = 0.18
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : enable_neptune = True
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_log = 1
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : refine_iters = 3
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_project = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tb_summarywriter = None
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : mask_schedule = {'initial_peek': 0.93, 'epoch_decay': 0.01, 'min_peek': 0.0}
+2025-10-01 10:23:51,428 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_api_token = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : log_level = CRITICAL
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : dim_intensity = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tags = []
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : enable_neptune = True
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : custom_encoder = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warmup_iters = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_project = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_length = 40
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_iters = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_api_token = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_epochs = 150
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tags = []
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : residues = {'G': 57.021464, 'A': 71.037114, 'S': 87.032028, 'P': 97.052764, 'V': 99.068414, 'T': 101.04767, 'C+57.021': 160.030649, 'L': 113.084064, 'I': 113.084064, 'N': 114.042927, 'D': 115.026943, 'Q': 128.058578, 'K': 128.094963, 'E': 129.042593, 'M': 131.040485, 'H': 137.058912, 'F': 147.068414, 'R': 156.101111, 'Y': 163.063329, 'W': 186.079313, 'M+15.995': 147.0354, 'N+0.984': 115.026943, 'Q+0.984': 129.042594, '+42.011': 42.010565, '+43.006': 43.005814, '-17.027': -17.026549, '+43.006-17.027': 25.980265}
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warm_up_epochs = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warmup_iters = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_log = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : learning_rate = 0.00035
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_iters = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tb_summarywriter = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : weight_decay = 8e-05
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_epochs = 150
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : log_level = CRITICAL
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_val = 2.5
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warm_up_epochs = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : enable_neptune = True
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_algorithm = norm
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : learning_rate = 0.00035
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_project = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : accumulate_grad_batches = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : weight_decay = 8e-05
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : neptune_api_token = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : sync_batchnorm = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_val = 2.5
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : tags = []
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : SWA = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_algorithm = norm
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warmup_iters = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_batch_size = 700
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : accumulate_grad_batches = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_iters = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : predict_batch_size = 64
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : sync_batchnorm = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : max_epochs = 150
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_beams = 5
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : SWA = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : warm_up_epochs = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : logger = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_batch_size = 700
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : learning_rate = 0.00035
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : num_sanity_val_steps = 0
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : predict_batch_size = 64
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : weight_decay = 8e-05
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_scratch = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_beams = 5
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_val = 2.5
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_nodes = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : logger = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : gradient_clip_algorithm = norm
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_model = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : num_sanity_val_steps = 0
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : accumulate_grad_batches = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_resume = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_scratch = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : sync_batchnorm = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model_save_folder_path = ./saved_models
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_nodes = 1
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : SWA = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_weights_only = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_model = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_batch_size = 700
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : every_n_train_steps = 2500
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_resume = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : predict_batch_size = 64
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : temp_dir_auto = True
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model_save_folder_path = ./saved_models
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_beams = 5
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_workers = 48
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_weights_only = False
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : logger = None
+2025-10-01 10:23:51,429 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : every_n_train_steps = 2500
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : num_sanity_val_steps = 0
+2025-10-01 10:23:51,430 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Predict peptide sequences with XuanjiNovo.
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : temp_dir_auto = True
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_scratch = False
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_workers = 48
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_nodes = 1
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_model = False
+2025-10-01 10:23:51,430 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Predict peptide sequences with XuanjiNovo.
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : train_from_resume = False
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : model_save_folder_path = ./saved_models
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : save_weights_only = False
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : every_n_train_steps = 2500
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : temp_dir_auto = True
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : n_workers = 48
+2025-10-01 10:23:51,430 DEBUG [XuanjiNovo/MainProcess] XuanjiNovo.main : result_output_dir = /mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA/XuanjiNovo_20251001102350
+2025-10-01 10:23:51,430 INFO [XuanjiNovo/MainProcess] XuanjiNovo.main : Predict peptide sequences with XuanjiNovo.
+2025-10-01 10:23:51,430 WARNING [natNovo/MainProcess] model_runner._execute_existing : Pydantic not available, skipping additional config validation
+2025-10-01 10:23:51,430 WARNING [natNovo/MainProcess] model_runner._execute_existing : Pydantic not available, skipping additional config validation
+2025-10-01 10:23:51,430 WARNING [natNovo/MainProcess] model_runner._execute_existing : Pydantic not available, skipping additional config validation
+2025-10-01 10:23:51,431 INFO [xuanjinovo/MainProcess] model.__init__ : PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:23:51,431 INFO [xuanjinovo/MainProcess] model.__init__ : PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:23:51,431 INFO [xuanjinovo/MainProcess] model.__init__ : PMC enabled: True, Mass control tolerance: 0.1
+2025-10-01 10:23:51,538 DEBUG [fsspec.local/MainProcess] local.__init__ : open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,541 DEBUG [fsspec.local/MainProcess] local.__init__ : open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,541 DEBUG [fsspec.local/MainProcess] local.__init__ : open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,546 DEBUG [fsspec.local/MainProcess] local.__init__ : open file: /mnt/shared-storage-user/beam/zhangxiang/pptm/xusheng/MasNet_100M_Cont/epoch=695-step=324000.ckpt
+2025-10-01 10:23:51,894 INFO [XuanjiNovo.denovo.db_index/MainProcess] db_index.__init__ : Reading 1 files...
+2025-10-01 10:23:51,904 INFO [XuanjiNovo.denovo.db_index/MainProcess] db_index.__init__ : Reading 1 files...
+2025-10-01 10:23:51,904 INFO [XuanjiNovo.denovo.db_index/MainProcess] db_index.__init__ : Reading 1 files...
+2025-10-01 10:23:51,904 INFO [XuanjiNovo.denovo.db_index/MainProcess] db_index.__init__ : Reading 1 files...
+2025-10-01 10:23:57,345 INFO [natNovo/MainProcess] model_runner._execute_existing : Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:23:57,345 INFO [natNovo/MainProcess] model_runner._execute_existing : Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:23:57,345 INFO [natNovo/MainProcess] model_runner._execute_existing : Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:23:57,349 DEBUG [git.cmd/MainProcess] cmd.execute : Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:23:57,349 DEBUG [git.cmd/MainProcess] cmd.execute : Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:23:57,349 DEBUG [git.cmd/MainProcess] cmd.execute : Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
+2025-10-01 10:23:57,417 INFO [natNovo/MainProcess] model_runner._execute_existing : Recording metadata in: ./saved_models/run_metadata
+2025-10-01 10:23:57,419 DEBUG [git.cmd/MainProcess] cmd.execute : Popen(['git', 'cat-file', '--batch-check'], cwd=/mnt/shared-storage-user/beam/denovo/Scaling/XIangDia2/MassNet-DDA, universal_newlines=False, shell=None, istream=<valid stream>)
