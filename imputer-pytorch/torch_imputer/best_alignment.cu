@@ -75,14 +75,14 @@ C10_LAUNCH_BOUNDS_2((std::is_same<scalar_t, float>::value ? 1024 : 896), 1)
 
   // bookkeeping
   int64_t b = threadIdx.y + blockIdx.y * blockDim.y;
+  if (b >= batch_size)
+    return;
+
   int64_t input_length = input_lengths[b];
   int64_t target_length = target_lengths[b];
   int64_t lp_batch_offset = b * lp_batch_stride;
   int64_t la_batch_offset = b * la_batch_stride;
   int64_t tg_batch_offset = tg_batch_offsets[b];
-
-  if (b >= batch_size)
-    return;
 
   // first row (t=0), the three equations for alpha_1 above eq (6)
   for (int64_t block_s = 0; block_s < 2 * max_target_length + 1;

@@ -76,15 +76,15 @@ C10_LAUNCH_BOUNDS_2((std::is_same<scalar_t, float>::value ? 1024 : 896), 1)
 
   // bookkeeping
   int64_t b = threadIdx.y + blockIdx.y * blockDim.y;
+  if (b >= batch_size)
+    return;
+
   int64_t input_length = input_lengths[b];
   int64_t target_length = target_lengths[b];
   int64_t lp_batch_offset = b * lp_batch_stride;
   int64_t la_batch_offset = b * la_batch_stride;
   int64_t tg_batch_offset = tg_batch_offsets[b];
   int64_t fe_batch_offset = b * fe_batch_stride;
-
-  if (b >= batch_size)
-    return;
 
   target_t force_emit;
 
@@ -354,15 +354,15 @@ C10_LAUNCH_BOUNDS_2((std::is_same<scalar_t, float>::value ? 1024 : 896), 1)
 
   int64_t b = threadIdx.y + blockIdx.y * blockDim.y;
 
+  if (b >= batch_size)
+    return;
+
   int64_t input_length = input_lengths[b];
   int64_t target_length = target_lengths[b];
   int64_t lp_batch_offset = b * lp_batch_stride;
   int64_t lb_batch_offset = b * lb_batch_stride;
   int64_t tg_batch_offset = tg_batch_offsets[b];
   int64_t fe_batch_offset = b * fe_batch_stride;
-
-  if (b >= batch_size)
-    return;
 
   target_t force_emit;
 

@@ -26,6 +26,8 @@ The algorithm can peform evaluation/ De novo with a speed of roughly 280 spectra
 
 # Environment Setup
 
+> **Security compatibility / 安全兼容性说明：** Rebuild legacy object-based indexes from trusted peak files; custom checkpoints require an explicitly trusted SHA-256 (Secure Hash Algorithm 256-bit) digest via `--trusted-checkpoint-sha256`. 旧对象格式索引需从可信峰文件重建；自定义检查点须通过该参数明确提供可信的 SHA-256（256 位安全散列算法）摘要。See the [security review / 安全复核说明](docs/security-review-2026-09-23.md) for compatibility changes and verification limits / 兼容性变更与验证限制。
+
 We provide both Docker and Conda set-up guide, user can choose between option A: Docker and option B: Conda below:
 
 ## Option A: Docker

@@ -22,6 +22,7 @@ from pytorch_lightning.lite import LightningLite
 
 from .utils2 import n_workers
 from .denovo import model_runner
+from .security.redaction import redact_config
 
 
 logger = logging.getLogger("XuanjiNovo")
@@ -57,6 +58,12 @@ For detailed documentation, visit: https://github.com/path/to/XuanjiNovo
     "--model",
     help="Path to model checkpoint (.ckpt file). Required for 'denovo' and 'eval' modes.",
     type=click.Path(exists=True, dir_okay=False),
+)
+@click.option(
+    "--trusted-checkpoint-sha256",
+    default=None,
+    help="SHA-256 from a trusted publisher for a custom checkpoint. Legacy checkpoints can execute code. "
+         "自定义检查点需提供可信发布者的摘要；旧格式可执行代码。",
 )
 @click.option(
     "--peak_path",
@@ -130,6 +137,7 @@ def main(
     n_beams: Optional[int],
     batch_size: Optional[int],
     gpu: Optional[str],
+    trusted_checkpoint_sha256: Optional[str] = None,
 ):
    
     # print("hello xiang")
@@ -304,7 +312,7 @@ def main(
         logger.debug("peak_path_test = %s", peak_path_test)
         logger.debug("config = %s", config_fn)
         logger.debug("output = %s", output)
-        for key, value in config.items():
+        for key, value in redact_config(config).items():
             logger.debug("%s = %s", str(key), str(value))
 
     # Run XuanjiNovo in the specified mode.
@@ -314,14 +322,17 @@ def main(
         # writer.set_metadata(
         #     config, peak_path=peak_path, model=model, config_filename=config_fn
         # )
-        model_runner.predict(peak_path, model, config, writer)
+        model_runner.predict(peak_path, model, config, writer,
+                             trusted_checkpoint_sha256=trusted_checkpoint_sha256)
         #writer.save()
     elif mode == "eval":
         logger.info("Evaluate a trained XuanjiNovo model.")
-        model_runner.evaluate(peak_path, model, config)
+        model_runner.evaluate(peak_path, model, config,
+                              trusted_checkpoint_sha256=trusted_checkpoint_sha256)
     elif mode == "train":
         logger.info("Train the XuanjiNovo model.")
-        model_runner.train(peak_path, peak_path_val, peak_path_test, model, config)
+        model_runner.train(peak_path, peak_path_val, peak_path_test, model, config,
+                           trusted_checkpoint_sha256=trusted_checkpoint_sha256)
 
 if __name__ == "__main__":
     main()
