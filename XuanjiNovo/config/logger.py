@@ -7,6 +7,7 @@ from typing import Dict, Optional
 
 import yaml
 from .model import XuanjiNovoConfig
+from XuanjiNovo.security.redaction import redact_config
 
 class ConfigLogger:
     """Logger for configuration management and validation."""
@@ -49,23 +50,24 @@ class ConfigLogger:
 
         # Save configurations in different formats
         paths = {}
+        safe_config = redact_config(config.dict())
         
         # JSON format (full configuration)
         json_path = os.path.join(run_dir, "config_full.json")
         with open(json_path, 'w') as f:
-            json.dump(config.dict(), f, indent=2, sort_keys=True)
+            json.dump(safe_config, f, indent=2, sort_keys=True)
         paths['json'] = json_path
 
         # YAML format (human-readable)
         yaml_path = os.path.join(run_dir, "config.yaml")
         with open(yaml_path, 'w') as f:
-            yaml.dump(config.dict(), f, default_flow_style=False)
+            yaml.dump(safe_config, f, default_flow_style=False)
         paths['yaml'] = yaml_path
 
         # Device configuration
         device_path = os.path.join(run_dir, "device_config.json")
         with open(device_path, 'w') as f:
-            json.dump(config.get_device_config(), f, indent=2)
+            json.dump(redact_config(config.get_device_config()), f, indent=2)
         paths['device'] = device_path
 
         # Summary file (key configurations)
@@ -91,7 +93,7 @@ class ConfigLogger:
 
     def load_config(self, run_id: str) -> XuanjiNovoConfig:
         """
-        Load configuration from logs.
+        Load redacted configuration from logs. Credentials must be supplied again.
 
         Parameters
         ----------

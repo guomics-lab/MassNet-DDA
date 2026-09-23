@@ -19,6 +19,7 @@ from pytorch_lightning.profiler import SimpleProfiler
 from ..utils import record_metadata, n_workers
 from .db_dataloader import DeNovoDataModule
 from .model import Spec2Pep
+from ..security.checkpoints import load_verified_checkpoint, verified_checkpoint
 
 
 
@@ -30,6 +31,7 @@ def predict(
     model_filename: str,
     config: Dict[str, Any],
     out_writer: None,
+    trusted_checkpoint_sha256: Optional[str] = None,
 ) -> None:
     """
     Predict peptide sequences with a trained XuanjiNovo model.
@@ -45,11 +47,12 @@ def predict(
     out_writer : ms_io.MztabWriter
         The mzTab writer to export the prediction results.
     """
-    _execute_existing(peak_path, model_filename, config, False, out_writer, "denovo")
+    _execute_existing(peak_path, model_filename, config, False, out_writer, "denovo",
+                      trusted_checkpoint_sha256=trusted_checkpoint_sha256)
 
 
-def evaluate(peak_path: str, model_filename: str, config: Dict[str,
-                                                               Any]) -> None:
+def evaluate(peak_path: str, model_filename: str, config: Dict[str, Any],
+             trusted_checkpoint_sha256: Optional[str] = None) -> None:
     """
     Evaluate peptide sequence predictions from a trained XuanjiNovo model.
 
@@ -62,7 +65,8 @@ def evaluate(peak_path: str, model_filename: str, config: Dict[str,
     config : Dict[str, Any]
         The configuration options.
     """
-    _execute_existing(peak_path, model_filename, config, True)
+    _execute_existing(peak_path, model_filename, config, True,
+                      trusted_checkpoint_sha256=trusted_checkpoint_sha256)
 
 
 def _execute_existing(
@@ -72,6 +76,7 @@ def _execute_existing(
     annotated: bool,
     out_writer = None,
     mode: str = "eval",
+    trusted_checkpoint_sha256: Optional[str] = None,
 ) -> None:
     """Execute model with existing checkpoint.
     
@@ -112,8 +117,10 @@ def _execute_existing(
         raise FileNotFoundError("Could not find the trained model weights")
     if config2:
         print("config validated via pydantic")
-    model = Spec2Pep().load_from_checkpoint(
+    model = load_verified_checkpoint(
+        Spec2Pep,
         model_filename,
+        trusted_checkpoint_sha256,
         PMC_enable=config["PMC_enable"],
         mass_control_tol=config["mass_control_tol"],
         dim_model=config["dim_model"],
@@ -236,6 +243,7 @@ def train(
     peak_path_test: str,
     model_filename: str,
     config: Dict[str, Any],
+    trusted_checkpoint_sha256: Optional[str] = None,
 ) -> None:
     """Train a model with configuration validation.
     
@@ -410,7 +418,9 @@ def train(
                 model_filename,
             )
             raise FileNotFoundError("Could not find the model weights to continue training")
-        model = Spec2Pep().load_from_checkpoint(model_filename, **model_params)
+        model = load_verified_checkpoint(
+            Spec2Pep, model_filename, trusted_checkpoint_sha256, **model_params
+        )
     
     callbacks = []
     if config["save_model"]:
@@ -496,7 +506,8 @@ def train(
         logger.info(f"Quick summary available in {summary_file}")
     
     if config["train_from_resume"] and not config["train_from_scratch"]:
-        trainer.fit(model, datamodule=dataModule, ckpt_path=config['load_file_name'])
+        with verified_checkpoint(config['load_file_name'], trusted_checkpoint_sha256) as checkpoint:
+            trainer.fit(model, datamodule=dataModule, ckpt_path=checkpoint)
     else:
         trainer.fit(model, datamodule=dataModule)
     

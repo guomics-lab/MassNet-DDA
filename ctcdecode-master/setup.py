@@ -2,9 +2,9 @@
 import glob
 import multiprocessing.pool
 import os
-import tarfile
 import urllib.request
 import warnings
+from safe_archive import extract_source_archive
 
 from setuptools import distutils, find_packages, setup
 from torch.utils.cpp_extension import BuildExtension, CppExtension, include_paths
@@ -14,12 +14,15 @@ def download_extract(url, dl_path):
     if not os.path.isfile(dl_path):
         # Already downloaded
         urllib.request.urlretrieve(url, dl_path)
-    if dl_path.endswith(".tar.gz") and os.path.isdir(dl_path[: -len(".tar.gz")]):
+    if not dl_path.endswith(".tar.gz"):
+        raise ValueError("Expected a .tar.gz source archive")
+    source_dir = dl_path[: -len(".tar.gz")]
+    if os.path.islink(source_dir):
+        raise ValueError("Source dependency directory must not be a symbolic link")
+    if os.path.isdir(source_dir):
         # Already extracted
         return
-    tar = tarfile.open(dl_path)
-    tar.extractall("third_party/")
-    tar.close()
+    extract_source_archive(dl_path, os.path.dirname(dl_path), os.path.basename(source_dir))
 
 
 # Download/Extract openfst, boost

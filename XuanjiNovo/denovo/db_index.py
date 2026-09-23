@@ -1,10 +1,9 @@
 import lmdb
-import numpy as np
 import logging
 from pathlib import Path
-from .parser2 import  MzmlParser, MzxmlParser, MgfParser, ParquetParser
-import os 
-import pickle
+from .record_codec import (
+    FORMAT_KEY, FORMAT_VERSION, REBUILD_MESSAGE, decode_record, encode_record,
+)
 
 LOGGER = logging.getLogger(__name__)
 def listify(obj):
@@ -43,6 +42,7 @@ class DB_Index:
         #create a new 
         if not is_exist:
             txn = self.env.begin(write=True)
+            txn.put(FORMAT_KEY, FORMAT_VERSION)
             txn.put( "ms_level".encode(), str(self.ms_level).encode())
             txn.put("n_spectra".encode(),  str(0).encode())
             txn.put("n_peaks".encode(), str(0).encode())
@@ -50,15 +50,20 @@ class DB_Index:
            
             txn.commit()
         else:
-            txn=self.env.begin()
-            self.n_spectra = int(txn.get("n_spectra".encode()).decode())
-            ms_level_read = int(txn.get("ms_level".encode()).decode())
-            # annotated_read = bool(txn.get("annotated".encode()).decode())
             try:
-                assert ms_level_read == self.ms_level
-                # assert annotated_read == self.annotated
-            except:
-                raise ValueError(f"{self.db_path} already existed, but it has a inconsistent ms_level/annotated with input parameter!")
+                with self.env.begin() as txn:
+                    if txn.get(FORMAT_KEY) != FORMAT_VERSION:
+                        raise ValueError(REBUILD_MESSAGE)
+                    try:
+                        self.n_spectra = int(txn.get(b"n_spectra").decode("ascii"))
+                        ms_level_read = int(txn.get(b"ms_level").decode("ascii"))
+                    except (AttributeError, UnicodeError, ValueError) as exc:
+                        raise ValueError("Invalid index metadata") from exc
+                    if self.n_spectra < 0 or ms_level_read != self.ms_level:
+                        raise ValueError("Invalid or inconsistent index metadata")
+            except Exception:
+                self.env.close()
+                raise
         if filenames is not None:
             filenames = listify(filenames)
             LOGGER.info("Reading %i files...", len(filenames))
@@ -68,26 +73,27 @@ class DB_Index:
                 
     def write_to_db(self, parser, n ):
         #write all spectrums in the parser to lmdb
-        txn = self.env.begin(write=True)
-        assert n == len(parser.precursor_charge)
-        for i in range(len(parser.precursor_charge)):
-       
-            collection_data = {"precursor_mz": parser.precursor_mz[i], "precursor_charge": parser.precursor_charge[i],
-                               "mz_array": parser.mz_arrays[i], "intensity_array": parser.intensity_arrays[i]}
-            
-            collection_data["pep"] =  parser.annotations[i]
-      
-            buffers = pickle.dumps(collection_data)
-            
-            txn.put(str(self.n_spectra).encode(), buffers)
-            self.n_spectra+=1
-        txn.put("n_spectra".encode(),  str(self.n_spectra).encode())    
-        txn.commit()
+        if n != len(parser.precursor_charge):
+            raise ValueError("Spectrum count does not match parser records")
+        next_index = self.n_spectra
+        with self.env.begin(write=True) as txn:
+            for i in range(n):
+                collection_data = {
+                    "precursor_mz": parser.precursor_mz[i],
+                    "precursor_charge": parser.precursor_charge[i],
+                    "mz_array": parser.mz_arrays[i],
+                    "intensity_array": parser.intensity_arrays[i],
+                    "pep": parser.annotations[i],
+                }
+                txn.put(str(next_index).encode(), encode_record(collection_data))
+                next_index += 1
+            txn.put(b"n_spectra", str(next_index).encode())
+        self.n_spectra = next_index
         
     def __getitem__(self, idx):
-        txn = self.env.begin()
-        buffer = txn.get(str(idx).encode())
-        data= pickle.loads(buffer)
+        with self.env.begin(buffers=True) as txn:
+            buffer = txn.get(str(idx).encode())
+            data = decode_record(buffer)
         pep = data["pep"]
         out = (data["mz_array"], data["intensity_array"],  data["precursor_mz"], data["precursor_charge"], pep)
         return out
@@ -110,6 +116,9 @@ class DB_Index:
         
         
     def _get_parser(self, ms_data_file):
+        # Reading an existing data-only index does not require peak-parser or
+        # model dependencies. Import them only when building an index.
+        from .parser2 import MzmlParser, MzxmlParser, MgfParser, ParquetParser
         #to allow change of annotations
         kw_args = dict(ms_level=self.ms_level, valid_charge=self.valid_charge, annotationsLabel=self.annotated)
         if ms_data_file.suffix.lower() == ".mzml":

@@ -11,6 +11,7 @@ import psutil
 import pkg_resources
 import git
 import logging
+from XuanjiNovo.security.redaction import redact_config, redact_url
 
 logger = logging.getLogger("xuanjinovo")
 
@@ -22,7 +23,7 @@ def get_git_info():
             "git_commit": repo.head.object.hexsha,
             "git_branch": repo.active_branch.name,
             "git_dirty": repo.is_dirty(),
-            "git_remote_url": list(repo.remotes[0].urls)[0] if repo.remotes else None
+            "git_remote_url": redact_url(list(repo.remotes[0].urls)[0]) if repo.remotes else None
         }
     except (git.InvalidGitRepositoryError, git.NoSuchPathError):
         return {"git_info": "Not a git repository"}
@@ -89,7 +90,7 @@ def record_metadata(output_dir, config, model_name="XuanjiNovo"):
         metadata = {
             "timestamp": datetime.now().isoformat(),
             "model_name": model_name,
-            "config": config,
+            "config": redact_config(config),
             "git_info": get_git_info(),
             "hardware_info": get_hardware_info(),
             "software_info": get_software_info()

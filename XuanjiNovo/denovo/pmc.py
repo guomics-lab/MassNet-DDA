@@ -4,6 +4,16 @@ import numpy as np
 import time
 import torch
 import sys
+import threading
+
+from .pmc_contract import (
+    validate_pmc_grid_length,
+    validate_pmc_scalars,
+    validate_pmc_shape,
+)
+
+# Bound simultaneous workspaces in the per-spectrum prediction worker pool.
+_PMC_WORKSPACE_LOCK = threading.Lock()
 
 inference_kernel = cp.RawKernel(
 r'''
@@ -104,6 +114,20 @@ void inference(float* prob, int* ans, float* aa_mass, float* dp, float* dpMass ,
 
 def knapDecode(prob, preMass, tol):
     """CUDA-accelerated knapsack algorithm for Precise Mass Control (PMC) decoding."""
+    validate_pmc_shape(prob.shape)
+    if not torch.is_floating_point(prob):
+        raise ValueError("PMC probabilities must have a floating-point dtype")
+    if tuple(preMass.shape) != (1,) or not torch.is_floating_point(preMass):
+        raise ValueError("PMC precursor mass must be a floating-point tensor of shape (1,)")
+    validate_pmc_scalars(preMass[0].item(), tol)
+    if not torch.isfinite(prob).all().item():
+        raise ValueError("PMC probabilities must contain only finite values")
+    with _PMC_WORKSPACE_LOCK:
+        return _knap_decode_locked(prob, preMass, tol)
+
+
+def _knap_decode_locked(prob, preMass, tol):
+    """Run the unchanged kernel after validation, with one bounded workspace."""
     grid_size = 1
     AAmasses = [0.0, 57.021464, 71.037114, 87.032028, 97.052764, 99.068414, 101.04767, 160.030649, 113.084064, 113.084064, 114.042927, 115.026943, 128.058578, 128.094963, 129.042593, 131.040485, 137.058912, 147.068414, 156.101111, 163.063329, 186.079313, 147.0354, 115.026943, 129.042594, 42.010565, 43.005814, 10000.0, 25.980265]
     AAmasses = np.array(AAmasses, dtype=np.float32)
@@ -116,11 +140,15 @@ def knapDecode(prob, preMass, tol):
     
     prob = torch.where(prob < -20.0, -20.0, prob)
     prob = prob - prob.min() + 0.1
-    prob = prob.cpu().numpy().astype(np.float32)
+    prob = np.ascontiguousarray(prob.float().cpu().numpy(), dtype=np.float32)
+    if not np.isfinite(prob).all():
+        raise ValueError("PMC probabilities overflowed during float32 conversion")
     prob = cp.array(prob, dtype=cp.float32)
     
     word_num = 40
     length = int(preMass / grid_size + 1)
+    # Recheck after float32 rounding and before any mass-dependent allocation.
+    validate_pmc_grid_length(length)
     ans = cp.zeros((length, word_num + 1, word_num + 1), dtype=cp.int32)
     dpProb = cp.zeros((length, word_num + 1), dtype=cp.float32)
     dpMass = cp.zeros((length, word_num + 1), dtype=cp.float32)

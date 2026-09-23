@@ -12,29 +12,18 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 from XuanjiNovo.XuanjiNovo import main
+from download_data import DOWNLOADS, download_from_mirror, verify_checksum
 
 
-def download_from_mirror(url, destination):
-    """Download a file from HTTPS mirror."""
-    try:
-        response = requests.get(url, stream=True)
-        response.raise_for_status()
-        total_size = int(response.headers.get('content-length', 0))
-
-        with open(destination, 'wb') as f, tqdm(
-                desc=destination,
-                total=total_size,
-                unit='iB',
-                unit_scale=True,
-                unit_divisor=1024,
-        ) as pbar:
-            for data in response.iter_content(chunk_size=1024):
-                size = f.write(data)
-                pbar.update(size)
-        return True
-    except Exception as e:
-        print(f"Error downloading from mirror: {e}")
-        return False
+def ensure_verified_download(name, destination):
+    """Use the release manifest for both existing files and fresh downloads."""
+    artifact = DOWNLOADS[name]
+    if not verify_checksum(destination, artifact["sha256"]):
+        if not download_from_mirror(artifact["mirror_url"], destination):
+            raise RuntimeError("Test artifact download failed")
+        if not verify_checksum(destination, artifact["sha256"]):
+            os.remove(destination)
+            raise ValueError("Test artifact checksum mismatch")
 
 
 def test_denovo_process():
@@ -47,20 +36,18 @@ def test_denovo_process():
     if os.path.exists(result_file):
         os.remove(result_file)
     print(f"Downloading XuanjiNovo_100M_massnet.ckpt...")
-    if not os.path.exists(demo_file):
-        download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/XuanjiNovo_100M_massnet.ckpt',
-                         demo_model)
+    ensure_verified_download('XuanjiNovo_100M_massnet.ckpt', demo_model)
     print(f"Finished download XuanjiNovo_100M_massnet.ckpt...")
     # download test file
     print(f"Downloading Xbacillus.10k.mgf...")
-    if not os.path.exists(demo_file):
-        download_from_mirror('https://huggingface.co/Wyattz23/XuanjiNovo/resolve/main/bacillus.10k.mgf', demo_file)
+    ensure_verified_download('bacillus.10k.mgf', demo_file)
     print(f"Finished download Bacillus.10k.mgf...")
 
     runner = CliRunner()
     # run denovo
     print(f"Processing run denovo")
-    runner.invoke(main, ['--mode', 'denovo', '--model', demo_model, '--peak_path', demo_file, '--output', demo_output])
+    result = runner.invoke(main, ['--mode', 'denovo', '--model', demo_model, '--peak_path', demo_file, '--output', demo_output])
+    assert result.exit_code == 0, result.output
     print(f"Finished run denovo")
 
     result_file = os.path.join(demo_output, 'denovo.tsv')

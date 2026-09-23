@@ -1,8 +1,10 @@
 """Configuration validation models for XuanjiNovo."""
 
 from typing import Dict, List, Optional, Tuple, Union
+import json
 from pydantic import BaseModel, Field, validator
 import torch
+from XuanjiNovo.security.redaction import redact_config
 
 class MaskSchedule(BaseModel):
     """Mask schedule configuration."""
@@ -98,9 +100,10 @@ class XuanjiNovoConfig(BaseModel):
         }
 
     def save_to_file(self, filepath: str) -> None:
-        """Save configuration to a file."""
+        """Save a redacted configuration; supply credentials again when reusing it."""
         with open(filepath, 'w') as f:
-            f.write(self.json(indent=2))
+            # Keep Pydantic's handling of dates and other supported JSON values.
+            json.dump(redact_config(json.loads(self.json())), f, indent=2)
 
     def to_flat_dict(self) -> Dict:
         """Convert nested config to flat dictionary for backward compatibility."""

@@ -1,6 +1,6 @@
 """A de novo peptide sequencing model with configurable logging."""
 
-import threading
+from concurrent.futures import ThreadPoolExecutor
 import logging
 import re
 import sys
@@ -17,6 +17,7 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 #from torch_imputer.imputer import best_alignment
 from . import pmc  # Precise Mass Control module
+from .pmc_contract import validate_pmc_config
 from ..components import ModelMixin, PeptideDecoder, SpectrumEncoder
 from .ctc_beam_search import CTCBeamSearchDecoder
 from . import evaluate
@@ -257,6 +258,8 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
 
         )
         self.n_layers = n_layers
+        if self.PMC_enable:
+            validate_pmc_config(max_length, self.decoder._peptide_mass.masses)
         
         self.ctc_decoder = CTCBeamSearchDecoder(self.decoder, self.ctc_dic)
         self.calctime = 0.0
@@ -373,15 +376,15 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                     token_temp = list(reversed(token_temp))
                 else:
                     top_tokens[i] = top_tokens_beam[i]
-        threads = []
         log_prob = F.log_softmax(output_logits, -1)
-        for i in range(batch_size):
-            t = threading.Thread(target=worker, args=(log_prob[[i], :, :], precursors[[i], 0], i, output_logits))
-            threads.append(t)
-            t.start()
-        
-        for t in threads:
-            t.join()
+        # Keep resource use bounded and propagate failures to the caller.
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            futures = [
+                executor.submit(worker, log_prob[[i], :, :], precursors[[i], 0], i, output_logits)
+                for i in range(batch_size)
+            ]
+            for future in futures:
+                future.result()
         
         end_time = datetime.now()
         processing_time = (end_time - start_time).total_seconds()
